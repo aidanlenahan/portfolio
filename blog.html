@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aidan Lenahan's Blog - Technical guides, tutorials, and insights on software, cybersecurity, and IT">
+    <title>Blog | Aidan Lenahan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>AL</span>
+                </a>
+                
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="about" class="nav-link">About</a></li>
+                    <li><a href="projects" class="nav-link">Projects</a></li>
+                    <li><a href="blog" class="nav-link active">Blog</a></li>
+                    <li><a href="techhelp" class="nav-link">Tech Help</a></li>
+                    <li><a href="contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Blog</h1>
+            <p class="page-subtitle">Technical guides, tutorials, and insights on software and IT</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="section">
+        <div class="container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="search-input" 
+                    placeholder="Search articles by title or description..." 
+                    aria-label="Search articles"
+                />
+            </div>
+            <div id="search-results-count" class="search-results-count"></div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div id="article-list" class="projects-grid">
+                <p class="loading">Loading articles...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">
+                        <i class="fas fa-code"></i> Aidan Lenahan
+                    </h3>
+                    <p class="footer-text">
+                        Cybersecurity enthusiast and technology professional.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="projects">Projects</a></li>
+                        <li><a href="blog">Blog</a></li>
+                        <li><a href="techhelp">Tech Help</a></li>
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Other Projects</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>

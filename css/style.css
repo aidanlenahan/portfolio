@@ -1838,6 +1838,194 @@ a:focus {
 }
 
 /* =============================================
+   BLOG STYLES
+   ============================================= */
+
+.search-box {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-box i {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) * 3);
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.search-results-count {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: none;
+}
+
+.highlight {
+    background-color: rgba(30, 64, 175, 0.2);
+    padding: 0.1rem 0.2rem;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.loading {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: var(--spacing-xl);
+}
+
+/* Blog Article Styles */
+.article-content {
+    background: var(--card-bg);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.article-header {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--accent-primary);
+}
+
+.article-header h1 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: 2.5rem;
+}
+
+.article-meta {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.article-meta span {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xl);
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition);
+}
+
+.back-link:hover {
+    transform: translateX(-4px);
+}
+
+.article-body {
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.article-body h2 {
+    color: var(--text-primary);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.75rem;
+}
+
+.article-body h3 {
+    color: var(--text-primary);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.35rem;
+}
+
+.article-body p {
+    margin-bottom: var(--spacing-md);
+}
+
+.article-body ul,
+.article-body ol {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-xl);
+}
+
+.article-body li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.article-body code {
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Courier New', 'Consolas', monospace;
+    font-size: 0.9em;
+    color: var(--accent-primary);
+}
+
+.article-body pre {
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    overflow-x: auto;
+    margin: var(--spacing-lg) 0;
+    border-left: 4px solid var(--accent-primary);
+}
+
+.article-body pre code {
+    background: none;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+.article-body blockquote {
+    border-left: 4px solid var(--accent-primary);
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.article-body a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+.article-body a:hover {
+    color: var(--accent-hover);
+}
+
+/* =============================================
    PRINT STYLES
    ============================================= */
 @media print {
