@@ -1,0 +1,66 @@
+# WAMP-Compatible .htaccess
+# If you get 500 errors, see instructions below to enable Apache modules
+
+# Custom 404 Error Page (works without any modules)
+ErrorDocument 404 /404.html
+
+# ============================================
+# EXTENSIONLESS URLs (requires mod_rewrite)
+# ============================================
+# To enable mod_rewrite in WAMP:
+# 1. Click WAMP icon in system tray
+# 2. Apache -> Apache Modules -> rewrite_module (check it)
+# 3. Restart All Services
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Extensionless URLs
+    # If the request is not for a file or directory that exists
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Add .html extension if file exists
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([^\.]+)$ $1.html [NC,L]
+</IfModule>
+
+# ============================================
+# SECURITY HEADERS (requires mod_headers)
+# ============================================
+# OPTIONAL: Uncomment after enabling mod_headers
+# To enable: WAMP -> Apache -> Apache Modules -> headers_module
+
+# <IfModule mod_headers.c>
+#     Header always set X-Frame-Options "SAMEORIGIN"
+#     Header always set X-Content-Type-Options "nosniff"
+#     Header always set X-XSS-Protection "1; mode=block"
+#     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+# </IfModule>
+
+# ============================================
+# COMPRESSION (requires mod_deflate)
+# ============================================
+# OPTIONAL: Uncomment after enabling mod_deflate
+# Usually enabled by default in WAMP
+
+# <IfModule mod_deflate.c>
+#     AddOutputFilterByType DEFLATE text/html
+#     AddOutputFilterByType DEFLATE text/css
+#     AddOutputFilterByType DEFLATE text/javascript
+#     AddOutputFilterByType DEFLATE application/javascript
+#     AddOutputFilterByType DEFLATE application/json
+# </IfModule>
+
+# ============================================
+# BROWSER CACHING (requires mod_expires)
+# ============================================
+# OPTIONAL: Uncomment after enabling mod_expires
+
+# <IfModule mod_expires.c>
+#     ExpiresActive On
+#     ExpiresByType image/jpeg "access plus 1 year"
+#     ExpiresByType image/png "access plus 1 year"
+#     ExpiresByType text/css "access plus 1 month"
+#     ExpiresByType application/javascript "access plus 1 month"
+# </IfModule>

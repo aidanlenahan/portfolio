@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects by Aidan Lenahan - Cybersecurity challenges, web development, homelab infrastructure, and hardware automation">
+    <title>Projects | Aidan Lenahan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>AL</span>
+                </a>
+                
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="about" class="nav-link">About</a></li>
+                    <li><a href="projects" class="nav-link active">Projects</a></li>
+                    <li><a href="techhelp" class="nav-link">Tech Help</a></li>
+                    <li><a href="contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">My Projects</h1>
+            <p class="page-subtitle">A showcase of my recent work and accomplishments</p>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="projects-grid">
+                <!-- Featured Project - Dog Walking Service -->
+                <div class="project-card featured-project">
+                    <div class="project-image">
+                        <i class="fas fa-dog fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="featured-badge">
+                            <i class="fas fa-star"></i> Live Service
+                        </div>
+                        <h3 class="project-title">Professional Dog Walking Services</h3>
+                        <p class="project-description">
+                            A comprehensive website for professional dog walking services featuring online booking, 
+                            service packages, client testimonials, and service area information. Built with modern 
+                            web technologies for a seamless user experience.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fas fa-external-link-alt"></i> Visit Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 1 - Emmy Strong -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-heart fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Emmy Strong Foundation Website</h3>
+                        <p class="project-description">
+                            Built emmy-strong.org to support the foundation's mission: ensuring that everyone in need 
+                            of a bone marrow transplant can find a matching donor. The website serves to raise awareness, 
+                            facilitate donor registration, and share Emmy's inspiring story with the community.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Nonprofit</span>
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Cost-effective</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://emmy-strong.org" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fas fa-external-link-alt"></i> Visit Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Gymnastics Excellence Fund -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-medal fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Gymnastics Excellence Fund Website</h3>
+                        <p class="project-description">
+                            Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit 
+                            that fully funds Red Bank Regional High School's gymnastics team. Built to streamline donations 
+                            and fundraisers, improve communication, and showcase team achievements.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Hostinger</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fas fa-external-link-alt"></i> View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Personal Homelab -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-server fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Personal Homelab Infrastructure</h3>
+                        <p class="project-description">
+                            Built and maintained a comprehensive homelab consisting of VMs and LXC containers nested in 
+                            Proxmox servers, NAS (network attached storage), smart home controllers, security services, 
+                            and monitoring services. Hands-on learning with enterprise-grade hardware and software.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Proxmox</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">VPN</span>
+                            <span class="tag">Ubiquiti</span>
+                            <span class="tag">Home Assistant</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fab fa-github"></i> GitHub Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - CTFd Instance -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-flag fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">High School CTFd Platform</h3>
+                        <p class="project-description">
+                            Created and administered a CTFd instance at Red Bank Regional High School, developing 
+                            dozens of capture-the-flag cybersecurity challenges for peer participation. Challenges 
+                            cover web security, cryptography, binary exploitation, and network forensics.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">CTFd</span>
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Challenge Design</span>
+                            <span class="tag">Linux</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://aidanlenahan.github.io/rbrctf/ctf" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fas fa-external-link-alt"></i> View Platform
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Automated Pantry Lighting -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-lightbulb fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Automated Pantry Lighting System</h3>
+                        <p class="project-description">
+                            Designed and assembled a hardware-based automation system that powers LED strips when a 
+                            pantry door opens. Used a 12V relay module triggered by a magnetic reed switch, implementing 
+                            clean wiring practices with appropriate gauge selection for power and signal paths.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Electrical Engineering</span>
+                            <span class="tag">Relay Systems</span>
+                            <span class="tag">Low-Voltage</span>
+                            <span class="tag">Home Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-utensils fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Restaurant Booking System</h3>
+                        <p class="project-description">
+                            Online reservation platform for restaurants with table management, automated 
+                            confirmations, menu display, and customer reviews. Includes admin panel for staff.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Bootstrap</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="link">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Fitness Tracking App</h3>
+                        <p class="project-description">
+                            Personal fitness application for tracking workouts, nutrition, and progress. 
+                            Includes activity logging, goal setting, and detailed analytics with charts.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">TypeScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ness.aidanlenahan.com" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/aidanlenahan/NessFitness" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project template
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-blog fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Content Management System</h3>
+                        <p class="project-description">
+                            Custom CMS for blogging and content creation with rich text editor, media library, 
+                            SEO optimization, and multi-user support with role-based permissions.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Prisma</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">AWS S3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="link">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-video fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Video Streaming Platform</h3>
+                        <p class="project-description">
+                            Video hosting and streaming service with upload functionality, transcoding, 
+                            playlists, and user subscriptions. Includes content creator dashboard.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">FFmpeg</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="link">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-map-marked-alt fa-3x"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Location-Based Services App</h3>
+                        <p class="project-description">
+                            Mobile application utilizing GPS for location tracking, nearby points of interest, 
+                            route planning, and check-ins. Features offline map support.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Google Maps API</span>
+                            <span class="tag">Firebase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="link">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Interested in Working Together?</h2>
+                <p>I'm always open to discussing new projects and creative ideas.</p>
+                <a href="contact" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">
+                        <i class="fas fa-code"></i> Aidan Lenahan
+                    </h3>
+                    <p class="footer-text">
+                        Cybersecurity enthusiast and technology professional.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="projects">Projects</a></li>
+                        <li><a href="techhelp">Tech Help</a></li>
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Other Projects</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-dog"></i> Dog Walking Services
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section footer-connect">
+                    <h4 class="footer-heading">Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
