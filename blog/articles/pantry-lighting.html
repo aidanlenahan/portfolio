@@ -82,6 +82,31 @@
             padding: 0;
             color: var(--text-primary);
         }
+        .schematic-image {
+            margin: 1rem 0;
+        }
+        .schematic-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .schematic-image .schematic-light {
+            display: none;
+        }
+        .schematic-image .schematic-dark {
+            display: block;
+        }
+        html[data-theme='light'] .schematic-image .schematic-light {
+            display: block;
+        }
+        html[data-theme='light'] .schematic-image .schematic-dark {
+            display: none;
+        }
+        html[data-theme='dark'] .schematic-image .schematic-dark {
+            display: block;
+        }
+        html[data-theme='dark'] .schematic-image .schematic-light {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -134,7 +159,7 @@
             <div class="article-header">
                 <h1>Door-Automated Pantry Lighting System</h1>
                 <div class="article-meta">
-                    <span>January 5, 2026</span>
+                    <span>March 4, 2026</span>
                     <span>Aidan Lenahan</span>
                 </div>
             </div>
@@ -165,6 +190,10 @@
 
                 <h2>Circuit Design</h2>
                 <p>To start, I stripped the 16 gauge wire and connected it according to the schematic I designed. Here is a description of the schematic:</p>
+                <div class="schematic-image">
+                    <img src="../assets/pantry-schematic-light.svg" alt="Pantry lighting circuit schematic" loading="lazy" class="schematic-light">
+                    <img src="../assets/pantry-schematic-dark.svg" alt="Pantry lighting circuit schematic" loading="lazy" class="schematic-dark">
+                </div>
                 <ul>
                     <li>Power supply plugs into wall socket</li>
                     <li>Power supply positive terminal connects to the "DC +" terminal on the relay module</li>
@@ -181,8 +210,9 @@
 
                 <h2>Installation</h2>
                 <p>After a few successful tests, I started to plan out where to drill in both reed switches, one on the door frame and the other on the door itself. I ran into a small problem here, as this pantry door had a magnet at the top of it to help it stay closed. This magnet would interfere with the reed switch, causing it to stay activated even when the door was open. To overcome this, instead of putting the reed switch at the top of the door frame, I put it slightly further down the frame out of range of the magnet. I then made sure to put the other reed switch on the door, in range of the wired reed switch, so that when the door was closed, the two reed switches would be close enough to each other to activate the circuit.</p>
-
                 <p>I then took a handsaw and cut two small holes in the small plastic case for the relay so the wires could fit through while also keeping the relay module protected. Using a driver and screwdriver, I then took a screw and screwed the relay casing into the drywall, and then another screw to hold the relay module inside the casing. After putting on the cover, I hid the wires going from the wall socket to the relay module to the reed switch to the LED strip using some cable clips and blue tape. I then cut a strip of LED lights to fit the length of the pantry and stuck it on the inside wall above the door frame. This location of the LED lights would reflect the light off of the white ceiling of the pantry. Not only was the pantry now fully illuminated, but the light was not directly in the eyes of anyone opening the door.</p>
+                <h2>Conclusion</h2>
+                <p>Overall, this project was very fun to plan and make. I love making projects that actually solve a real-world, applicable problem. This one did, in a creative, efficient, and impactful way. After roughly a year of this solution, I can say that this has worked quite well. In hindsight, I should have added a manual override switch that can keep the lights off even when the door stays open. Sometimes, the pantry door will be kept open for awhile, where a manual override switch would be helpful to aid in energy efficiency.</p>
             </div>
         </article>
         </div>

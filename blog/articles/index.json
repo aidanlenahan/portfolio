@@ -2,7 +2,7 @@
     "articles": [
         {
             "title": "Door-Automated Pantry Lighting System",
-            "date": "2026-01-04",
+            "date": "2026-03-04",
             "author": "Aidan Lenahan",
             "excerpt": "A walkthrough of building a door-activated lighting system for a dimly lit pantry using a reed switch and a relay module.",
             "file": "pantry-lighting.html"
