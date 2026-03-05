@@ -42,6 +42,7 @@
         updateThemeIcon();
         
         // Add a small animation effect
+        this.style.transition = 'transform 0.3s ease';
         this.style.transform = 'rotate(360deg)';
         setTimeout(() => {
             this.style.transform = '';
@@ -284,15 +285,18 @@
     
     // Animate elements when they come into view
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.02,
+        rootMargin: '0px 0px -10% 0px'
     };
     
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                requestAnimationFrame(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.willChange = 'auto';
+                });
                 observer.unobserve(entry.target);
             }
         });
@@ -302,8 +306,9 @@
     const animatedElements = document.querySelectorAll('.card, .project-card, .timeline-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.transform = 'translateY(12px)';
+        el.style.willChange = 'opacity, transform';
+        el.style.transition = 'opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
         observer.observe(el);
     });
 
