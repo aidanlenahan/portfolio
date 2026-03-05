@@ -1,9 +1,11 @@
+decrease top and bottom margins on search bar in blog
+contact buttons for social media on one line
+
 ## High Priority - Content
 - Add professional portrait/headshot image
 - Update about page bio with current information
 - Add more blog articles (aim for 8-10 total)
 - Add project screenshots/images
-- Create downloadable resume PDF
 
 ## High Priority - Features
 - Contact form backend (EmailJS, Formspree, or Netlify Forms)
