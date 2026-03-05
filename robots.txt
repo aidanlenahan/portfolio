@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /blog/assets/
+Disallow: /files/
 
 Sitemap: https://aidanlenahan.com/sitemap.xml
