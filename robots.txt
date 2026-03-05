@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aidanlenahan.github.io/website/sitemap.xml
+Sitemap: https://aidanlenahan.github.io/sitemap.xml
