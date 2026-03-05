@@ -39,10 +39,18 @@ function createArticleCard(article, searchTerm = '') {
     
     const title = searchTerm ? highlightText(article.title, searchTerm) : article.title;
     const excerpt = searchTerm ? highlightText(article.excerpt, searchTerm) : article.excerpt;
+    const previewMedia = article.file === 'pantry-lighting.html'
+        ? `
+            <div class="themed-preview-image">
+                <img src="assets/pantry-schematic-light.svg" alt="Pantry lighting circuit schematic" class="preview-light" loading="lazy">
+                <img src="assets/pantry-schematic-dark.svg" alt="Pantry lighting circuit schematic" class="preview-dark" loading="lazy">
+            </div>
+        `
+        : '<i class="fas fa-file-alt fa-3x"></i>';
     
     card.innerHTML = `
         <div class="project-image">
-            <i class="fas fa-file-alt fa-3x"></i>
+            ${previewMedia}
         </div>
         <div class="project-content">
             <h3 class="project-title">${title}</h3>
