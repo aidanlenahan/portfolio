@@ -9,220 +9,304 @@
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
-                <title>XML Sitemap</title>
-                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <title>Sitemap | Aidan Lenahan</title>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="stylesheet" href="css/style.css" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
                 <style type="text/css">
-                    * {
-                        margin: 0;
-                        padding: 0;
-                        box-sizing: border-box;
-                    }
-                    
-                    body {
-                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        min-height: 100vh;
-                        padding: 2rem;
-                    }
-                    
-                    .container {
-                        max-width: 1200px;
+                    .sitemap-container {
+                        max-width: var(--container-width);
                         margin: 0 auto;
-                        background: white;
-                        border-radius: 12px;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                        overflow: hidden;
+                        padding: var(--spacing-xl) var(--spacing-lg);
                     }
                     
-                    .header {
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        color: white;
-                        padding: 2rem;
+                    .sitemap-header {
+                        text-align: center;
+                        margin-bottom: var(--spacing-xl);
                     }
                     
-                    .header h1 {
-                        font-size: 2rem;
-                        margin-bottom: 0.5rem;
-                        display: flex;
-                        align-items: center;
-                        gap: 0.5rem;
+                    .sitemap-title {
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                        color: var(--text-primary);
+                        margin-bottom: var(--spacing-sm);
                     }
                     
-                    .header p {
-                        opacity: 0.9;
-                        font-size: 1rem;
+                    .sitemap-subtitle {
+                        font-size: 1.1rem;
+                        color: var(--text-secondary);
+                        max-width: 600px;
+                        margin: 0 auto;
                     }
                     
-                    .content {
-                        padding: 2rem;
+                    .sitemap-info {
+                        background: var(--bg-secondary);
+                        border-left: 4px solid var(--accent-primary);
+                        padding: var(--spacing-md);
+                        margin-bottom: var(--spacing-xl);
+                        border-radius: var(--border-radius-md);
                     }
                     
-                    .info-box {
-                        background: #f8f9fa;
-                        border-left: 4px solid #667eea;
-                        padding: 1rem;
-                        margin-bottom: 2rem;
-                        border-radius: 4px;
-                    }
-                    
-                    .info-box p {
-                        color: #495057;
+                    .sitemap-info p {
+                        color: var(--text-secondary);
                         line-height: 1.6;
+                        margin: 0;
                     }
                     
-                    table {
+                    .sitemap-table {
                         width: 100%;
                         border-collapse: collapse;
+                        background: var(--card-bg);
+                        border-radius: var(--border-radius-lg);
+                        overflow: hidden;
+                        box-shadow: var(--shadow-md);
                     }
                     
-                    thead {
-                        background: #f8f9fa;
+                    .sitemap-table thead {
+                        background: var(--bg-secondary);
                     }
                     
-                    th {
+                    .sitemap-table th {
                         text-align: left;
-                        padding: 1rem;
+                        padding: var(--spacing-md);
                         font-weight: 600;
-                        color: #495057;
-                        border-bottom: 2px solid #dee2e6;
+                        color: var(--text-primary);
+                        border-bottom: 2px solid var(--border-color);
                     }
                     
-                    td {
-                        padding: 1rem;
-                        border-bottom: 1px solid #dee2e6;
-                        color: #212529;
+                    .sitemap-table td {
+                        padding: var(--spacing-md);
+                        border-bottom: 1px solid var(--border-color);
+                        color: var(--text-primary);
                     }
                     
-                    tr:hover {
-                        background: #f8f9fa;
+                    .sitemap-table tbody tr:hover {
+                        background: var(--bg-secondary);
+                    }
+                    
+                    .sitemap-table tbody tr:last-child td {
+                        border-bottom: none;
                     }
                     
                     .url-cell a {
-                        color: #667eea;
+                        color: var(--accent-primary);
                         text-decoration: none;
                         word-break: break-all;
+                        transition: color var(--transition-fast);
                     }
                     
                     .url-cell a:hover {
+                        color: var(--accent-hover);
                         text-decoration: underline;
                     }
                     
-                    .priority-high {
-                        color: #28a745;
+                    .priority-badge {
+                        display: inline-block;
+                        padding: 0.25rem 0.75rem;
+                        border-radius: var(--border-radius-sm);
+                        font-size: 0.875rem;
                         font-weight: 600;
+                    }
+                    
+                    .priority-high {
+                        background: #d1fae5;
+                        color: #065f46;
+                    }
+                    
+                    [data-theme="dark"] .priority-high {
+                        background: #064e3b;
+                        color: #a7f3d0;
                     }
                     
                     .priority-medium {
-                        color: #ffc107;
-                        font-weight: 600;
+                        background: #fef3c7;
+                        color: #92400e;
+                    }
+                    
+                    [data-theme="dark"] .priority-medium {
+                        background: #78350f;
+                        color: #fde68a;
                     }
                     
                     .priority-low {
-                        color: #6c757d;
-                        font-weight: 600;
-                    }
-                    
-                    .footer {
-                        text-align: center;
-                        padding: 1.5rem;
-                        background: #f8f9fa;
-                        color: #6c757d;
-                        font-size: 0.9rem;
+                        background: var(--bg-secondary);
+                        color: var(--text-secondary);
                     }
                     
                     @media (max-width: 768px) {
-                        body {
-                            padding: 1rem;
+                        .sitemap-container {
+                            padding: var(--spacing-lg) var(--spacing-md);
                         }
                         
-                        .header h1 {
-                            font-size: 1.5rem;
+                        .sitemap-title {
+                            font-size: 2rem;
                         }
                         
-                        .content {
-                            padding: 1rem;
+                        .sitemap-table {
+                            font-size: 0.875rem;
                         }
                         
-                        table {
-                            font-size: 0.9rem;
-                        }
-                        
-                        th, td {
-                            padding: 0.5rem;
+                        .sitemap-table th,
+                        .sitemap-table td {
+                            padding: var(--spacing-sm);
                         }
                     }
                 </style>
             </head>
             <body>
-                <div class="container">
-                    <div class="header">
-                        <h1>
-                            <span>📄</span> XML Sitemap
+                <!-- Navigation -->
+                <nav class="navbar" id="navbar">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="./" class="logo">
+                                <i class="fas fa-code"></i>
+                                <span>AL</span>
+                            </a>
+                            
+                            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            
+                            <ul class="nav-menu" id="navMenu">
+                                <li><a href="./" class="nav-link">Home</a></li>
+                                <li><a href="about" class="nav-link">About</a></li>
+                                <li><a href="projects" class="nav-link">Projects</a></li>
+                                <li><a href="blog" class="nav-link">Blog</a></li>
+                                <li><a href="techhelp" class="nav-link">Tech Help</a></li>
+                                <li><a href="contact" class="nav-link">Contact</a></li>
+                                <li>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="sitemap-container">
+                    <div class="sitemap-header">
+                        <h1 class="sitemap-title">
+                            <i class="fas fa-sitemap"></i> Sitemap
                         </h1>
-                        <p>This sitemap helps search engines discover and index the pages on this website.</p>
+                        <p class="sitemap-subtitle">
+                            A complete list of all pages on this website for search engines and visitors.
+                        </p>
                     </div>
                     
-                    <div class="content">
-                        <div class="info-box">
-                            <p>
-                                <strong>What is a sitemap?</strong><br/>
-                                A sitemap is a file that lists all the important pages of a website to help search engines like Google crawl and index them more efficiently.
-                                This sitemap contains <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong> URLs.
-                            </p>
+                    <div class="sitemap-info">
+                        <p>
+                            <strong>About this sitemap:</strong> This file helps search engines like Google discover and index all pages on this website.
+                            It contains <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> URLs</strong> that are updated regularly.
+                        </p>
+                    </div>
+                    
+                    <table class="sitemap-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%">URL</th>
+                                <th style="width: 20%">Last Modified</th>
+                                <th style="width: 15%">Update Frequency</th>
+                                <th style="width: 15%">Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <xsl:for-each select="sitemap:urlset/sitemap:url">
+                                <tr>
+                                    <td class="url-cell">
+                                        <a href="{sitemap:loc}">
+                                            <xsl:value-of select="sitemap:loc"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sitemap:lastmod"/>
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        <xsl:value-of select="sitemap:changefreq"/>
+                                    </td>
+                                    <td>
+                                        <xsl:choose>
+                                            <xsl:when test="sitemap:priority &gt;= 0.8">
+                                                <span class="priority-badge priority-high">
+                                                    <xsl:value-of select="sitemap:priority"/>
+                                                </span>
+                                            </xsl:when>
+                                            <xsl:when test="sitemap:priority &gt;= 0.6">
+                                                <span class="priority-badge priority-medium">
+                                                    <xsl:value-of select="sitemap:priority"/>
+                                                </span>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <span class="priority-badge priority-low">
+                                                    <xsl:value-of select="sitemap:priority"/>
+                                                </span>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </td>
+                                </tr>
+                            </xsl:for-each>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-section">
+                                <h3 class="footer-title">
+                                    <i class="fas fa-code"></i> Aidan Lenahan
+                                </h3>
+                                <p class="footer-text">
+                                    Cybersecurity enthusiast and technology professional.
+                                </p>
+                            </div>
+                            
+                            <div class="footer-section">
+                                <h4 class="footer-heading">Navigation</h4>
+                                <ul class="footer-links">
+                                    <li><a href="./">Home</a></li>
+                                    <li><a href="about">About</a></li>
+                                    <li><a href="projects">Projects</a></li>
+                                    <li><a href="blog">Blog</a></li>
+                                    <li><a href="techhelp">Tech Help</a></li>
+                                    <li><a href="contact">Contact</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer-section">
+                                <h4 class="footer-heading">Other Projects</h4>
+                                <ul class="footer-links">
+                                    <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer-section">
+                                <h4 class="footer-heading">Connect</h4>
+                                <div class="social-links">
+                                    <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th style="width: 50%">URL</th>
-                                    <th style="width: 20%">Last Modified</th>
-                                    <th style="width: 15%">Change Freq</th>
-                                    <th style="width: 15%">Priority</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <xsl:for-each select="sitemap:urlset/sitemap:url">
-                                    <tr>
-                                        <td class="url-cell">
-                                            <a href="{sitemap:loc}">
-                                                <xsl:value-of select="sitemap:loc"/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select="sitemap:lastmod"/>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select="sitemap:changefreq"/>
-                                        </td>
-                                        <td>
-                                            <xsl:choose>
-                                                <xsl:when test="sitemap:priority &gt;= 0.8">
-                                                    <span class="priority-high">
-                                                        <xsl:value-of select="sitemap:priority"/>
-                                                    </span>
-                                                </xsl:when>
-                                                <xsl:when test="sitemap:priority &gt;= 0.6">
-                                                    <span class="priority-medium">
-                                                        <xsl:value-of select="sitemap:priority"/>
-                                                    </span>
-                                                </xsl:when>
-                                                <xsl:otherwise>
-                                                    <span class="priority-low">
-                                                        <xsl:value-of select="sitemap:priority"/>
-                                                    </span>
-                                                </xsl:otherwise>
-                                            </xsl:choose>
-                                        </td>
-                                    </tr>
-                                </xsl:for-each>
-                            </tbody>
-                        </table>
+                        <div class="footer-bottom">
+                            <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="sitemap.xml" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
+                        </div>
                     </div>
-                    
-                    <div class="footer">
-                        Generated by aidanlenahan.com sitemap
-                    </div>
-                </div>
+                </footer>
+
+                <script src="js/main.js"></script>
             </body>
         </html>
     </xsl:template>
