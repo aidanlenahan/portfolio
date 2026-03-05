@@ -71,29 +71,6 @@
                         with over 40 clients through self-developed marketing and a custom website. Throughout high school, I have run varsity cross-country, track, and played club lacrosse. My hands-on experience 
                         spans network administration, low-voltage systems installation, and hardware refurbishment.
                     </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <i class="fas fa-shield-alt"></i>
-                            <div class="stat-content">
-                                <strong>6 Years</strong>
-                                <span>CyberPatriot Experience</span>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-dog"></i>
-                            <div class="stat-content">
-                                <strong>40+</strong>
-                                <span>Dog Walking Clients</span>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-award"></i>
-                            <div class="stat-content">
-                                <strong>98.79</strong>
-                                <span>GPA</span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="about-actions">
                         <a href="files/AidanLenahanResume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                             <i class="fas fa-file-pdf"></i> View Resume
@@ -184,7 +161,7 @@
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-icon">
+                    <div class="timeline-icon" data-label="NJCCIC">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="timeline-content">
@@ -202,7 +179,7 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="timeline-icon">
+                    <div class="timeline-icon" data-label="Shea Com.">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="timeline-content">
@@ -220,7 +197,7 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="timeline-icon">
+                    <div class="timeline-icon" data-label="FRA">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="timeline-content">
@@ -238,7 +215,7 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="timeline-icon">
+                    <div class="timeline-icon" data-label="Lenahan Dog">
                         <i class="fas fa-dog"></i>
                     </div>
                     <div class="timeline-content">
@@ -256,7 +233,7 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="timeline-icon">
+                    <div class="timeline-icon" data-label="Monmouth Wire">
                         <i class="fas fa-tools"></i>
                     </div>
                     <div class="timeline-content">
@@ -274,7 +251,7 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="timeline-icon">
+                    <div class="timeline-icon" data-label="Sea Bright BC">
                         <i class="fas fa-utensils"></i>
                     </div>
                     <div class="timeline-content">
@@ -308,8 +285,8 @@
                         <i class="far fa-calendar"></i> Class of 2026
                     </p>
                     <p class="card-text">
-                        Senior honors student with a GPA of 98.79 (3.95), ranked 40/329. Member of National Honors Society, 
-                        Spanish NHS, Math NHS, and National Technical Honors Society. President of Computer Science Club 
+                        Senior honors student. Member of National Honors Society, 
+                        Spanish NHS, Math NHS, and National Technical Honors Society. Varsity Cross Country Runner and Captain. President of Computer Science Club 
                         and CyberPatriot Team Captain.
                     </p>
                 </div>
@@ -372,9 +349,10 @@
                 <div class="footer-section">
                     <h4 class="footer-heading">Other Projects</h4>
                     <ul class="footer-links">
-                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-dog"></i> Dog Walking Services
-                        </a></li>
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
+                        <li><a href="https://nessfitness.com" target="_blank" rel="noopener noreferrer">NessFitness</a></li>
+                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics</a></li>
+                        <li><a href="https://emmystrong.org" target="_blank" rel="noopener noreferrer">Emmy Strong</a></li>
                     </ul>
                 </div>
                 
@@ -401,5 +379,137 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Timeline collapse/expand functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineIcons = document.querySelectorAll('.timeline-icon');
+            const isMobile = window.innerWidth <= 768;
+            
+            timelineIcons.forEach(icon => {
+                // Make icons clickable
+                icon.style.cursor = 'pointer';
+                icon.setAttribute('title', 'Click to expand/collapse');
+                
+                // Create and add label element
+                const label = document.createElement('span');
+                label.className = 'timeline-label';
+                label.textContent = icon.getAttribute('data-label') || '';
+                icon.parentElement.appendChild(label);
+                
+                const timelineItem = icon.parentElement;
+                const timelineContent = timelineItem.querySelector('.timeline-content');
+                const timelineLabel = timelineItem.querySelector('.timeline-label');
+                
+                // Set initial state based on screen size
+                if (isMobile) {
+                    timelineContent.classList.add('collapsed');
+                    timelineLabel.classList.add('visible');
+                    timelineItem.classList.add('collapsed');
+                    icon.classList.add('rotated');
+                }
+                
+                // Function to toggle collapse
+                const toggleCollapse = function() {
+                    // Toggle the collapsed class
+                    timelineContent.classList.toggle('collapsed');
+                    timelineLabel.classList.toggle('visible');
+                    timelineItem.classList.toggle('collapsed');
+                    
+                    // Add rotation to icon for visual feedback
+                    icon.classList.toggle('rotated');
+                };
+                
+                // Click on icon
+                icon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleCollapse();
+                });
+                
+                // Click on label
+                label.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleCollapse();
+                });
+                
+                // Click on timeline item (always clickable)
+                timelineItem.addEventListener('click', function(e) {
+                    // Don't toggle if clicking on a link
+                    if (e.target.tagName === 'A') {
+                        return;
+                    }
+                    toggleCollapse();
+                });
+            });
+        });
+    </script>
+    <style>
+        .timeline-icon {
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .timeline-icon:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-hover);
+        }
+        
+        .timeline-icon.rotated {
+            transform: rotate(90deg);
+        }
+        
+        .timeline-label {
+            position: absolute;
+            left: 25px;
+            top: 15px;
+            transform: translateY(-50%);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease 0.2s;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        
+        .timeline-label.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .timeline-item {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .timeline-item:hover {
+            opacity: 0.9;
+        }
+        
+        .timeline-item.collapsed {
+            min-height: 40px;
+            margin-bottom: 1rem !important;
+        }
+        
+        .timeline-item.collapsed:hover {
+            opacity: 0.8;
+        }
+        
+        .timeline-content {
+            max-height: 1000px;
+            overflow: hidden;
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.15s ease, padding 0.3s ease, margin 0.3s ease;
+        }
+        
+        .timeline-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    </style>
 </body>
 </html>
