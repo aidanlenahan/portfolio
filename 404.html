@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            var host = window.location.hostname;
+            var baseHref =
+                host === 'aidanlenahan.com' || host === 'www.aidanlenahan.com'
+                    ? 'https://aidanlenahan.com/'
+                    : 'https://aidanlenahan.github.io/website/';
+
+            var baseTag = document.createElement('base');
+            baseTag.href = baseHref;
+            document.head.appendChild(baseTag);
+        })();
+    </script>
     <meta name="description" content="Page Not Found - 404 Error">
     <title>404 - Page Not Found | Aidan Lenahan</title>
     <link rel="stylesheet" href="./css/style.css">
