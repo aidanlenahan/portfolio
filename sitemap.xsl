@@ -15,10 +15,14 @@
                 <link rel="stylesheet" href="css/style.css" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
                 <style type="text/css">
+                    body {
+                        padding: var(--spacing-xl) var(--spacing-lg);
+                        min-height: 100vh;
+                    }
+                    
                     .sitemap-container {
                         max-width: var(--container-width);
                         margin: 0 auto;
-                        padding: var(--spacing-xl) var(--spacing-lg);
                     }
                     
                     .sitemap-header {
@@ -38,20 +42,6 @@
                         color: var(--text-secondary);
                         max-width: 600px;
                         margin: 0 auto;
-                    }
-                    
-                    .sitemap-info {
-                        background: var(--bg-secondary);
-                        border-left: 4px solid var(--accent-primary);
-                        padding: var(--spacing-md);
-                        margin-bottom: var(--spacing-xl);
-                        border-radius: var(--border-radius-md);
-                    }
-                    
-                    .sitemap-info p {
-                        color: var(--text-secondary);
-                        line-height: 1.6;
-                        margin: 0;
                     }
                     
                     .sitemap-table {
@@ -135,7 +125,7 @@
                     }
                     
                     @media (max-width: 768px) {
-                        .sitemap-container {
+                        body {
                             padding: var(--spacing-lg) var(--spacing-md);
                         }
                         
@@ -155,52 +145,13 @@
                 </style>
             </head>
             <body>
-                <!-- Navigation -->
-                <nav class="navbar" id="navbar">
-                    <div class="container">
-                        <div class="nav-wrapper">
-                            <a href="./" class="logo">
-                                <i class="fas fa-code"></i>
-                                <span>AL</span>
-                            </a>
-                            
-                            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                            
-                            <ul class="nav-menu" id="navMenu">
-                                <li><a href="./" class="nav-link">Home</a></li>
-                                <li><a href="about" class="nav-link">About</a></li>
-                                <li><a href="projects" class="nav-link">Projects</a></li>
-                                <li><a href="blog" class="nav-link">Blog</a></li>
-                                <li><a href="techhelp" class="nav-link">Tech Help</a></li>
-                                <li><a href="contact" class="nav-link">Contact</a></li>
-                                <li>
-                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                                        <i class="fas fa-moon"></i>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-
                 <div class="sitemap-container">
                     <div class="sitemap-header">
                         <h1 class="sitemap-title">
-                            <i class="fas fa-sitemap"></i> Sitemap
+                            Sitemap
                         </h1>
                         <p class="sitemap-subtitle">
-                            A complete list of all pages on this website for search engines and visitors.
-                        </p>
-                    </div>
-                    
-                    <div class="sitemap-info">
-                        <p>
-                            <strong>About this sitemap:</strong> This file helps search engines like Google discover and index all pages on this website.
-                            It contains <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> URLs</strong> that are updated regularly.
+                            All pages on aidanlenahan.com
                         </p>
                     </div>
                     
@@ -251,60 +202,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!-- Footer -->
-                <footer class="footer">
-                    <div class="container">
-                        <div class="footer-content">
-                            <div class="footer-section">
-                                <h3 class="footer-title">
-                                    <i class="fas fa-code"></i> Aidan Lenahan
-                                </h3>
-                                <p class="footer-text">
-                                    Cybersecurity enthusiast and technology professional.
-                                </p>
-                            </div>
-                            
-                            <div class="footer-section">
-                                <h4 class="footer-heading">Navigation</h4>
-                                <ul class="footer-links">
-                                    <li><a href="./">Home</a></li>
-                                    <li><a href="about">About</a></li>
-                                    <li><a href="projects">Projects</a></li>
-                                    <li><a href="blog">Blog</a></li>
-                                    <li><a href="techhelp">Tech Help</a></li>
-                                    <li><a href="contact">Contact</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="footer-section">
-                                <h4 class="footer-heading">Other Projects</h4>
-                                <ul class="footer-links">
-                                    <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="footer-section">
-                                <h4 class="footer-heading">Connect</h4>
-                                <div class="social-links">
-                                    <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                    <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="footer-bottom">
-                            <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="sitemap.xml" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
-                        </div>
-                    </div>
-                </footer>
 
                 <script src="js/main.js"></script>
             </body>
