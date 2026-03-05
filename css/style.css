@@ -302,7 +302,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease, transform 0.3s ease;
 }
 
 .theme-toggle:hover {
@@ -945,6 +945,10 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 /* =============================================
    CONTACT PAGE
    ============================================= */
+.contact-main-section {
+    padding-bottom: var(--spacing-lg);
+}
+
 .contact-info-center {
     max-width: 600px;
     margin: 0 auto;
@@ -1055,8 +1059,8 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 }
 
 .social-links-large {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-sm);
 }
 
@@ -1064,6 +1068,8 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    flex: 0 0 auto;
+    white-space: nowrap;
     padding: var(--spacing-md);
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
@@ -1563,9 +1569,9 @@ a:focus {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: 0.3s !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: 0.3s !important;
     }
     
     html {
@@ -1876,6 +1882,10 @@ a:focus {
 /* =============================================
    BLOG STYLES
    ============================================= */
+
+.blog-search-section {
+    padding: var(--spacing-md) 0;
+}
 
 .search-box {
     position: relative;
