@@ -3,7 +3,7 @@
 // Load articles from blog directory
 async function loadArticles() {
     try {
-        const response = await fetch('blog/articles/index.json');
+        const response = await fetch('articles/index.json');
         if (!response.ok) {
             throw new Error('Failed to load articles');
         }
@@ -52,7 +52,7 @@ function createArticleCard(article, searchTerm = '') {
             </div>
             <p class="project-description">${excerpt}</p>
             <div class="project-links">
-                <a href="blog/articles/${article.file}" class="link">
+                <a href="articles/${article.file}" class="link">
                     <i class="fas fa-book-open"></i> Read Article
                 </a>
             </div>

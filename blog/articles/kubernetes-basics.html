@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Introduction to Kubernetes Pods and Services - Learn the fundamentals of Kubernetes">
+    <title>Introduction to Kubernetes Pods and Services | Aidan Lenahan</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .article-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+        .article-header h1 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .article-meta {
+            color: var(--text-secondary);
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .article-body {
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+        .article-body h2 {
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .article-body p {
+            margin-bottom: 1rem;
+        }
+        .article-body ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+        .article-body code {
+            background: var(--bg-primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--accent-primary);
+        }
+        .article-body pre {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid var(--border-primary);
+        }
+        .article-body pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../../" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>AL</span>
+                </a>
+                
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../" class="nav-link">Home</a></li>
+                    <li><a href="../../about" class="nav-link">About</a></li>
+                    <li><a href="../../projects" class="nav-link">Projects</a></li>
+                    <li><a href="../" class="nav-link active">Blog</a></li>
+                    <li><a href="../../techhelp" class="nav-link">Tech Help</a></li>
+                    <li><a href="../../contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Blog</h1>
+            <p class="page-subtitle">Technical guides and insights</p>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <a href="../" class="back-link">← Back to Blog</a>
+        
+        <article class="article-content">
+            <div class="article-header">
+                <h1>Introduction to Kubernetes Pods and Services</h1>
+                <div class="article-meta">
+                    <span>📅 January 5, 2024</span>
+                    <span>✍️ Tech Team</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>Kubernetes is the leading container orchestration platform. Understanding Pods and Services is fundamental to working with Kubernetes. This article will introduce you to these core concepts.</p>
+
+                <h2>What are Pods?</h2>
+                <p>A Pod is the smallest deployable unit in Kubernetes. It represents a single instance of a running process in your cluster and can contain one or more containers that share storage and network resources.</p>
+
+                <h2>Creating a Simple Pod</h2>
+                <p>Here's a basic Pod definition in YAML:</p>
+                <pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80</code></pre>
+
+                <p>Create the Pod using kubectl:</p>
+                <pre><code>kubectl apply -f pod.yaml</code></pre>
+
+                <h2>Understanding Services</h2>
+                <p>Services in Kubernetes provide a stable endpoint for accessing Pods. Since Pods are ephemeral and can be created/destroyed dynamically, Services provide a consistent way to reach them.</p>
+
+                <h2>Types of Services</h2>
+                <ul>
+                    <li><strong>ClusterIP</strong> - Default type, exposes Service on an internal cluster IP</li>
+                    <li><strong>NodePort</strong> - Exposes Service on each Node's IP at a static port</li>
+                    <li><strong>LoadBalancer</strong> - Creates an external load balancer in supported cloud providers</li>
+                    <li><strong>ExternalName</strong> - Maps Service to a DNS name</li>
+                </ul>
+
+                <h2>Creating a Service</h2>
+                <p>Here's a Service definition that exposes our nginx Pod:</p>
+                <pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP</code></pre>
+
+                <h2>Pod and Service Communication</h2>
+                <p>Services use label selectors to determine which Pods to route traffic to. In our example, the Service selects all Pods with the label <code>app: nginx</code>.</p>
+
+                <h2>Viewing Resources</h2>
+                <p>Use these commands to inspect your Pods and Services:</p>
+                <pre><code>kubectl get pods
+kubectl get services
+kubectl describe pod nginx-pod
+kubectl describe service nginx-service</code></pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Use labels effectively to organize and select resources</li>
+                    <li>Define resource limits and requests for containers</li>
+                    <li>Use readiness and liveness probes for health checks</li>
+                    <li>Keep Pods focused on a single responsibility</li>
+                    <li>Use Deployments instead of bare Pods for production workloads</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Pods and Services are foundational concepts in Kubernetes. Understanding how they work together enables you to build scalable, resilient applications. In future articles, we'll explore more advanced Kubernetes features.</p>
+            </div>
+        </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">
+                        <i class="fas fa-code"></i> Aidan Lenahan
+                    </h3>
+                    <p class="footer-text">
+                        Cybersecurity enthusiast and technology professional.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="../../">Home</a></li>
+                        <li><a href="../../about">About</a></li>
+                        <li><a href="../../projects">Projects</a></li>
+                        <li><a href="../">Blog</a></li>
+                        <li><a href="../../techhelp">Tech Help</a></li>
+                        <li><a href="../../contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Other Projects</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
+                        <li><a href="https://nessfitness.com" target="_blank" rel="noopener noreferrer">NessFitness</a></li>
+                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics</a></li>
+                        <li><a href="https://emmystrong.org" target="_blank" rel="noopener noreferrer">Emmy Strong</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="../../sitemap.xml" target="_blank" rel="noopener noreferrer" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
