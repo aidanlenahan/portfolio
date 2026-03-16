@@ -1,11 +1,9 @@
-decrease top and bottom margins on search bar in blog
-contact buttons for social media on one line
-
 ## High Priority - Content
 - Add professional portrait/headshot image
 - Update about page bio with current information
 - Add more blog articles (aim for 8-10 total)
 - Add project screenshots/images
+- Create downloadable resume PDF
 
 ## High Priority - Features
 - Contact form backend (EmailJS, Formspree, or Netlify Forms)
@@ -40,3 +38,89 @@ contact buttons for social media on one line
 - Blog series/multi-part articles
 - Guest blog posts section
 - Speaking/presentations archive
+
+-------------------------------------------
+
+Portfolio Site TODO
+Generated: 2026-03-15
+
+Legend:
+[ ] Not started
+[-] In progress
+[x] Done
+
+CRITICAL (Do First)
+[ ] Replace About page placeholder avatar with a real headshot
+    - Add optimized profile image to `img/`
+    - Update About page image source and alt text
+    - Optionally add same photo to Home hero for consistency
+
+[ ] Add a contact form on Contact page
+    - Fields: Name, Email, Message
+    - Add validation + spam protection (honeypot or CAPTCHA alternative)
+    - Add success/error states
+    - Wire to email delivery service or backend endpoint
+
+HIGH PRIORITY
+[ ] Add real screenshots/preview images for each project card
+    - Capture and optimize screenshots (WebP preferred)
+    - Replace generic icons where possible
+    - Keep fallback icon if screenshot unavailable
+
+[ ] Expand blog content (avoid looking abandoned)
+    - Publish at least 2-3 additional posts (CTF writeups recommended)
+    - Add a short content cadence goal (ex: 1 post/month)
+
+[ ] Fix and modernize resume
+    - Correct typo: "ACTIVTIES/CLUBS" -> "ACTIVITIES/CLUBS"
+    - Create light/print-friendly version (white background)
+    - Add phone, LinkedIn URL, and GitHub URL
+
+MEDIUM PRIORITY
+[ ] Add a visible skills/tech stack section
+    - Include tools like Python, Linux, Networking, etc.
+    - Place on Home and/or About page
+
+[ ] Improve Tech Help page trust and clarity
+    - Add pricing guidance (starting rate or "contact for quote")
+    - Add service area and remote vs in-person availability
+    - Replace vague experience statement with specific years
+    - Add 1-2 testimonials/social proof items
+
+[ ] Improve project card context
+    - Add project dates (ex: 2024-Present)
+    - Mark projects as Client, Volunteer, or Personal
+    - Strengthen descriptions (impact, scale, outcomes)
+    - Homelab: link specific repo or add architecture details
+
+[ ] Refine Home page credibility and flow
+    - Update subtitle to a more authentic role description
+    - Reduce excessive hero whitespace
+    - Add About teaser section with "Learn more" link
+
+MINOR / CLEANUP
+[ ] Fix blog date mismatch (listing vs article date)
+
+[ ] Remove Facebook from professional Contact links
+    - Keep GitHub + LinkedIn primary
+    - Ensure footer and contact links are consistent
+
+[ ] Verify custom 404 page behavior
+    - Test invalid URL handling
+    - Ensure clear CTA back to Home
+
+[ ] Standardize NessFitness URL everywhere
+    - Use one canonical link in footer and project card
+
+[ ] Improve SEO metadata per page
+    - Add unique <title> and <meta name="description"> per page
+    - Verify social share metadata (Open Graph/Twitter)
+
+NICE TO HAVE
+[ ] Add read time + tags/categories to blog cards/posts
+[ ] Add Tech Help callout on Home page and/or footer visibility
+[ ] Reposition non-technical work (ex: Counter Staff) to secondary section on About page
+
+Notes
+- Keep changes authentic to student profile; avoid overstated titles.
+- Prioritize completion order: Critical -> High -> Medium -> Minor.
