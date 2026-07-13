@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-K4JBFNH3'+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K4JBFNH3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aidan Lenahan's digital business card - contact info and quick save">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Contact Card | Aidan Lenahan</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Page-specific styles for the digital business card.
+           Everything else (colors, fonts, dark mode) inherits from css/style.css */
+        .card-page {
+            min-height: calc(100vh - var(--navbar-height));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl) var(--spacing-sm);
+        }
+
+        .vcard {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .vcard-photo {
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-primary);
+            margin: 0 auto var(--spacing-md);
+            display: block;
+            box-shadow: var(--shadow-md);
+        }
+
+        .vcard-name {
+            font-size: 1.75rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .vcard-role {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .vcard-role .placeholder {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .vcard-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            text-align: left;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .vcard-details .contact-method a,
+        .vcard-details .contact-method p {
+            font-weight: 600;
+        }
+
+        .vcard-details .placeholder {
+            color: var(--text-tertiary);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .vcard-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .vcard-social {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .vcard-toast {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%) translateY(12px);
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-primary);
+            color: var(--text-primary);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .vcard-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4JBFNH3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Minimal header: this page is intentionally unlisted, so no full nav menu -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>AL</span>
+                </a>
+                <ul class="nav-menu" style="margin-left: auto;">
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="card-page">
+        <div class="container">
+            <div class="vcard">
+                <img src="../files/headshot300x300.png" alt="Aidan Lenahan" class="vcard-photo">
+                <h1 class="vcard-name">Aidan Lenahan</h1>
+                <p class="vcard-role"><span class="placeholder">[ job title ]</span></p>
+
+                <div class="vcard-details">
+                    <div class="contact-method">
+                        <div class="method-icon"><i class="fas fa-phone"></i></div>
+                        <div class="method-content">
+                            <h3>Phone</h3>
+                            <a href="tel:+17326939406">732-693-9406</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="method-content">
+                            <h3>Email</h3>
+                            <a href="mailto:aidan@sheacom.com">aidan@sheacom.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon"><i class="fas fa-globe"></i></div>
+                        <div class="method-content">
+                            <h3>Website</h3>
+                            <a href="https://sheacom.com" target="_blank" rel="noopener noreferrer">sheacom.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="method-content">
+                            <h3>Location</h3>
+                            <p><span class="placeholder">[ city, state ]</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vcard-actions">
+                    <button class="btn btn-primary btn-block" id="saveContactBtn">
+                        <i class="fas fa-address-card"></i> Save to Contacts
+                    </button>
+                    <a href="mailto:aidan@sheacom.com" class="btn btn-outline btn-block">
+                        <i class="fas fa-envelope"></i> Send an Email
+                    </a>
+                </div>
+
+                <div class="vcard-social">
+                    <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="vcard-toast" id="vcardToast">Saved — open the download to add to your contacts</div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.getElementById('saveContactBtn').addEventListener('click', function () {
+            const first = 'Aidan';
+            const last = 'Lenahan';
+            const org = ''; // placeholder: add company/org name
+            const title = ''; // placeholder: add job title
+            const phone = '+17326939406';
+            const email = 'aidan@sheacom.com';
+            const url = 'https://sheacom.com';
+            const photoUrl = window.location.origin + '/files/headshot300x300.png';
+
+            const vcard = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                `N:${last};${first};;;`,
+                `FN:${first} ${last}`,
+                org ? `ORG:${org}` : '',
+                title ? `TITLE:${title}` : '',
+                `TEL;TYPE=CELL:${phone}`,
+                `EMAIL;TYPE=INTERNET:${email}`,
+                `URL:${url}`,
+                `PHOTO;VALUE=URI:${photoUrl}`,
+                'END:VCARD'
+            ].filter(Boolean).join('\n');
+
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `${first}-${last}.vcf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            const toast = document.getElementById('vcardToast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3200);
+        });
+    </script>
+</body>
+</html>
