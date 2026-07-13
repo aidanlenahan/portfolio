@@ -15,11 +15,14 @@
     <title>Contact Card | Aidan Lenahan</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    </script>
     <style>
         /* Page-specific styles for the digital business card.
            Everything else (colors, fonts, dark mode) inherits from css/style.css */
         .card-page {
-            min-height: calc(100vh - var(--navbar-height));
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -32,15 +35,33 @@
             text-align: center;
         }
 
+        .vcard-photos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
         .vcard-photo {
             width: 108px;
             height: 108px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-primary);
-            margin: 0 auto var(--spacing-md);
-            display: block;
             box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+        }
+
+        .vcard-photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
         }
 
         .vcard-name {
@@ -54,11 +75,6 @@
             margin-bottom: var(--spacing-lg);
         }
 
-        .vcard-role .placeholder {
-            color: var(--text-tertiary);
-            font-style: italic;
-        }
-
         .vcard-details {
             display: flex;
             flex-direction: column;
@@ -70,12 +86,6 @@
         .vcard-details .contact-method a,
         .vcard-details .contact-method p {
             font-weight: 600;
-        }
-
-        .vcard-details .placeholder {
-            color: var(--text-tertiary);
-            font-style: italic;
-            font-weight: 400;
         }
 
         .vcard-actions {
@@ -120,38 +130,24 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Minimal header: this page is intentionally unlisted, so no full nav menu -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="../" class="logo">
-                    <i class="fas fa-code"></i>
-                    <span>AL</span>
-                </a>
-                <ul class="nav-menu" style="margin-left: auto;">
-                    <li>
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <section class="card-page">
         <div class="container">
             <div class="vcard">
-                <img src="../files/headshot300x300.png" alt="Aidan Lenahan" class="vcard-photo">
+                <div class="vcard-photos">
+                    <img src="../files/headshot300x300.png" alt="Aidan Lenahan" class="vcard-photo">
+                    <div class="vcard-photo vcard-photo-placeholder" role="img" aria-label="Shea Communications photo placeholder">
+                        <span>SC</span>
+                    </div>
+                </div>
                 <h1 class="vcard-name">Aidan Lenahan</h1>
-                <p class="vcard-role"><span class="placeholder">[ job title ]</span></p>
+                <p class="vcard-role">Brand Ambassador &middot; Shea Communications Inc.</p>
 
                 <div class="vcard-details">
                     <div class="contact-method">
                         <div class="method-icon"><i class="fas fa-phone"></i></div>
                         <div class="method-content">
                             <h3>Phone</h3>
-                            <a href="tel:+17326939406">732-693-9406</a>
+                            <a href="tel:+17325303704">732-530-3704</a>
                         </div>
                     </div>
 
@@ -175,7 +171,7 @@
                         <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="method-content">
                             <h3>Location</h3>
-                            <p><span class="placeholder">[ city, state ]</span></p>
+                            <p>Little Silver, New Jersey</p>
                         </div>
                     </div>
                 </div>
@@ -203,14 +199,13 @@
 
     <div class="vcard-toast" id="vcardToast">Saved — open the download to add to your contacts</div>
 
-    <script src="../js/main.js"></script>
     <script>
         document.getElementById('saveContactBtn').addEventListener('click', function () {
             const first = 'Aidan';
             const last = 'Lenahan';
-            const org = ''; // placeholder: add company/org name
-            const title = ''; // placeholder: add job title
-            const phone = '+17326939406';
+            const org = 'Shea Communications Inc.';
+            const title = 'Brand Ambassador';
+            const phone = '+17325303704';
             const email = 'aidan@sheacom.com';
             const url = 'https://sheacom.com';
             const photoUrl = window.location.origin + '/files/headshot300x300.png';
