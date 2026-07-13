@@ -111,6 +111,105 @@
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
+
+        .qr-fab {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+            z-index: 20;
+        }
+
+        .qr-fab:hover,
+        .qr-fab:focus-visible {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: scale(1.05);
+        }
+
+        .qr-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-fast);
+            z-index: 30;
+        }
+
+        .qr-modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .qr-modal {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-lg);
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            transform: translateY(10px);
+            transition: transform var(--transition-fast);
+        }
+
+        .qr-modal-overlay.show .qr-modal {
+            transform: translateY(0);
+        }
+
+        .qr-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        .qr-modal-close:hover {
+            color: var(--accent-primary);
+        }
+
+        .qr-modal h2 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .qr-modal img {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--border-radius-md);
+            margin: 0 auto var(--spacing-sm);
+            display: block;
+        }
+
+        .qr-modal p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -186,6 +285,21 @@
 
     <div class="vcard-toast" id="vcardToast">Saved — open the download to add to your contacts</div>
 
+    <button class="qr-fab" id="qrFabBtn" aria-haspopup="dialog" aria-label="Show QR code for this card">
+        <i class="fas fa-qrcode"></i>
+    </button>
+
+    <div class="qr-modal-overlay" id="qrModalOverlay">
+        <div class="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+            <button class="qr-modal-close" id="qrModalClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="qrModalTitle">Scan to open this card</h2>
+            <img src="../files/card-qr.svg" alt="QR code linking to aidanlenahan.com/card">
+            <p>aidanlenahan.com/card</p>
+        </div>
+    </div>
+
     <script>
         document.getElementById('saveContactBtn').addEventListener('click', function () {
             const first = 'Aidan';
@@ -222,6 +336,27 @@
             const toast = document.getElementById('vcardToast');
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 3200);
+        });
+
+        const qrFabBtn = document.getElementById('qrFabBtn');
+        const qrModalOverlay = document.getElementById('qrModalOverlay');
+        const qrModalClose = document.getElementById('qrModalClose');
+
+        function openQrModal() {
+            qrModalOverlay.classList.add('show');
+        }
+
+        function closeQrModal() {
+            qrModalOverlay.classList.remove('show');
+        }
+
+        qrFabBtn.addEventListener('click', openQrModal);
+        qrModalClose.addEventListener('click', closeQrModal);
+        qrModalOverlay.addEventListener('click', function (e) {
+            if (e.target === qrModalOverlay) closeQrModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeQrModal();
         });
     </script>
 </body>
