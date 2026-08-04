@@ -29,12 +29,7 @@
                     <span>AL</span>
                 </a>
                 
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                
+                <div class="nav-actions">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="./" class="nav-link">Home</a></li>
                     <li><a href="about" class="nav-link">About</a></li>
@@ -42,15 +37,23 @@
                     <li><a href="blog" class="nav-link">Blog</a></li>
                     <li><a href="techhelp" class="nav-link">Tech Help</a></li>
                     <li><a href="contact" class="nav-link">Contact</a></li>
-                    <li>
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
                 </ul>
+
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
+
+    <div class="nav-backdrop" id="navBackdrop"></div>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -270,8 +273,8 @@
                             <span class="tag">TypeScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://ness.aidanlenahan.com" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="fas fa-external-link-alt"></i> Not public
                             </a>
                             <a href="https://github.com/aidanlenahan/NessFitness" target="_blank" rel="noopener noreferrer" class="link">
                                 <i class="fab fa-github"></i> Source Code
