@@ -101,7 +101,7 @@ MEDIUM PRIORITY
 MINOR / CLEANUP
 [ ] Fix blog date mismatch (listing vs article date)
 
-[ ] Remove Facebook from professional Contact links
+[x] Remove Facebook from professional Contact links
     - Keep GitHub + LinkedIn primary
     - Ensure footer and contact links are consistent
 
