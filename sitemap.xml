@@ -9,7 +9,13 @@
     </url>
     <url>
         <loc>https://aidanlenahan.com/about</loc>
-        <lastmod>2026-03-04</lastmod>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://aidanlenahan.com/experience</loc>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
