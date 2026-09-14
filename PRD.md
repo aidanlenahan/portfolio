@@ -34,7 +34,8 @@ To provide a ready-to-use, professional portfolio website template that can be e
 
 ### 3.1 Multi-Page Structure
 - **Home Page**: Landing page with introduction and key highlights
-- **About Page**: Detailed personal/professional background, skills, and experience with interactive timeline
+- **About Page**: Personal/professional background, education, and certifications
+- **Experience Page**: Work history timeline (internships, jobs, freelance projects)
 - **Projects Page**: Showcase of completed work with descriptions and links
 - **Blog**: Technical articles and guides with JSON-based article management
 - **Tech Help**: IT services and support information
@@ -85,7 +86,7 @@ To provide a ready-to-use, professional portfolio website template that can be e
 - **GitHub Pages**: Compatible with custom domain hosting
 
 ### 3.7 Interactive Features
-- **Timeline Collapse/Expand**: On about page, mobile-responsive (collapsed on mobile, expanded on desktop)
+- **Experience Timeline**: On its own page, always expanded for clarity on every screen size
 - **Blog System**: JSON-based article index with dynamic loading
 - **Search Functionality**: Blog article search box (future enhancement)
 - **Smooth Scrolling**: Enhanced navigation experience
@@ -136,15 +137,21 @@ To provide a ready-to-use, professional portfolio website template that can be e
 - Call-to-action buttons
 
 ### 5.2 About Page (about.html)
-**Purpose**: Provide detailed background and qualifications
+**Purpose**: Provide background and qualifications
 
 **Components**:
 - Professional photo/avatar section
 - Detailed biography
-- Skills section (technical and soft skills)
-- Experience timeline
 - Education/certifications
 - Downloadable resume link
+- Teaser linking to the Experience page
+
+### 5.2a Experience Page (experience.html)
+**Purpose**: Show detailed work history
+
+**Components**:
+- Full reverse-chronological timeline of internships, jobs, and freelance work
+- Always expanded (no collapse/expand interaction) for a consistent experience on every device
 
 ### 5.3 Projects Page (projects.html)
 **Purpose**: Showcase portfolio work
@@ -269,6 +276,7 @@ To provide a ready-to-use, professional portfolio website template that can be e
 portfolio/
 ├── index.html
 ├── about.html
+├── experience.html
 ├── projects.html
 ├── contact.html
 ├── techhelp.html

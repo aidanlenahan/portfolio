@@ -40,13 +40,6 @@
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon();
-        
-        // Add a small animation effect
-        this.style.transition = 'transform 0.3s ease';
-        this.style.transform = 'rotate(360deg)';
-        setTimeout(() => {
-            this.style.transform = '';
-        }, 300);
     });
 
     // ==========================================
@@ -290,32 +283,26 @@
     // INTERSECTION OBSERVER FOR ANIMATIONS
     // ==========================================
     
-    // Animate elements when they come into view
+    // Fade elements in gently as they enter the viewport
     const observerOptions = {
         threshold: 0.02,
         rootMargin: '0px 0px -10% 0px'
     };
-    
+
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                requestAnimationFrame(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.style.willChange = 'auto';
-                });
+                entry.target.style.opacity = '1';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
-    
+
     // Observe cards and project cards
     const animatedElements = document.querySelectorAll('.card, .project-card, .timeline-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(12px)';
-        el.style.willChange = 'opacity, transform';
-        el.style.transition = 'opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+        el.style.transition = 'opacity 0.3s ease';
         observer.observe(el);
     });
 
@@ -399,16 +386,6 @@
     // Optimize resize handler
     window.addEventListener('resize', debounce(function() {
         // Any resize-specific calculations can go here
-        console.log('Window resized');
     }, 250));
-
-    // ==========================================
-    // INITIALIZE
-    // ==========================================
-    
-    console.log('Portfolio initialized successfully');
-    
-    // Log current theme
-    console.log('Current theme:', html.getAttribute('data-theme'));
 
 })();
