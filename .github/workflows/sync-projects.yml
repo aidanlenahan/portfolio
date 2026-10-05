@@ -1,0 +1,48 @@
+# Regenerates the project cards in projects.html from
+# aidanlenahan/projectroot's projects.json and commits the result.
+name: Sync projects
+
+on:
+  repository_dispatch:
+    types: [projects-updated]   # sent by projectroot's notify-portfolio workflow
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * *'        # daily fallback in case a dispatch is missed
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-projects
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: aidanlenahan/projectroot
+          ref: main
+          path: _projectroot
+          sparse-checkout: projects.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node scripts/build-projects.mjs _projectroot/projects.json projects.html
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- projects.html; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync projects from projectroot" -- projects.html
+          git push

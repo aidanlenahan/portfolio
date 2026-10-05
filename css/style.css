@@ -1830,3 +1830,30 @@ a:focus {
         text-decoration: underline;
     }
 }
+
+/* Project screenshots generated from projects.json */
+.project-image.has-media {
+    padding: 0;
+    overflow: hidden;
+}
+
+.project-image.has-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-gallery {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.project-gallery img {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+}
