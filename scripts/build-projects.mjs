@@ -3,8 +3,15 @@
 //
 // Only projects with a "portfolio" block are rendered. Everything between the
 // <!-- projects:start --> and <!-- projects:end --> markers is replaced.
+//
+// projects.json and every image it references are also copied into
+// projects-data/, so the portfolio keeps working from its own copy even when
+// alenahan.net or the projectroot repo is unreachable.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { posix } from 'node:path';
+
+const { dirname, join, normalize } = posix;
 
 const [jsonPath, htmlPath = 'projects.html'] = process.argv.slice(2);
 if (!jsonPath) {
@@ -12,8 +19,7 @@ if (!jsonPath) {
     process.exit(1);
 }
 
-// Relative image paths in projects.json live on project.alenahan.net.
-const IMAGE_BASE = process.env.PROJECTS_BASE_URL || 'https://project.alenahan.net/';
+const SNAPSHOT_DIR = 'projects-data';
 const START = '<!-- projects:start -->';
 const END = '<!-- projects:end -->';
 
@@ -21,10 +27,26 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 }[c]));
 
+const sourceRoot = dirname(jsonPath);
+
+// Copies a projectroot-relative image into the snapshot and returns the path
+// the portfolio serves it from. Absolute URLs are left as they are.
+function localImage(src) {
+    if (/^[a-z]+:|^\/\//i.test(src)) return src;
+    const rel = normalize(src).replace(/^\/+/, '');
+    if (rel.startsWith('..')) throw new Error(`image path escapes projectroot: ${src}`);
+    const from = join(sourceRoot, rel);
+    if (!existsSync(from)) throw new Error(`missing image: ${src}`);
+    const to = join(SNAPSHOT_DIR, rel);
+    mkdirSync(dirname(to), { recursive: true });
+    copyFileSync(from, to);
+    return `${SNAPSHOT_DIR}/${rel}`;
+}
+
 function normalizeImages(images, title) {
     return (images || []).map((img, i) => {
         const { src, alt } = typeof img === 'string' ? { src: img } : img;
-        return { src: new URL(src, IMAGE_BASE).href, alt: alt || `${title} screenshot ${i + 1}` };
+        return { src: localImage(src), alt: alt || `${title} screenshot ${i + 1}` };
     });
 }
 
@@ -44,8 +66,8 @@ function toPortfolio(p) {
         tags: pf.tags || p.tags || [],
         icon: pf.icon || 'fas fa-code',
         featured: !!pf.featured,
-        link: p.link,
-        linkLabel: pf.linkLabel || 'Visit Site',
+        // portfolio.links ([{ href, label, icon }]) replaces the single p.link button.
+        links: pf.links || (p.link ? [{ href: p.link, label: pf.linkLabel, icon: pf.linkIcon }] : []),
     };
 }
 
@@ -62,14 +84,18 @@ function renderMedia(c) {
         : `<div class="project-gallery">\n                        ${imgs}\n                    </div>`;
 }
 
+function renderLink(l) {
+    const icon = l.icon || (/github\.com/.test(l.href) ? 'fab fa-github' : 'fas fa-external-link-alt');
+    return `
+                            <a href="${esc(l.href)}" target="_blank" rel="noopener noreferrer" class="link">
+                                <i class="${esc(icon)}"></i> ${esc(l.label || 'Visit Site')}
+                            </a>`;
+}
+
 function renderCard(c) {
-    const linkIcon = /github\.com/.test(c.link || '') ? 'fab fa-github' : 'fas fa-external-link-alt';
     const tags = c.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('\n                            ');
-    const link = c.link ? `
-                        <div class="project-links">
-                            <a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="${linkIcon}"></i> ${esc(c.linkLabel)}
-                            </a>
+    const link = c.links.length ? `
+                        <div class="project-links">${c.links.map(renderLink).join('')}
                         </div>` : '';
     return `
                 <div class="project-card${c.featured ? ' featured-project' : ''}">
@@ -88,7 +114,18 @@ function renderCard(c) {
                 </div>`;
 }
 
-const { projects } = JSON.parse(readFileSync(jsonPath, 'utf8'));
+const raw = readFileSync(jsonPath, 'utf8');
+const { projects } = JSON.parse(raw);
+if (!Array.isArray(projects)) {
+    console.error(`${jsonPath} has no "projects" array; leaving projects.html untouched`);
+    process.exit(1);
+}
+
+// Rebuilt from scratch each run so removed images don't linger.
+rmSync(SNAPSHOT_DIR, { recursive: true, force: true });
+mkdirSync(SNAPSHOT_DIR, { recursive: true });
+writeFileSync(join(SNAPSHOT_DIR, 'projects.json'), raw);
+
 const cards = projects
     .filter(p => p.portfolio)
     .map(toPortfolio)
