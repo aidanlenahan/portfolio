@@ -1,0 +1,54 @@
+# Regenerates the project cards in projects.html from
+# aidanlenahan/projectroot's projects.json and commits the result, along with a
+# snapshot of projects.json and its images in projects-data/. If projectroot
+# can't be fetched the job fails before touching anything, so the last good
+# snapshot keeps being served.
+name: Sync projects
+
+on:
+  repository_dispatch:
+    types: [projects-updated]   # sent by projectroot's notify-portfolio workflow
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * *'        # daily fallback in case a dispatch is missed
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-projects
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: aidanlenahan/projectroot
+          ref: main
+          path: _projectroot
+          sparse-checkout: |
+            projects.json
+            img/
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node scripts/build-projects.mjs _projectroot/projects.json projects.html
+
+      - name: Commit if changed
+        run: |
+          git add -A projects.html projects-data
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync projects from projectroot"
+          git push
