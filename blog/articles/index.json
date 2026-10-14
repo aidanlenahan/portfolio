@@ -4,7 +4,7 @@
             "title": "secdiagdrop - Workstation Maintenance and Diagnostics Tool",
             "date": "2026-10-14",
             "author": "Aidan Lenahan",
-            "excerpt": "A PowerShell tool for doing low-level maintenance and safety checks on Windows computers used in a supervised program.",
+            "excerpt": "A PowerShell tool for doing low-level maintenance and safety checks on Windows computers used in a temporary program.",
             "file": "secdiagdrop.html"
         },
         {
