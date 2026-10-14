@@ -46,7 +46,14 @@ function createArticleCard(article, searchTerm = '') {
                 <img src="assets/pantry-schematic-dark.svg" alt="Pantry lighting circuit schematic" class="preview-dark" loading="lazy">
             </div>
         `
-        : '<i class="fas fa-file-alt fa-3x"></i>';
+        : article.file === 'secdiagdrop.html'
+            ? `
+                <div class="themed-preview-image">
+                    <img src="https://raw.githubusercontent.com/aidanlenahan/secdiagdrop/main/src/emailnotify.png" alt="Email notification asking for approval to upload a diagnostic report" class="preview-light" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/aidanlenahan/secdiagdrop/main/src/emailnotify.png" alt="Email notification asking for approval to upload a diagnostic report" class="preview-dark" loading="lazy">
+                </div>
+            `
+            : '<i class="fas fa-file-alt fa-3x"></i>';
     
     card.innerHTML = `
         <div class="project-image">
