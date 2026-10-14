@@ -1,6 +1,13 @@
 {
     "articles": [
         {
+            "title": "secdiagdrop - Workstation Maintenance and Diagnostics Tool",
+            "date": "2026-10-14",
+            "author": "Aidan Lenahan",
+            "excerpt": "A PowerShell tool for doing low-level maintenance and safety checks on Windows computers used in a supervised program.",
+            "file": "secdiagdrop.html"
+        },
+        {
             "title": "Door-Automated Pantry Lighting System",
             "date": "2026-03-04",
             "author": "Aidan Lenahan",
