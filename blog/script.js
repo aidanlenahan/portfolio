@@ -33,7 +33,7 @@ function formatDate(dateString) {
 // Create article card HTML
 function createArticleCard(article, searchTerm = '') {
     const card = document.createElement('a');
-    card.href = `articles/${article.file}`;
+    card.href = `articles/${article.file.replace(/\.html$/, '')}`;
     card.className = 'article-card';
     
     const title = searchTerm ? highlightText(article.title, searchTerm) : article.title;

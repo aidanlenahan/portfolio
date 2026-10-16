@@ -67,7 +67,7 @@ function createArticleCard(article, searchTerm = '') {
             </div>
             <p class="project-description">${excerpt}</p>
             <div class="project-links">
-                <a href="articles/${article.file}" class="link">
+                <a href="articles/${article.file.replace(/\.html$/, '')}" class="link">
                     <i class="fas fa-book-open"></i> Read Article
                 </a>
             </div>
