@@ -639,10 +639,42 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 
 /* PAGE HEADER */
 .page-header {
-    background-color: var(--bg-secondary);
+    --banner-overlay: linear-gradient(120deg, rgba(18, 18, 22, 0.80) 0%, rgba(18, 18, 22, 0.62) 55%, rgba(163, 38, 56, 0.55) 100%);
+    background-color: #18181b;
+    background-image: var(--banner-overlay), url('../files/banner-stevens.webp');
+    background-size: cover;
+    background-position: center 5%;
     padding: var(--spacing-xl) 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .page-header {
+    --banner-overlay: linear-gradient(120deg, rgba(10, 10, 12, 0.86) 0%, rgba(10, 10, 12, 0.70) 55%, rgba(163, 38, 56, 0.50) 100%);
+}
+
+.page-header .page-title {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.page-header .page-subtitle {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* Plain header without the banner photo (e.g. Tech Help) */
+.page-header--plain {
+    background-image: none;
+    background-color: var(--bg-secondary);
+}
+
+.page-header--plain .page-title {
+    color: var(--text-primary);
+    text-shadow: none;
+}
+
+.page-header--plain .page-subtitle {
+    color: var(--text-secondary);
 }
 
 /* Same look on <h1> (section pages) and <p> (article pages) */
