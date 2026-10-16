@@ -1,0 +1,10 @@
+# GitHub Pages builds this repo with Jekyll. Paths listed here are skipped by
+# the build, so they are never published to aidanlenahan.com or indexed.
+# They are still visible in the GitHub repository itself.
+exclude:
+  - blog/pending
+  - blog/articles/article-template.html
+  - blog/articles/homelab.html   # remove this line when the article is ready to publish
+  - PRD.md
+  - todo.txt
+  - scripts
