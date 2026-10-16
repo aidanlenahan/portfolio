@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /blog/assets/
 Disallow: /files/
+Allow: /files/headshot-300.jpg
 
 Sitemap: https://aidanlenahan.com/sitemap.xml
