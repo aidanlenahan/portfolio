@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,7 +10,6 @@
     'https://www.googletagmanager.com/gtm.js?id=GTM-K4JBFNH3'+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K4JBFNH3');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aidan Lenahan's digital business card - contact info and quick save">
     <meta name="robots" content="noindex, nofollow">
@@ -19,13 +20,21 @@
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
     <link rel="manifest" href="../manifest.webmanifest">
     <meta name="theme-color" content="#18181b">
+    <script>
+        (function () {
+            var t;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'dark' ? '#18181b' : '#ffffff');
+        })();
+    </script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
-        if (document.documentElement.getAttribute('data-theme') === 'light') {
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
-        }
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('../sw.js', { scope: '../' }).catch(function() {});
@@ -252,15 +261,16 @@
         <div class="container">
             <div class="vcard">
                 <div class="vcard-photos">
-                    <img src="../files/headshot300x300.png" alt="Aidan Lenahan" class="vcard-photo">
-                    <img src="../files/shea-communications.jpg" alt="Shea Communications Inc." class="vcard-photo">
+                    <img src="../files/headshot-300.webp" alt="Aidan Lenahan" class="vcard-photo" width="108" height="108">
+                    <img src="../files/shea-communications-216.webp" alt="Shea Communications Inc." class="vcard-photo" width="108" height="108">
                 </div>
                 <h1 class="vcard-name">Aidan Lenahan</h1>
-                <p class="vcard-role">Brand Ambassador &middot; Shea Communications Inc.</p>
+                <p class="vcard-role">Territory Sales Representative &middot; Shea Communications Inc.</p>
 
+                <h2 class="sr-only">Contact details</h2>
                 <div class="vcard-details">
                     <div class="contact-method">
-                        <div class="method-icon"><i class="fas fa-phone"></i></div>
+                        <div class="method-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
                         <div class="method-content">
                             <h3>Phone</h3>
                             <a href="tel:+17325303704">732-530-3704</a>
@@ -268,7 +278,7 @@
                     </div>
 
                     <div class="contact-method">
-                        <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="method-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
                         <div class="method-content">
                             <h3>Email</h3>
                             <a href="mailto:aidan@sheacom.com">aidan@sheacom.com</a>
@@ -276,15 +286,15 @@
                     </div>
 
                     <div class="contact-method">
-                        <div class="method-icon"><i class="fas fa-globe"></i></div>
+                        <div class="method-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
                         <div class="method-content">
                             <h3>Website</h3>
-                            <a href="https://sheacom.com" target="_blank" rel="noopener noreferrer">sheacom.com</a>
+                            <a href="http://sheacom.com" target="_blank" rel="noopener noreferrer">sheacom.com<span class="sr-only"> (opens in new tab)</span></a>
                         </div>
                     </div>
 
                     <div class="contact-method">
-                        <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="method-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                         <div class="method-content">
                             <h3>Location</h3>
                             <p>Little Silver, New Jersey</p>
@@ -294,38 +304,38 @@
 
                 <div class="vcard-actions">
                     <button class="btn btn-primary btn-block" id="saveContactBtn">
-                        <i class="fas fa-address-card"></i> Save to Contacts
+                        <i class="fas fa-address-card" aria-hidden="true"></i> Save to Contacts
                     </button>
                     <a href="mailto:aidan@sheacom.com" class="btn btn-outline btn-block">
-                        <i class="fas fa-envelope"></i> Send an Email
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Send an Email
                     </a>
                 </div>
 
                 <div class="vcard-social">
-                    <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)" class="social-link">
+                        <i class="fab fa-github" aria-hidden="true"></i>
                     </a>
-                    <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
-                        <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)" class="social-link">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="vcard-toast" id="vcardToast">Saved — open the download to add to your contacts</div>
+    <div class="vcard-toast" id="vcardToast" role="status"></div>
 
     <button class="qr-fab" id="qrFabBtn" aria-haspopup="dialog" aria-label="Show QR code for this card">
-        <i class="fas fa-qrcode"></i>
+        <i class="fas fa-qrcode" aria-hidden="true"></i>
     </button>
 
     <div class="qr-modal-overlay" id="qrModalOverlay">
         <div class="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
             <button class="qr-modal-close" id="qrModalClose" aria-label="Close">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" aria-hidden="true"></i>
             </button>
             <h2 id="qrModalTitle">Scan to open this card</h2>
-            <img src="../files/card-qr.svg" alt="QR code linking to aidanlenahan.com/card">
+            <img src="../files/card-qr.svg" alt="QR code linking to aidanlenahan.com/card" width="200" height="200" loading="lazy">
             <p>aidanlenahan.com/card</p>
         </div>
     </div>
@@ -335,11 +345,11 @@
             const first = 'Aidan';
             const last = 'Lenahan';
             const org = 'Shea Communications Inc.';
-            const title = 'Brand Ambassador';
+            const title = 'Territory Sales Representative';
             const phone = '+17325303704';
             const email = 'aidan@sheacom.com';
-            const url = 'https://sheacom.com';
-            const photoUrl = window.location.origin + '/files/headshot300x300.png';
+            const url = 'http://sheacom.com';
+            const photoUrl = window.location.origin + '/files/headshot-300.jpg';
 
             const vcard = [
                 'BEGIN:VCARD',
@@ -353,7 +363,7 @@
                 `URL:${url}`,
                 `PHOTO;VALUE=URI:${photoUrl}`,
                 'END:VCARD'
-            ].filter(Boolean).join('\n');
+            ].filter(Boolean).join('\r\n');
 
             const blob = new Blob([vcard], { type: 'text/vcard' });
             const link = document.createElement('a');
@@ -364,8 +374,12 @@
             document.body.removeChild(link);
 
             const toast = document.getElementById('vcardToast');
+            toast.textContent = 'Saved — open the download to add to your contacts';
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3200);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                toast.textContent = '';
+            }, 3200);
         });
 
         const qrFabBtn = document.getElementById('qrFabBtn');

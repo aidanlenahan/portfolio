@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,9 +10,16 @@
     'https://www.googletagmanager.com/gtm.js?id=GTM-K4JBFNH3'+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K4JBFNH3');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Aidan Lenahan - Senior honors student at Red Bank Regional High School, cybersecurity specialist, and technology professional">
+    <meta name="description" content="About Aidan Lenahan - Computer Science student at Stevens Institute of Technology (Class of 2030), iSTEM member, GIAC GFACT-certified CTF competitor, and founder of Aidan Lenahan Dog Services">
+    <link rel="canonical" href="https://aidanlenahan.com/about">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aidan Lenahan">
+    <meta property="og:title" content="About | Aidan Lenahan">
+    <meta property="og:description" content="About Aidan Lenahan - Computer Science student at Stevens Institute of Technology (Class of 2030), iSTEM member, GIAC GFACT-certified CTF competitor, and founder of Aidan Lenahan Dog Services">
+    <meta property="og:url" content="https://aidanlenahan.com/about">
+    <meta property="og:image" content="https://aidanlenahan.com/files/headshot-300.jpg">
+    <meta name="twitter:card" content="summary">
     <title>About | Aidan Lenahan</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
@@ -18,6 +27,18 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#18181b">
+    <script>
+        (function () {
+            var t;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'dark' ? '#18181b' : '#ffffff');
+        })();
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -30,24 +51,24 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="./" class="logo">
-                    <img src="files/favicon-64x64.png" alt="AL logo" class="logo-icon">
+                <a href="./" class="logo" aria-label="Aidan Lenahan, home">
+                    <img src="files/favicon-64x64.png" alt="" class="logo-icon" width="64" height="64">
                     <span>AL</span>
                 </a>
                 
                 <div class="nav-actions">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="./" class="nav-link">Home</a></li>
-                    <li><a href="about" class="nav-link active">About</a></li>
+                    <li><a href="about" class="nav-link active" aria-current="page">About</a></li>
                     <li><a href="experience" class="nav-link">Experience</a></li>
                     <li><a href="projects" class="nav-link">Projects</a></li>
-                    <li><a href="blog" class="nav-link">Blog</a></li>
+                    <li><a href="blog/" class="nav-link">Blog</a></li>
                     <li><a href="techhelp" class="nav-link">Tech Help</a></li>
                     <li><a href="contact" class="nav-link">Contact</a></li>
                 </ul>
 
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
 
                     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
@@ -75,25 +96,25 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="files/headshot300x300.png" alt="Aidan Lenahan headshot" class="profile-placeholder">
+                    <img src="files/headshot-300.webp" alt="Aidan Lenahan headshot" class="profile-placeholder" width="300" height="300">
                 </div>
                 
                 <div class="about-content">
                     <h2>Hello, I'm Aidan</h2>
                     <p>
                         I'm a Computer Science major at Stevens Institute of Technology, Class of 2030. I am a member of the <a href="https://www.stevens.edu/istem">iSTEM program</a> at Stevens.
-                        For over six years, I've been immersed in cybersecurity, competing in CyberPatriot since elementary school to 12th grade, earning the <a href="https://www.giac.org/certified-professional/Aidan-Lenahan/234074" target="_blank" rel="noopener noreferrer">GIAC GFACT certification</a>, as well as competing in many CTF (capture-the-flag) competitions such as picoCTF, Univerity of Alabama CTF, Garden State CTF, and others. I have a strong interest in network administration, low-voltage systems, and hardware refurbishment.
+                        For over six years, I've been immersed in cybersecurity, competing in CyberPatriot from elementary school through 12th grade, earning the <a href="https://www.giac.org/certified-professional/Aidan-Lenahan/234074" target="_blank" rel="noopener noreferrer">GIAC GFACT certification<span class="sr-only"> (opens in new tab)</span></a>, as well as competing in many CTF (capture-the-flag) competitions such as picoCTF, University of Alabama CTF, Garden State CTF, and others. I have a strong interest in network administration, low-voltage systems, and hardware refurbishment.
                     </p>
                     <p>
-                        Beyond the digital realm, I founded <a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Lenahan Dog Services</a> in 2021, building a successful business
-                        with over 60 recurring clients through self-developed marketing and a custom website. Throughout high school, I worked several jobs which developed my technical, customer service, time management, and delegation skills. I have also engaged in several enriching volunteering opportunities and participated in varsity sports.
+                        Beyond the digital realm, I founded <a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Aidan Lenahan Dog Services<span class="sr-only"> (opens in new tab)</span></a> in 2021, building a successful business
+                        with 60+ recurring clients through self-developed marketing and a custom website. Throughout high school, I worked several jobs which developed my technical, customer service, time management, and delegation skills. I have also engaged in several enriching volunteering opportunities and participated in varsity sports.
                     </p>
                     <div class="about-actions">
                         <a href="files/Aidan_Lenahan_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                            <i class="fas fa-file-pdf"></i> View Resume
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i> View Resume<span class="sr-only"> (opens in new tab)</span>
                         </a>
                         <a href="contact" class="btn btn-outline">
-                            <i class="fas fa-envelope"></i> Get in Touch
+                            <i class="fas fa-envelope" aria-hidden="true"></i> Get in Touch
                         </a>
                     </div>
                 </div>
@@ -108,7 +129,7 @@
                 <h2>Experience</h2>
                 <p>Internships, freelance web development, and part-time work across cybersecurity, IT, and small business.</p>
                 <a href="experience" class="btn btn-primary">
-                    <i class="fas fa-briefcase"></i> View Full Experience
+                    <i class="fas fa-briefcase" aria-hidden="true"></i> View Full Experience
                 </a>
             </div>
         </div>
@@ -121,33 +142,33 @@
             <div class="grid grid-2">
                 <div class="card">
                     <div class="card-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     </div>
                     <h3 class="card-title">B.S. Computer Science</h3>
                     <p class="card-subtitle">Stevens Institute of Technology</p>
                     <p class="card-date">
-                        <i class="far fa-calendar"></i> Expected May 2030
+                        <i class="far fa-calendar" aria-hidden="true"></i> Expected May 2030
                     </p>
                     <p class="card-text">
                         Member of the <a href="https://www.stevens.edu/istem">iSTEM program</a> at Stevens. Previously
                         a senior honors student in the Information Technology Academy at Red Bank Regional High
-                        School — member of National Honors Society, Spanish NHS, Math NHS, and National Technical
-                        Honors Society; Varsity Cross Country Runner and Captain; President of Computer Science Club
+                        School — member of National Honor Society, Spanish NHS, Math NHS, and National Technical
+                        Honor Society; Varsity Cross Country Runner and Captain; President of Computer Science Club
                         and CyberPatriot Team Captain.
                     </p>
                 </div>
                 
                 <div class="card">
                     <div class="card-icon">
-                        <i class="fas fa-certificate"></i>
+                        <i class="fas fa-certificate" aria-hidden="true"></i>
                     </div>
                     <h3 class="card-title">Certifications & Honors</h3>
                     <ul class="certification-list">
-                        <li><i class="fas fa-check-circle"></i> <a href="https://www.giac.org/certified-professional/Aidan-Lenahan/234074" target="_blank" rel="noopener noreferrer">GIAC Foundational Cybersecurity Technologies (GFACT) - June 2024</a></li>
-                        <li><i class="fas fa-check-circle"></i> 2024 Cross Country Dar McCormick SISU Award</li>
-                        <li><i class="fas fa-check-circle"></i> 2025 Cross Country Jackson Wilcox Award</li>
-                        <li><i class="fas fa-check-circle"></i> National Society of High School Scholars</li>
-                        <li><i class="fas fa-check-circle"></i> American Legion Jersey Boys State Nominee</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> <a href="https://www.giac.org/certified-professional/Aidan-Lenahan/234074" target="_blank" rel="noopener noreferrer">GIAC Foundational Cybersecurity Technologies (GFACT) - June 2024<span class="sr-only"> (opens in new tab)</span></a></li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> 2024 Cross Country Dar McCormick SISU Award</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> 2025 Cross Country Jackson Wilcox Award</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> National Society of High School Scholars</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> American Legion Jersey Boys State Nominee</li>
                     </ul>
                 </div>
             </div>
@@ -160,7 +181,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="footer-title">
-                        <i class="fas fa-code"></i> Aidan Lenahan
+                        <i class="fas fa-code" aria-hidden="true"></i> Aidan Lenahan
                     </h3>
                     <p class="footer-text">
                         Aspiring computer science professional.
@@ -174,7 +195,7 @@
                         <li><a href="about">About</a></li>
                         <li><a href="experience">Experience</a></li>
                         <li><a href="projects">Projects</a></li>
-                        <li><a href="blog">Blog</a></li>
+                        <li><a href="blog/">Blog</a></li>
                         <li><a href="techhelp">Tech Help</a></li>
                         <li><a href="contact">Contact</a></li>
                     </ul>
@@ -183,31 +204,30 @@
                 <div class="footer-section">
                     <h4 class="footer-heading">Other Projects</h4>
                     <ul class="footer-links">
-                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
-                        <li><a href="https://nessfitness.com" target="_blank" rel="noopener noreferrer">NessFitness</a></li>
-                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics</a></li>
-                        <li><a href="https://emmystrong.org" target="_blank" rel="noopener noreferrer">Emmy Strong</a></li>
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services<span class="sr-only"> (opens in new tab)</span></a></li>
+                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics<span class="sr-only"> (opens in new tab)</span></a></li>
+                        <li><a href="https://emmy-strong.org" target="_blank" rel="noopener noreferrer">Emmy Strong<span class="sr-only"> (opens in new tab)</span></a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section footer-connect">
                     <h4 class="footer-heading">Connect</h4>
                     <div class="social-links">
-                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)" class="social-link">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                         </a>
-                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)" class="social-link">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
                         </a>
                         <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="sitemap.xml" target="_blank" rel="noopener noreferrer" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="sitemap.xml" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
             </div>
         </div>
     </footer>
