@@ -14,7 +14,13 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
+
+    # Blog articles: 301 /blog/articles/foo.html -> /blog/articles/foo
+    # (THE_REQUEST only matches what the browser asked for, so the internal
+    # rewrite below can't loop back into this rule)
+    RewriteCond %{THE_REQUEST} \s/+(blog/articles/[^\s?]+)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
     # Extensionless URLs
     # If the request is not for a file or directory that exists
     RewriteCond %{REQUEST_FILENAME} !-f
