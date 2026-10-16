@@ -26,7 +26,6 @@ HIGH PRIORITY
     [x] Add Skills & Certifications section (see Medium Priority item below)
     [x] GEM screenshots (projectroot/img/gem/1-6.webp)
     [ ] BucIT thumbnail (add to projectroot/img/, then portfolio.images)
-    - Decide on Front End Clerk (Sickles Market): on Experience page, not on resume
     - Resume typo: "Computer Refurbish Specialist" -> "Computer Refurbishment Specialist"
       (site already uses the correct wording)
 
