@@ -367,13 +367,16 @@
             });
         });
         
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
+        // Lift on hover only where hover exists, so it doesn't stick after a tap
+        if (window.matchMedia('(hover: hover)').matches) {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        }
         
         document.body.appendChild(button);
         
