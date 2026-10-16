@@ -351,6 +351,7 @@ img {
 
 .btn-primary:hover {
     background-color: var(--accent-hover);
+    color: white;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
