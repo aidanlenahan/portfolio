@@ -1,48 +1,6 @@
-## High Priority - Content
-- Add professional portrait/headshot image
-- Update about page bio with current information
-- Add more blog articles (aim for 8-10 total)
-- Add project screenshots/images
-- Create downloadable resume PDF
-
-## High Priority - Features
-- Contact form backend (EmailJS, Formspree, or Netlify Forms)
-- Blog article categories/tags system
-- Project filtering by technology/category
-- Image optimization and lazy loading
-
-## Medium Priority - Enhancements
-- Analytics integration (Google Analytics or Plausible)
-- RSS feed for blog articles
-- Social media Open Graph meta tags
-- Project detail pages (expand on projects)
-- Testimonials/recommendations section
-
-## Medium Priority - SEO
-- Add more blog articles for content depth
-- Internal linking between related articles
-- Schema.org structured data (Person, Article)
-- Social media card previews
-
-## Low Priority - Polish
-- Favicon set (multiple sizes)
-- Loading animations/skeleton screens
-- Print stylesheet
-- Accessibility audit with WAVE or axe
-- Performance optimization (WebP images, CDN)
-
-## Ideas to Consider
-- Newsletter signup form
-- "Uses" page (tools, software, equipment)
-- Now page (current focus/projects)
-- Blog series/multi-part articles
-- Guest blog posts section
-- Speaking/presentations archive
-
--------------------------------------------
-
 Portfolio Site TODO
 Generated: 2026-03-15
+Updated:   2026-10-16
 
 Legend:
 [ ] Not started
@@ -50,77 +8,108 @@ Legend:
 [x] Done
 
 CRITICAL (Do First)
-[ ] Replace About page placeholder avatar with a real headshot
-    - Add optimized profile image to `img/`
-    - Update About page image source and alt text
-    - Optionally add same photo to Home hero for consistency
+[x] Replace About page placeholder avatar with a real headshot
+    - files/headshot-300.webp on About page (also used as og:image)
+    [ ] Optional: add same photo to Home hero for consistency
 
 [ ] Add a contact form on Contact page
     - Fields: Name, Email, Message
     - Add validation + spam protection (honeypot or CAPTCHA alternative)
     - Add success/error states
-    - Wire to email delivery service or backend endpoint
+    - Wire to a service (Formspree, EmailJS, etc.) - site is static on GitHub Pages
+    - Update CSP form-action / connect-src for whichever service is used
 
 HIGH PRIORITY
-[ ] Add real screenshots/preview images for each project card
-    - Capture and optimize screenshots (WebP preferred)
-    - Replace generic icons where possible
-    - Keep fallback icon if screenshot unavailable
+[-] Sync site with current resume (files/Aidan_Lenahan_Resume.pdf)
+    [x] Add GEM (Group Event Manager) to projectroot/projects.json (source of truth)
+    [x] Add BucIT to projectroot/projects.json
+    [x] Add Skills & Certifications section (see Medium Priority item below)
+    [x] GEM screenshots (projectroot/img/gem/1-6.webp)
+    [ ] BucIT thumbnail (add to projectroot/img/, then portfolio.images)
+    - Decide on Front End Clerk (Sickles Market): on Experience page, not on resume
+    - Resume typo: "Computer Refurbish Specialist" -> "Computer Refurbishment Specialist"
+      (site already uses the correct wording)
 
-[ ] Expand blog content (avoid looking abandoned)
-    - Publish at least 2-3 additional posts (CTF writeups recommended)
-    - Add a short content cadence goal (ex: 1 post/month)
+[-] Add real screenshots/preview images for each project card
+    [x] Projects page: dogs, pharmreach, emmy-strong, gymnastics, rbrctf, pantry-lighting
+    [ ] Homelab: still placeholder SVGs (1-3.svg) - replace with real Proxmox/
+        monitoring/network diagram images
+    [ ] Home page "Featured Projects" cards still use generic icons, not screenshots
+    [ ] Convert thumb.png files to WebP
 
-[ ] Fix and modernize resume
-    - Correct typo: "ACTIVTIES/CLUBS" -> "ACTIVITIES/CLUBS"
-    - Create light/print-friendly version (white background)
-    - Add phone, LinkedIn URL, and GitHub URL
+[-] Expand blog content (avoid looking abandoned)
+    [x] Published: pantry-lighting (2026-03-04), secdiagdrop (2026-10-14)
+    [ ] Finish homelab.html draft (placeholder text, TODO comments, no og tags,
+        not in blog/articles/index.json yet)
+    [ ] 1-2 more posts (CTF writeups, GEM, BucIT, PharmReach/HackRU recommended)
+    [ ] Content cadence goal (ex: 1 post/month)
+
+[x] Fix and modernize resume
+    [x] "ACTIVTIES/CLUBS" typo fixed (now "Activities:")
+    [x] GitHub, LinkedIn, website, email in header
+    [x] Downloadable PDF linked from About + Experience
+    - Phone intentionally omitted from public PDF (keep it that way)
 
 MEDIUM PRIORITY
-[ ] Add a visible skills/tech stack section
-    - Include tools like Python, Linux, Networking, etc.
-    - Place on Home and/or About page
+[x] Add a visible skills/tech stack section
+    - Source of truth: resume "Skills & Certifications" block
+      (Languages / Frameworks & Databases / Systems & Tools / Certifications)
+    - Full list on Experience page (bottom, matches resume)
+    - Short highlight strip on Home page (6-8 top tags, links to Experience)
 
 [ ] Improve Tech Help page trust and clarity
     - Add pricing guidance (starting rate or "contact for quote")
     - Add service area and remote vs in-person availability
-    - Replace vague experience statement with specific years
+    - Add specific experience (years, FRA internship, Monmouth Wire refurb work)
     - Add 1-2 testimonials/social proof items
 
 [ ] Improve project card context
-    - Add project dates (ex: 2024-Present)
-    - Mark projects as Client, Volunteer, or Personal
-    - Strengthen descriptions (impact, scale, outcomes)
-    - Homelab: link specific repo or add architecture details
+    - Add project dates (ex: 2024-Present) - resume has dates for GEM, BucIT, Homelab
+    - Mark projects as Client, Volunteer, Hackathon, or Personal
+    - Strengthen descriptions (impact, scale, outcomes; ex: $2,400+ raised for gymnastics fund)
+    - Homelab: link links to GitHub profile - point to the blog post once published
+    - Project filtering by tag/category on Projects page
 
 [ ] Refine Home page credibility and flow
-    - Update subtitle to a more authentic role description
+    - Subtitle still "Aspiring Technology Professional" - pick one consistent
+      description (About says "Aspiring Computer Science Professional")
     - Reduce excessive hero whitespace
     - Add About teaser section with "Learn more" link
+    - Featured projects: consider swapping in PharmReach / GEM over dog walking
+
+[ ] Schema.org structured data (Person on Home/About, BlogPosting on articles)
 
 MINOR / CLEANUP
-[ ] Fix blog date mismatch (listing vs article date)
+[x] Fix blog date mismatch (listing vs article date) - index.json matches articles
 
 [x] Remove Facebook from professional Contact links
-    - Keep GitHub + LinkedIn primary
-    - Ensure footer and contact links are consistent
 
-[ ] Verify custom 404 page behavior
-    - Test invalid URL handling
-    - Ensure clear CTA back to Home
+[-] Verify custom 404 page behavior
+    [x] 404.html exists with "Go Home" + "Go Back" CTAs
+    [ ] Test an invalid URL on the live site (GitHub Pages serves 404.html;
+        .htaccess ErrorDocument is unused there)
 
-[ ] Standardize NessFitness URL everywhere
-    - Use one canonical link in footer and project card
+[x] Standardize NessFitness URL everywhere - no longer referenced on site
 
-[ ] Improve SEO metadata per page
-    - Add unique <title> and <meta name="description"> per page
-    - Verify social share metadata (Open Graph/Twitter)
+[x] Improve SEO metadata per page
+    - Unique <title>, description, canonical, og/twitter tags on all main pages
+
+[x] Analytics (Google Tag Manager)
+[x] Favicon set (multiple sizes) + PWA manifest
+[x] Print stylesheet (@media print in style.css)
 
 NICE TO HAVE
 [ ] Add read time + tags/categories to blog cards/posts
-[ ] Add Tech Help callout on Home page and/or footer visibility
-[ ] Reposition non-technical work (ex: Counter Staff) to secondary section on About page
+[ ] RSS feed for blog articles
+[ ] Internal linking between related blog posts and project cards
+[ ] Add Tech Help callout on Home page and/or footer
+[x] Reposition non-technical work to secondary section
+    (Experience page splits "Technical Experience" vs "Work Experience")
+[ ] Accessibility audit with WAVE or axe
+[ ] Ideas: "Uses" page (homelab hardware, tools), Now page
 
 Notes
 - Keep changes authentic to student profile; avoid overstated titles.
+- Resume PDF is the source of truth for Experience + Skills; update the PDF
+  first, then mirror to the site.
 - Prioritize completion order: Critical -> High -> Medium -> Minor.
