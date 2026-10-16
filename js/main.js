@@ -7,6 +7,20 @@
     'use strict';
 
     // ==========================================
+    // PWA: SERVICE WORKER
+    // ==========================================
+
+    // sw.js sits at the site root, one level above this script, so resolving
+    // against our own URL works from any page depth.
+    if ('serviceWorker' in navigator && document.currentScript) {
+        const swUrl = new URL('../sw.js', document.currentScript.src);
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register(swUrl, { scope: new URL('./', swUrl).pathname })
+                .catch(function() { /* offline support is optional */ });
+        });
+    }
+
+    // ==========================================
     // THEME MANAGEMENT
     // ==========================================
     
@@ -29,8 +43,17 @@
         }
     }
     
+    // Keep the browser/PWA title bar in sync with the page background
+    function updateThemeColor() {
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+            meta.setAttribute('content', html.getAttribute('data-theme') === 'dark' ? '#18181b' : '#ffffff');
+        }
+    }
+
     // Initialize theme icon
     updateThemeIcon();
+    updateThemeColor();
     
     // Theme toggle event listener
     themeToggle.addEventListener('click', function() {
@@ -40,6 +63,7 @@
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon();
+        updateThemeColor();
     });
 
     // ==========================================
