@@ -1886,11 +1886,32 @@ a:focus {
     overflow: hidden;
 }
 
-.project-image.has-media img {
+/* Frame for one screenshot: the image always fills the height, and any
+   space beside it shows a blurred copy of the same image. */
+.project-shot {
+    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.project-shot img {
+    position: relative;
+    height: 100%;
+    width: auto;
+    max-width: none;
     display: block;
+}
+
+.project-shot .project-shot-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    object-fit: cover;
+    filter: blur(24px) saturate(1.2);
+    transform: scale(1.2);
 }
 
 .project-gallery {
@@ -1902,7 +1923,7 @@ a:focus {
     scrollbar-width: thin;
 }
 
-.project-gallery img {
+.project-gallery .project-shot {
     flex: 0 0 100%;
     scroll-snap-align: start;
 }

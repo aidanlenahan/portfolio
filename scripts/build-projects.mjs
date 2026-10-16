@@ -75,8 +75,13 @@ function renderMedia(c) {
     if (c.images.length === 0) {
         return `<i class="${esc(c.icon)} fa-3x"></i>`;
     }
+    // Each image sits in a frame over a blurred copy of itself, so any space
+    // left beside it takes on the image's own edge colors (see .project-shot).
     const imgs = c.images
-        .map(img => `<img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy">`)
+        .map(img => `<div class="project-shot">
+                            <img class="project-shot-backdrop" src="${esc(img.src)}" alt="" aria-hidden="true" loading="lazy">
+                            <img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy">
+                        </div>`)
         .join('\n                        ');
     // Multiple images become a swipeable strip (see .project-gallery in style.css).
     return c.images.length === 1
