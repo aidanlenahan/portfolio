@@ -740,87 +740,72 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     font-weight: 500;
     color: var(--text-primary);
     transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-    cursor: pointer;
+    cursor: default;
 }
 
-.skill-tag:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-primary);
-    border-color: var(--text-primary);
+@media (hover: hover) {
+    .skill-tag:hover {
+        background-color: var(--text-primary);
+        color: var(--bg-primary);
+        border-color: var(--text-primary);
+    }
 }
 
-/* TIMELINE */
-.timeline {
-    position: relative;
-    padding-left: var(--spacing-xl);
+/* EXPERIENCE (resume-style list) */
+.resume {
+    max-width: 860px;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: var(--border-color);
+.resume-heading {
+    font-size: 1.5rem;
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: var(--spacing-xl);
+.resume-heading:not(:first-child) {
+    margin-top: var(--spacing-xl);
 }
 
-.timeline-icon {
-    position: absolute;
-    left: -35px;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--text-primary);
-    color: var(--bg-primary);
+.resume-entry + .resume-entry {
+    margin-top: var(--spacing-md);
+}
+
+.resume-entry-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 0 4px var(--bg-primary);
-    transition: box-shadow var(--transition-normal);
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--spacing-sm);
 }
 
-.timeline-item:hover .timeline-icon {
-    box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--text-tertiary);
-}
-
-.timeline-content {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-lg);
-}
-
-.timeline-title {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-xs);
+.resume-title {
+    font-size: 1.05rem;
+    margin: 0;
     color: var(--text-primary);
 }
 
-.timeline-company {
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
+.resume-org {
+    font-weight: 400;
+    color: var(--text-secondary);
 }
 
-.timeline-date {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
+.resume-dates {
+    flex-shrink: 0;
     color: var(--text-tertiary);
     font-size: 0.875rem;
-    margin-bottom: var(--spacing-sm);
+    white-space: nowrap;
 }
 
-.timeline-description {
+.resume-bullets {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-top: var(--spacing-xs);
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.6;
+}
+
+.resume-bullets li + li {
+    margin-top: 0.25rem;
 }
 
 /* CERTIFICATION LIST */
@@ -1260,21 +1245,6 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
         grid-template-columns: 1fr;
     }
     
-    /* Timeline */
-    .timeline {
-        padding-left: var(--spacing-lg);
-    }
-    
-    .timeline::before {
-        left: 10px;
-    }
-    
-    .timeline-icon {
-        left: -25px;
-        width: 30px;
-        height: 30px;
-        font-size: 0.875rem;
-    }
     
     /* Contact */
     .contact-grid {
@@ -1356,9 +1326,17 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     }
     
     .card,
-    .project-card,
-    .timeline-content {
+    .project-card {
         padding: var(--spacing-md);
+    }
+
+    .resume-entry-header {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .resume-entry a {
+        overflow-wrap: anywhere;
     }
 }
 
