@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-K4JBFNH3'+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K4JBFNH3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: Tweak meta description (150-160 characters) -->
+    <meta name="description" content="A tour of my personal homelab: Proxmox VMs and LXC containers, a NAS, self-hosted services, secure remote access, monitoring, and backups.">
+    <title>My Homelab | Aidan Lenahan</title>
+    <link rel="canonical" href="https://aidanlenahan.com/blog/articles/homelab">
+    <link rel="icon" href="../../favicon.ico" sizes="any">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../../favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="manifest" href="../../manifest.webmanifest">
+    <meta name="theme-color" content="#18181b">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .article-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+        .article-header h1 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .article-meta {
+            color: var(--text-secondary);
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .article-nav {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 0;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .article-body {
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+        .article-body h2 {
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .article-body h3 {
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .article-body p {
+            margin-bottom: 1rem;
+        }
+        .article-body ul, .article-body ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+        .article-body code {
+            background: var(--bg-primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--accent-primary);
+        }
+        .article-body pre {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+        }
+        .article-body pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-primary);
+        }
+        .article-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+        .article-body blockquote {
+            border-left: 4px solid var(--accent-primary);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        .article-body a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .article-body a:hover {
+            text-decoration: underline;
+        }
+        .article-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .article-body th, .article-body td {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .article-body th {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .table-wrap {
+            overflow-x: auto;
+        }
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .article-tag {
+            background: var(--accent-light);
+            color: var(--accent-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1rem;
+            }
+            .article-body ul, .article-body ol {
+                padding-left: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4JBFNH3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../../" class="logo">
+                    <img src="../../files/favicon-64x64.png" alt="AL logo" class="logo-icon">
+                    <span>AL</span>
+                </a>
+                
+                <div class="nav-actions">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../" class="nav-link">Home</a></li>
+                    <li><a href="../../about" class="nav-link">About</a></li>
+                    <li><a href="../../experience" class="nav-link">Experience</a></li>
+                    <li><a href="../../projects" class="nav-link">Projects</a></li>
+                    <li><a href="../" class="nav-link active">Blog</a></li>
+                    <li><a href="../../techhelp" class="nav-link">Tech Help</a></li>
+                    <li><a href="../../contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Blog</h1>
+            <p class="page-subtitle">Technical guides and insights</p>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-nav">
+                <a href="../" class="back-link">← Back</a>
+            </div>
+        
+        <article class="article-content">
+            <div class="article-header">
+                <!-- TODO: Update title -->
+                <h1>My Homelab: [Subtitle]</h1>
+                <div class="article-meta">
+                    <!-- TODO: Update date and reading time -->
+                    <span><i class="far fa-calendar"></i> October 15, 2026</span>
+                    <span><i class="far fa-user"></i> Aidan Lenahan</span>
+                    <span><i class="far fa-clock"></i> 8 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <!-- TODO: Intro. What the homelab is, why you built it, and what this post covers. -->
+                <p>[Intro: what my homelab is, why I started it, and what I use it for. Mention that it's a sandbox for learning enterprise tooling hands-on.]</p>
+
+                <!-- Optional: overview photo -->
+                <!-- <img src="../assets/homelab-rack.jpg" alt="Photo of the homelab rack" loading="lazy"> -->
+
+                <h2>Why a Homelab?</h2>
+                <p>[What got you started, what you wanted to learn, and what problems it solves day-to-day.]</p>
+
+                <h2>Hardware</h2>
+                <p>[Short overview of the physical setup: where it lives, power, noise, cooling.]</p>
+                <!-- TODO: Fill in hardware rows -->
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Device</th><th>Specs</th><th>Role</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>[Proxmox host]</td><td>[CPU / RAM / storage]</td><td>Hypervisor</td></tr>
+                            <tr><td>[NAS]</td><td>[Drives / RAID level]</td><td>Storage and backups</td></tr>
+                            <tr><td>[Router / firewall]</td><td>[Model]</td><td>Routing, VLANs, VPN</td></tr>
+                            <tr><td>[Switch]</td><td>[Ports / managed?]</td><td>Networking</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Network Layout</h2>
+                <p>[How the network is segmented: VLANs, subnets, what's isolated from what, and why.]</p>
+                <!-- Optional: network diagram (light/dark versions like the pantry schematic) -->
+                <!-- <img src="../assets/homelab-network.svg" alt="Homelab network diagram" loading="lazy"> -->
+                <ul>
+                    <li><strong>[VLAN / subnet]</strong>: [purpose]</li>
+                    <li><strong>[VLAN / subnet]</strong>: [purpose]</li>
+                    <li><strong>[VLAN / subnet]</strong>: [purpose]</li>
+                </ul>
+
+                <h2>Virtualization with Proxmox</h2>
+                <p>[Why Proxmox, and how you decide between a VM and an LXC container.]</p>
+
+                <h3>Virtual Machines</h3>
+                <ul>
+                    <li><strong>[VM name]</strong>: [what it runs]</li>
+                    <li><strong>[VM name]</strong>: [what it runs]</li>
+                </ul>
+
+                <h3>LXC Containers</h3>
+                <ul>
+                    <li><strong>[Container name]</strong>: [what it runs]</li>
+                    <li><strong>[Container name]</strong>: [what it runs]</li>
+                </ul>
+
+                <h2>Storage and NAS</h2>
+                <p>[Drive layout, filesystem (ZFS, etc.), shares, and what's stored where.]</p>
+
+                <h2>Self-Hosted Services</h2>
+                <p>[Overview of what runs in Docker and how it's managed, e.g. one Docker Compose file per stack.]</p>
+                <!-- TODO: Fill in services -->
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Service</th><th>Runs On</th><th>Purpose</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>[Service]</td><td>[VM / LXC / Docker]</td><td>[What it does]</td></tr>
+                            <tr><td>[Service]</td><td>[VM / LXC / Docker]</td><td>[What it does]</td></tr>
+                            <tr><td>[Service]</td><td>[VM / LXC / Docker]</td><td>[What it does]</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Example: compose snippet -->
+                <pre><code># docker-compose.yml (example)
+services:
+  example:
+    image: example/image:latest
+    restart: unless-stopped
+    ports:
+      - "8080:80"</code></pre>
+
+                <h3>Smart Home</h3>
+                <p>[Smart home controllers and automations.]</p>
+
+                <h2>Remote Access and Security</h2>
+                <p>[How you reach the lab from outside (VPN, Cloudflare Access, Guacamole, etc.) without exposing ports, plus firewall rules, updates, and authentication.]</p>
+                <ul>
+                    <li>[Remote access method]</li>
+                    <li>[Authentication / MFA]</li>
+                    <li>[Security services: firewall, IDS, DNS filtering, etc.]</li>
+                </ul>
+
+                <h2>Monitoring</h2>
+                <p>[What you monitor, the tools you use, and how you get alerted.]</p>
+
+                <h2>Backups</h2>
+                <p>[Backup strategy: what gets backed up, how often, where it goes, and whether you've tested a restore.]</p>
+
+                <blockquote>
+                    "[A lesson learned the hard way, e.g. a failure that changed how you do things.]"
+                </blockquote>
+
+                <h2>Lessons Learned</h2>
+                <ul>
+                    <li>[Lesson]</li>
+                    <li>[Lesson]</li>
+                    <li>[Lesson]</li>
+                </ul>
+
+                <h2>What's Next</h2>
+                <p>[Planned upgrades, services to try, or things to rebuild.]</p>
+
+                <!-- TODO: Adjust tags -->
+                <div class="article-tags">
+                    <span class="article-tag">Homelab</span>
+                    <span class="article-tag">Proxmox</span>
+                    <span class="article-tag">Docker</span>
+                    <span class="article-tag">Linux</span>
+                    <span class="article-tag">Networking</span>
+                </div>
+            </div>
+        </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">
+                        <i class="fas fa-code"></i> Aidan Lenahan
+                    </h3>
+                    <p class="footer-text">
+                        Aspiring computer science professional.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="../../">Home</a></li>
+                        <li><a href="../../about">About</a></li>
+                        <li><a href="../../experience">Experience</a></li>
+                        <li><a href="../../projects">Projects</a></li>
+                        <li><a href="../">Blog</a></li>
+                        <li><a href="../../techhelp">Tech Help</a></li>
+                        <li><a href="../../contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Other Projects</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
+                        <li><a href="https://nessfitness.com" target="_blank" rel="noopener noreferrer">NessFitness</a></li>
+                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics</a></li>
+                        <li><a href="https://emmystrong.org" target="_blank" rel="noopener noreferrer">Emmy Strong</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="../../sitemap.xml" target="_blank" rel="noopener noreferrer" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
