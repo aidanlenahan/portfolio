@@ -790,6 +790,39 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     margin-top: 0.25rem;
 }
 
+/* SKILLS (Experience page) */
+.skills-row {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.skills-row + .skills-row {
+    margin-top: var(--spacing-xs);
+}
+
+.skills-row dt {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+    .skills-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* SKILLS STRIP (Home page) */
+.skills-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
 /* CERTIFICATION LIST */
 .certification-list {
     list-style: none;
