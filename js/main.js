@@ -1,6 +1,6 @@
 /**
  * Professional Portfolio JavaScript
- * Handles theme switching, mobile navigation, and form interactions
+ * Handles the service worker, theme switching, mobile navigation and small UI touches
  */
 
 (function() {
@@ -20,20 +20,41 @@
         });
     }
 
+    const html = document.documentElement;
+    const reduceMotionQuery = window.matchMedia
+        ? window.matchMedia('(prefers-reduced-motion: reduce)')
+        : null;
+
+    function prefersReducedMotion() {
+        return !!(reduceMotionQuery && reduceMotionQuery.matches);
+    }
+
+    function scrollBehavior() {
+        return prefersReducedMotion() ? 'auto' : 'smooth';
+    }
+
     // ==========================================
     // THEME MANAGEMENT
     // ==========================================
-    
+
     const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    
-    // Check for saved theme preference or default to dark mode
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', currentTheme);
-    
+
+    // The inline <head> bootstrap script has already set data-theme before first
+    // paint; only fall back to the same logic if it's missing.
+    if (!html.getAttribute('data-theme')) {
+        let savedTheme = null;
+        try { savedTheme = localStorage.getItem('theme'); } catch (e) { /* storage blocked */ }
+        if (savedTheme !== 'light' && savedTheme !== 'dark') {
+            savedTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        html.setAttribute('data-theme', savedTheme);
+    }
+
     // Update theme toggle icon based on current theme
     function updateThemeIcon() {
+        if (!themeToggle) return;
         const icon = themeToggle.querySelector('i');
+        if (!icon) return;
         if (html.getAttribute('data-theme') === 'dark') {
             icon.classList.remove('fa-moon');
             icon.classList.add('fa-sun');
@@ -42,7 +63,7 @@
             icon.classList.add('fa-moon');
         }
     }
-    
+
     // Keep the browser/PWA title bar in sync with the page background
     function updateThemeColor() {
         const meta = document.querySelector('meta[name="theme-color"]');
@@ -51,295 +72,158 @@
         }
     }
 
-    // Initialize theme icon
     updateThemeIcon();
     updateThemeColor();
-    
-    // Theme toggle event listener
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon();
-        updateThemeColor();
-    });
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const newTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+
+            html.setAttribute('data-theme', newTheme);
+            try { localStorage.setItem('theme', newTheme); } catch (e) { /* storage blocked */ }
+            updateThemeIcon();
+            updateThemeColor();
+        });
+    }
 
     // ==========================================
     // MOBILE NAVIGATION
     // ==========================================
-    
+
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
     const navBackdrop = document.getElementById('navBackdrop');
 
     function closeMobileNav() {
-        mobileToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        navBackdrop.classList.remove('active');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+        if (mobileToggle) {
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+        if (navMenu) navMenu.classList.remove('active');
+        if (navBackdrop) navBackdrop.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    mobileToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        navBackdrop.classList.toggle('active');
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            if (navBackdrop) navBackdrop.classList.toggle('active');
 
-        // Update ARIA attribute for accessibility
-        const isExpanded = navMenu.classList.contains('active');
-        this.setAttribute('aria-expanded', isExpanded);
+            // Update ARIA attribute for accessibility
+            const isExpanded = navMenu.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
 
-        // Prevent body scroll when menu is open
-        if (isExpanded) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isExpanded ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking the backdrop
+        if (navBackdrop) {
+            navBackdrop.addEventListener('click', closeMobileNav);
         }
-    });
 
-    // Close mobile menu when clicking the backdrop
-    navBackdrop.addEventListener('click', closeMobileNav);
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    closeMobileNav();
+                }
+            });
+        });
 
-    // Close mobile menu when clicking on a nav link
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnToggle = mobileToggle.contains(event.target);
+
+            if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
                 closeMobileNav();
             }
         });
-    });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        const isClickInsideNav = navMenu.contains(event.target);
-        const isClickOnToggle = mobileToggle.contains(event.target);
-
-        if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
-            closeMobileNav();
-        }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            closeMobileNav();
-        }
-    });
+        // Close the mobile menu when the viewport grows past the breakpoint
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                closeMobileNav();
+            }
+        });
+    }
 
     // ==========================================
     // NAVBAR SCROLL EFFECT
     // ==========================================
-    
+
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-    
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        // Add shadow when scrolled
-        if (currentScroll > 10) {
-            navbar.style.boxShadow = 'var(--shadow-md)';
-        } else {
-            navbar.style.boxShadow = 'var(--shadow-sm)';
-        }
-        
-        lastScroll = currentScroll;
-    });
+
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            // Add shadow when scrolled
+            navbar.style.boxShadow = window.pageYOffset > 10 ? 'var(--shadow-md)' : 'var(--shadow-sm)';
+        }, { passive: true });
+    }
 
     // ==========================================
     // SMOOTH SCROLL FOR ANCHOR LINKS
     // ==========================================
-    
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
+
             // Only prevent default if it's not just "#"
-            if (href !== '#') {
+            if (href === '#') return;
+
+            let target = null;
+            try { target = document.querySelector(href); } catch (err) { /* not a valid selector */ }
+
+            if (target) {
                 e.preventDefault();
-                const target = document.querySelector(href);
-                
-                if (target) {
-                    const offsetTop = target.offsetTop - navbar.offsetHeight;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+                const offsetTop = target.offsetTop - (navbar ? navbar.offsetHeight : 0);
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: scrollBehavior()
+                });
             }
         });
     });
-
-    // ==========================================
-    // CONTACT FORM HANDLING
-    // ==========================================
-    
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Basic validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Here you would normally send the form data to a server
-            // For this demo, we'll just show a success message
-            showNotification('Thank you! Your message has been sent successfully.', 'success');
-            
-            // Reset form
-            contactForm.reset();
-        });
-        
-        // Real-time validation for email field
-        const emailInput = document.getElementById('email');
-        if (emailInput) {
-            emailInput.addEventListener('blur', function() {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (this.value && !emailRegex.test(this.value)) {
-                    this.style.borderColor = '#ef4444';
-                } else if (this.value) {
-                    this.style.borderColor = '#10b981';
-                } else {
-                    this.style.borderColor = '';
-                }
-            });
-            
-            emailInput.addEventListener('input', function() {
-                this.style.borderColor = '';
-            });
-        }
-    }
-
-    // ==========================================
-    // NOTIFICATION SYSTEM
-    // ==========================================
-    
-    function showNotification(message, type = 'info') {
-        // Remove any existing notifications
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        
-        // Add styles
-        Object.assign(notification.style, {
-            position: 'fixed',
-            top: '20px',
-            right: '20px',
-            padding: '1rem 1.5rem',
-            borderRadius: 'var(--border-radius-md)',
-            backgroundColor: type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6',
-            color: 'white',
-            fontWeight: '600',
-            boxShadow: 'var(--shadow-lg)',
-            zIndex: '9999',
-            animation: 'slideIn 0.3s ease-out',
-            maxWidth: '400px'
-        });
-        
-        // Add animation keyframes if not already present
-        if (!document.querySelector('#notificationStyles')) {
-            const style = document.createElement('style');
-            style.id = 'notificationStyles';
-            style.textContent = `
-                @keyframes slideIn {
-                    from {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-                @keyframes slideOut {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        // Append to body
-        document.body.appendChild(notification);
-        
-        // Remove after 5 seconds
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease-out';
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }, 5000);
-    }
 
     // ==========================================
     // INTERSECTION OBSERVER FOR ANIMATIONS
     // ==========================================
-    
-    // Fade elements in gently as they enter the viewport
-    const observerOptions = {
-        threshold: 0.02,
-        rootMargin: '0px 0px -10% 0px'
-    };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                observer.unobserve(entry.target);
-            }
+    // Fade elements in gently as they enter the viewport (skipped with reduced motion)
+    if (!prefersReducedMotion() && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.02,
+            rootMargin: '0px 0px -10% 0px'
         });
-    }, observerOptions);
 
-    // Observe cards and project cards
-    const animatedElements = document.querySelectorAll('.card, .project-card, .timeline-item');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transition = 'opacity 0.3s ease';
-        observer.observe(el);
-    });
+        document.querySelectorAll('.card, .project-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transition = 'opacity 0.3s ease';
+            observer.observe(el);
+        });
+    }
 
     // ==========================================
-    // BACK TO TOP BUTTON (Optional Enhancement)
+    // BACK TO TOP BUTTON
     // ==========================================
-    
+
     function createBackToTopButton() {
         const button = document.createElement('button');
-        button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        button.type = 'button';
+        button.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
         button.className = 'back-to-top';
         button.setAttribute('aria-label', 'Back to top');
-        
+
         Object.assign(button.style, {
             position: 'fixed',
             bottom: '20px',
@@ -348,7 +232,7 @@
             height: '50px',
             borderRadius: '50%',
             backgroundColor: 'var(--accent-primary)',
-            color: 'white',
+            color: 'var(--on-accent)',
             border: 'none',
             cursor: 'pointer',
             display: 'none',
@@ -357,62 +241,38 @@
             fontSize: '1.25rem',
             boxShadow: 'var(--shadow-lg)',
             zIndex: '1000',
-            transition: 'all 0.3s ease'
+            transition: prefersReducedMotion() ? 'none' : 'all 0.3s ease'
         });
-        
+
         button.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth'
+                behavior: scrollBehavior()
             });
         });
-        
-        // Lift on hover only where hover exists, so it doesn't stick after a tap
-        if (window.matchMedia('(hover: hover)').matches) {
+
+        // Lift on hover only where hover exists, so it doesn't stick after a tap,
+        // and not at all when the user prefers reduced motion
+        if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
             button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
+                if (!prefersReducedMotion()) {
+                    this.style.transform = 'translateY(-5px)';
+                }
             });
 
             button.addEventListener('mouseleave', function() {
                 this.style.transform = '';
             });
         }
-        
+
         document.body.appendChild(button);
-        
+
         // Show/hide button based on scroll position
         window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                button.style.display = 'flex';
-            } else {
-                button.style.display = 'none';
-            }
-        });
+            button.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
+        }, { passive: true });
     }
-    
-    // Initialize back to top button
-    createBackToTopButton();
 
-    // ==========================================
-    // PERFORMANCE OPTIMIZATION
-    // ==========================================
-    
-    // Debounce function for resize events
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-    
-    // Optimize resize handler
-    window.addEventListener('resize', debounce(function() {
-        // Any resize-specific calculations can go here
-    }, 250));
+    createBackToTopButton();
 
 })();
