@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,9 +10,16 @@
     'https://www.googletagmanager.com/gtm.js?id=GTM-K4JBFNH3'+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K4JBFNH3');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projects by Aidan Lenahan - Cybersecurity challenges, web development, homelab infrastructure, and hardware automation">
+    <link rel="canonical" href="https://aidanlenahan.com/projects">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aidan Lenahan">
+    <meta property="og:title" content="Projects | Aidan Lenahan">
+    <meta property="og:description" content="Projects by Aidan Lenahan - Cybersecurity challenges, web development, homelab infrastructure, and hardware automation">
+    <meta property="og:url" content="https://aidanlenahan.com/projects">
+    <meta property="og:image" content="https://aidanlenahan.com/files/headshot-300.jpg">
+    <meta name="twitter:card" content="summary">
     <title>Projects | Aidan Lenahan</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
@@ -18,6 +27,18 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#18181b">
+    <script>
+        (function () {
+            var t;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'dark' ? '#18181b' : '#ffffff');
+        })();
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -30,8 +51,8 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="./" class="logo">
-                    <img src="files/favicon-64x64.png" alt="AL logo" class="logo-icon">
+                <a href="./" class="logo" aria-label="Aidan Lenahan, home">
+                    <img src="files/favicon-64x64.png" alt="" class="logo-icon" width="64" height="64">
                     <span>AL</span>
                 </a>
                 
@@ -40,14 +61,14 @@
                     <li><a href="./" class="nav-link">Home</a></li>
                     <li><a href="about" class="nav-link">About</a></li>
                     <li><a href="experience" class="nav-link">Experience</a></li>
-                    <li><a href="projects" class="nav-link active">Projects</a></li>
-                    <li><a href="blog" class="nav-link">Blog</a></li>
+                    <li><a href="projects" class="nav-link active" aria-current="page">Projects</a></li>
+                    <li><a href="blog/" class="nav-link">Blog</a></li>
                     <li><a href="techhelp" class="nav-link">Tech Help</a></li>
                     <li><a href="contact" class="nav-link">Contact</a></li>
                 </ul>
 
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
 
                     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
@@ -73,17 +94,22 @@
     <!-- Projects Grid -->
     <section class="section">
         <div class="container">
+            <h2 class="sr-only">All projects</h2>
             <div class="projects-grid">
                 <!-- projects:start -->
                 <!-- Generated from aidanlenahan/projectroot projects.json — edit there, not here. -->
-                <div class="project-card featured-project">
+                <div class="project-card featured-project" data-project="dogs" data-open="link">
                     <div class="project-image has-media">
-                        <img src="projects-data/img/dogs/thumb.png" alt="Aidan Lenahan Dog Services homepage" loading="lazy">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/dogs/thumb.png" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/dogs/thumb.png" alt="Aidan Lenahan Dog Services homepage" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Professional Dog Walking Services</h3>
                         <p class="project-description">
                             A site for a professional dog walking service with online booking, service packages, testimonials, and service area info.
+                            <button type="button" class="project-more project-more-mobile" data-project="dogs" aria-haspopup="dialog">Details<span class="sr-only"> about Professional Dog Walking Services</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
@@ -93,20 +119,24 @@
                         </div>
                         <div class="project-links">
                             <a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> Visit Site
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Visit Site<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="pharmreach" data-open="modal">
                     <div class="project-image has-media">
-                        <img src="projects-data/img/pharmreach/thumb.png" alt="PharmReach homepage" loading="lazy">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/thumb.png" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/pharmreach/thumb.png" alt="PharmReach homepage" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">PharmReach</h3>
                         <p class="project-description">
-                            Built in 24 hours at HackRU 2026. PharmReach helps people in pharmacy deserts find medicine: search for a product and see nearby pharmacies that stock it, with price, location, and travel time by walking, cycling, driving, or transit, plus the total cost of the trip. Routing runs on OpenTripPlanner over an interactive OpenStreetMap map, and a Gemini chat suggests medications for your symptoms and links to them on local pharmacy sites.
+                            Built in 24 hours at HackRU 2026. PharmReach helps people in pharmacy deserts find medicine: search for a product and see nearby pharmacies that stock it, with price, location, and…
+                            <button type="button" class="project-more" data-project="pharmreach" aria-haspopup="dialog">Read more<span class="sr-only"> about PharmReach</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">React</span>
@@ -118,23 +148,27 @@
                         </div>
                         <div class="project-links">
                             <a href="https://pharmreach.tech" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> Visit Site
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Visit Site<span class="sr-only"> (opens in new tab)</span>
                             </a>
                             <a href="https://github.com/aidanlenahan/pharmreach" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fab fa-github"></i> Source Code
+                                <i class="fab fa-github" aria-hidden="true"></i> Source Code<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="emmy-strong" data-open="modal">
                     <div class="project-image has-media">
-                        <img src="projects-data/img/emmy-strong/thumb.png" alt="EmmyStrong Foundation homepage" loading="lazy">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/emmy-strong/thumb.png" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/emmy-strong/thumb.png" alt="EmmyStrong Foundation homepage" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Emmy Strong Foundation Website</h3>
                         <p class="project-description">
-                            Built emmy-strong.org to support the foundation&#39;s mission: ensuring that everyone in need of a bone marrow transplant can find a matching donor. The website serves to raise awareness, facilitate donor registration, and share Emmy&#39;s inspiring story with the community.
+                            Built emmy-strong.org to support the foundation&#39;s mission: ensuring that everyone in need of a bone marrow transplant can find a matching donor. The website serves to raise…
+                            <button type="button" class="project-more" data-project="emmy-strong" aria-haspopup="dialog">Read more<span class="sr-only"> about Emmy Strong Foundation Website</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
@@ -146,20 +180,24 @@
                         </div>
                         <div class="project-links">
                             <a href="https://emmy-strong.org" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> Visit Site
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Visit Site<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="gymnastics" data-open="modal">
                     <div class="project-image has-media">
-                        <img src="projects-data/img/gymnastics/thumb.png" alt="Gymnastics Excellence Fund homepage" loading="lazy">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/gymnastics/thumb.png" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/gymnastics/thumb.png" alt="Gymnastics Excellence Fund homepage" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Gymnastics Excellence Fund Website</h3>
                         <p class="project-description">
-                            Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School&#39;s gymnastics team. Built to streamline donations and fundraisers, improve communication, and showcase team achievements.
+                            Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School&#39;s gymnastics team. Built to streamline…
+                            <button type="button" class="project-more" data-project="gymnastics" aria-haspopup="dialog">Read more<span class="sr-only"> about Gymnastics Excellence Fund Website</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
@@ -170,20 +208,21 @@
                         </div>
                         <div class="project-links">
                             <a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> View Project
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Project<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="homelab" data-open="link">
                     <div class="project-image">
-                        <i class="fas fa-server fa-3x"></i>
+                        <i class="fas fa-server fa-3x" aria-hidden="true"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Personal Homelab Infrastructure</h3>
                         <p class="project-description">
                             VMs and LXC containers on Proxmox, a NAS, smart home controllers, security services, and monitoring. A sandbox for learning enterprise-grade tooling hands-on.
+                            <button type="button" class="project-more project-more-mobile" data-project="homelab" aria-haspopup="dialog">Details<span class="sr-only"> about Personal Homelab Infrastructure</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">Proxmox</span>
@@ -195,20 +234,24 @@
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fab fa-github"></i> GitHub Profile
+                                <i class="fab fa-github" aria-hidden="true"></i> GitHub Profile<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="rbrctf" data-open="modal">
                     <div class="project-image has-media">
-                        <img src="projects-data/img/rbrctf/thumb.png" alt="RBR CTF homepage" loading="lazy">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/rbrctf/thumb.png" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/rbrctf/thumb.png" alt="RBR CTF homepage" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">High School CTFd Platform</h3>
                         <p class="project-description">
-                            Created and administered a CTFd instance at Red Bank Regional High School, developing dozens of capture-the-flag cybersecurity challenges for peer participation. Challenges cover web security, cryptography, binary exploitation, and network forensics.
+                            Created and administered a CTFd instance at Red Bank Regional High School, developing dozens of capture-the-flag cybersecurity challenges for peer participation. Challenges cover…
+                            <button type="button" class="project-more" data-project="rbrctf" aria-haspopup="dialog">Read more<span class="sr-only"> about High School CTFd Platform</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">CTFd</span>
@@ -218,20 +261,24 @@
                         </div>
                         <div class="project-links">
                             <a href="https://aidanlenahan.github.io/rbrctf/ctf" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> View Platform
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Platform<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="pantry-lighting" data-open="modal">
                     <div class="project-image has-media">
-                        <img src="projects-data/img/pantry-lighting/thumb.webp" alt="Pantry lighting circuit schematic" loading="lazy">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/pantry-lighting/thumb.webp" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/pantry-lighting/thumb.webp" alt="Pantry lighting circuit schematic" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Automated Pantry Lighting System</h3>
                         <p class="project-description">
-                            Designed and assembled a hardware-based automation system that powers LED strips when a pantry door opens. Used a 12V relay module triggered by a magnetic reed switch, implementing clean wiring practices with appropriate gauge selection for power and signal paths.
+                            Designed and assembled a hardware-based automation system that powers LED strips when a pantry door opens. Used a 12V relay module triggered by a magnetic reed switch, implementing…
+                            <button type="button" class="project-more" data-project="pantry-lighting" aria-haspopup="dialog">Read more<span class="sr-only"> about Automated Pantry Lighting System</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">Electrical Engineering</span>
@@ -241,20 +288,21 @@
                         </div>
                         <div class="project-links">
                             <a href="https://aidanlenahan.com/blog/articles/pantry-lighting.html" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-book-open"></i> Read Article
+                                <i class="fas fa-book-open" aria-hidden="true"></i> Read Article<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-project="ness-fitness" data-open="link">
                     <div class="project-image">
-                        <i class="fas fa-heartbeat fa-3x"></i>
+                        <i class="fas fa-heartbeat fa-3x" aria-hidden="true"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Fitness Tracking App</h3>
                         <p class="project-description">
                             Personal fitness application for tracking workouts, nutrition, and progress. Includes activity logging, goal setting, and detailed analytics with charts.
+                            <button type="button" class="project-more project-more-mobile" data-project="ness-fitness" aria-haspopup="dialog">Details<span class="sr-only"> about Fitness Tracking App</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">React</span>
@@ -263,18 +311,232 @@
                         </div>
                         <div class="project-links">
                             <a href="https://ness.aidanlenahan.com" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fas fa-external-link-alt"></i> Visit Site
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Visit Site<span class="sr-only"> (opens in new tab)</span>
                             </a>
                             <a href="https://github.com/aidanlenahan/NessFitness" target="_blank" rel="noopener noreferrer" class="link">
-                                <i class="fab fa-github"></i> Source Code
+                                <i class="fab fa-github" aria-hidden="true"></i> Source Code<span class="sr-only"> (opens in new tab)</span>
                             </a>
                         </div>
                     </div>
                 </div>
+                <script type="application/json" id="project-modal-data">
+{
+  "dogs": {
+    "title": "Professional Dog Walking Services",
+    "description": "A site for a professional dog walking service with online booking, service packages, testimonials, and service area info.",
+    "images": [
+      {
+        "src": "projects-data/img/dogs/1.svg",
+        "alt": "Professional Dog Walking Services screenshot 1"
+      }
+    ],
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Responsive"
+    ],
+    "links": [
+      {
+        "href": "https://dogs.aidanlenahan.com",
+        "label": "Visit Site",
+        "icon": "fas fa-external-link-alt"
+      }
+    ]
+  },
+  "pharmreach": {
+    "title": "PharmReach",
+    "description": "Built in 24 hours at HackRU 2026. PharmReach helps people in pharmacy deserts find medicine: search for a product and see nearby pharmacies that stock it, with price, location, and travel time by walking, cycling, driving, or transit, plus the total cost of the trip. Routing runs on OpenTripPlanner over an interactive OpenStreetMap map, and a Gemini chat suggests medications for your symptoms and links to them on local pharmacy sites.",
+    "images": [
+      {
+        "src": "projects-data/img/pharmreach/thumb.png",
+        "alt": "PharmReach homepage"
+      }
+    ],
+    "tags": [
+      "React",
+      "TypeScript",
+      "Python",
+      "Gemini",
+      "OpenStreetMap",
+      "OpenTripPlanner"
+    ],
+    "links": [
+      {
+        "href": "https://pharmreach.tech",
+        "label": "Visit Site",
+        "icon": "fas fa-external-link-alt"
+      },
+      {
+        "href": "https://github.com/aidanlenahan/pharmreach",
+        "label": "Source Code",
+        "icon": "fab fa-github"
+      }
+    ]
+  },
+  "emmy-strong": {
+    "title": "Emmy Strong Foundation Website",
+    "description": "Built emmy-strong.org to support the foundation's mission: ensuring that everyone in need of a bone marrow transplant can find a matching donor. The website serves to raise awareness, facilitate donor registration, and share Emmy's inspiring story with the community.",
+    "images": [
+      {
+        "src": "projects-data/img/emmy-strong/thumb.png",
+        "alt": "EmmyStrong Foundation homepage"
+      }
+    ],
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Nonprofit",
+      "Responsive",
+      "Cost-effective"
+    ],
+    "links": [
+      {
+        "href": "https://emmy-strong.org",
+        "label": "Visit Site",
+        "icon": "fas fa-external-link-alt"
+      }
+    ]
+  },
+  "gymnastics": {
+    "title": "Gymnastics Excellence Fund Website",
+    "description": "Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School's gymnastics team. Built to streamline donations and fundraisers, improve communication, and showcase team achievements.",
+    "images": [
+      {
+        "src": "projects-data/img/gymnastics/thumb.png",
+        "alt": "Gymnastics Excellence Fund homepage"
+      }
+    ],
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Hostinger",
+      "SEO"
+    ],
+    "links": [
+      {
+        "href": "https://rbrgymnastics.com",
+        "label": "View Project",
+        "icon": "fas fa-external-link-alt"
+      }
+    ]
+  },
+  "homelab": {
+    "title": "Personal Homelab Infrastructure",
+    "description": "VMs and LXC containers on Proxmox, a NAS, smart home controllers, security services, and monitoring. A sandbox for learning enterprise-grade tooling hands-on.",
+    "images": [
+      {
+        "src": "projects-data/img/homelab/1.svg",
+        "alt": "Proxmox dashboard"
+      },
+      {
+        "src": "projects-data/img/homelab/2.svg",
+        "alt": "Monitoring dashboard"
+      },
+      {
+        "src": "projects-data/img/homelab/3.svg",
+        "alt": "Network diagram"
+      }
+    ],
+    "tags": [
+      "Proxmox",
+      "Docker",
+      "Linux",
+      "VPN",
+      "Ubiquiti",
+      "Home Assistant"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/aidanlenahan",
+        "label": "GitHub Profile",
+        "icon": "fab fa-github"
+      }
+    ]
+  },
+  "rbrctf": {
+    "title": "High School CTFd Platform",
+    "description": "Created and administered a CTFd instance at Red Bank Regional High School, developing dozens of capture-the-flag cybersecurity challenges for peer participation. Challenges cover web security, cryptography, binary exploitation, and network forensics.",
+    "images": [
+      {
+        "src": "projects-data/img/rbrctf/thumb.png",
+        "alt": "RBR CTF homepage"
+      }
+    ],
+    "tags": [
+      "CTFd",
+      "Cybersecurity",
+      "Challenge Design",
+      "Linux"
+    ],
+    "links": [
+      {
+        "href": "https://aidanlenahan.github.io/rbrctf/ctf",
+        "label": "View Platform",
+        "icon": "fas fa-external-link-alt"
+      }
+    ]
+  },
+  "pantry-lighting": {
+    "title": "Automated Pantry Lighting System",
+    "description": "Designed and assembled a hardware-based automation system that powers LED strips when a pantry door opens. Used a 12V relay module triggered by a magnetic reed switch, implementing clean wiring practices with appropriate gauge selection for power and signal paths.",
+    "images": [
+      {
+        "src": "projects-data/img/pantry-lighting/thumb.webp",
+        "alt": "Pantry lighting circuit schematic"
+      }
+    ],
+    "tags": [
+      "Electrical Engineering",
+      "Relay Systems",
+      "Low-Voltage",
+      "Home Automation"
+    ],
+    "links": [
+      {
+        "href": "https://aidanlenahan.com/blog/articles/pantry-lighting.html",
+        "label": "Read Article",
+        "icon": "fas fa-book-open"
+      }
+    ]
+  },
+  "ness-fitness": {
+    "title": "Fitness Tracking App",
+    "description": "Personal fitness application for tracking workouts, nutrition, and progress. Includes activity logging, goal setting, and detailed analytics with charts.",
+    "images": [],
+    "tags": [
+      "React",
+      "Python",
+      "TypeScript"
+    ],
+    "links": [
+      {
+        "href": "https://ness.aidanlenahan.com",
+        "label": "Visit Site",
+        "icon": "fas fa-external-link-alt"
+      },
+      {
+        "href": "https://github.com/aidanlenahan/NessFitness",
+        "label": "Source Code",
+        "icon": "fab fa-github"
+      }
+    ]
+  }
+}
+                </script>
                 <!-- projects:end -->
             </div>
         </div>
     </section>
+
+    <dialog class="project-modal" id="projectModal" aria-labelledby="projectModalTitle">
+        <button type="button" class="project-modal-close" aria-label="Close">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="project-modal-body"></div>
+    </dialog>
 
     <!-- CTA Section -->
     <section class="section section-alt">
@@ -283,7 +545,7 @@
                 <h2>Interested in Working Together?</h2>
                 <p>I'm always open to discussing new projects and creative ideas.</p>
                 <a href="contact" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Contact Me
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Contact Me
                 </a>
             </div>
         </div>
@@ -295,7 +557,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="footer-title">
-                        <i class="fas fa-code"></i> Aidan Lenahan
+                        <i class="fas fa-code" aria-hidden="true"></i> Aidan Lenahan
                     </h3>
                     <p class="footer-text">
                         Aspiring computer science professional.
@@ -309,7 +571,7 @@
                         <li><a href="about">About</a></li>
                         <li><a href="experience">Experience</a></li>
                         <li><a href="projects">Projects</a></li>
-                        <li><a href="blog">Blog</a></li>
+                        <li><a href="blog/">Blog</a></li>
                         <li><a href="techhelp">Tech Help</a></li>
                         <li><a href="contact">Contact</a></li>
                     </ul>
@@ -318,35 +580,35 @@
                 <div class="footer-section">
                     <h4 class="footer-heading">Other Projects</h4>
                     <ul class="footer-links">
-                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services</a></li>
-                        <li><a href="https://ness.aidanlenahan.com" target="_blank" rel="noopener noreferrer">NessFitness</a></li>
-                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics</a></li>
-                        <li><a href="https://emmystrong.org" target="_blank" rel="noopener noreferrer">Emmy Strong</a></li>
+                        <li><a href="https://dogs.aidanlenahan.com" target="_blank" rel="noopener noreferrer">Dog Walking Services<span class="sr-only"> (opens in new tab)</span></a></li>
+                        <li><a href="https://rbrgymnastics.com" target="_blank" rel="noopener noreferrer">RBR Gymnastics<span class="sr-only"> (opens in new tab)</span></a></li>
+                        <li><a href="https://emmy-strong.org" target="_blank" rel="noopener noreferrer">Emmy Strong<span class="sr-only"> (opens in new tab)</span></a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section footer-connect">
                     <h4 class="footer-heading">Connect</h4>
                     <div class="social-links">
-                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)" class="social-link">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                         </a>
-                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)" class="social-link">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
                         </a>
                         <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="sitemap.xml" target="_blank" rel="noopener noreferrer" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="sitemap.xml" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
 </body>
 </html>

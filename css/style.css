@@ -510,7 +510,7 @@ img {
     align-items: center;
     justify-content: center;
     color: var(--text-tertiary);
-    height: 200px;
+    height: 180px;
 }
 
 .themed-preview-image {
@@ -550,11 +550,11 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 }
 
 .project-content {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
 }
 
 .project-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
 }
@@ -1215,8 +1215,7 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
         white-space: normal;
     }
     
-    .card,
-    .project-card {
+    .card {
         padding: var(--spacing-md);
     }
 
@@ -1718,4 +1717,232 @@ a:focus-visible {
 .project-gallery .project-shot {
     flex: 0 0 100%;
     scroll-snap-align: start;
+}
+
+/* "Read more" on cards whose description was truncated (see build-projects.mjs) */
+.project-more {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent-primary);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.project-more:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* Project detail modal (js/projects.js), ported from projectroot */
+body:has(.project-modal[open]) {
+    overflow: hidden;
+}
+
+.project-modal {
+    width: min(760px, calc(100% - 32px));
+    max-height: calc(100% - 32px);
+    margin: auto;
+    padding: 0;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    overflow: hidden auto;
+}
+
+.project-modal[open] {
+    animation: project-modal-pop 0.18s ease-out;
+}
+
+.project-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+@keyframes project-modal-pop {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-modal[open] { animation: none; }
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+
+.project-modal-close:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.project-modal-text {
+    padding: var(--spacing-lg);
+}
+
+/* Room for the close button when there's no image above the title. */
+.project-modal-body > .project-modal-text:first-child .project-title {
+    padding-right: 2.5rem;
+}
+
+.project-modal-text .project-tags {
+    margin-bottom: var(--spacing-md);
+}
+
+.project-carousel {
+    position: relative;
+    background-color: var(--bg-secondary);
+}
+
+.project-carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.project-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.project-carousel-slide {
+    flex: 0 0 100%;
+    aspect-ratio: 16 / 10;
+    scroll-snap-align: start;
+}
+
+.project-carousel-slide .project-shot img:not(.project-shot-backdrop) {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.project-carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--transition-fast), background var(--transition-fast);
+    backdrop-filter: blur(4px);
+}
+
+.project-carousel-nav.prev { left: 12px; }
+.project-carousel-nav.next { right: 12px; }
+
+.project-carousel:hover .project-carousel-nav,
+.project-carousel-nav:focus-visible {
+    opacity: 1;
+}
+
+.project-carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+@media (hover: none) {
+    .project-carousel-nav { opacity: 1; }
+}
+
+.project-carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.project-carousel-dots button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: width 0.2s, background 0.2s;
+}
+
+.project-carousel-dots button.active {
+    width: 18px;
+    background: #fff;
+}
+
+/* Whole card opens its modal or first link (js/projects.js) */
+.project-card[data-open] {
+    cursor: pointer;
+}
+
+.project-more-mobile {
+    display: none;
+}
+
+/* Mobile: tags and links move into the modal, which every card opens */
+@media (max-width: 768px) {
+    .project-card .project-tags,
+    .project-card .project-links {
+        display: none;
+    }
+
+    .project-more-mobile {
+        display: inline;
+    }
+
+    .project-card[data-project] {
+        cursor: pointer;
+    }
+
+    .project-card .project-description {
+        margin-bottom: 0;
+    }
+
+    .project-image {
+        height: 160px;
+    }
+
+    .project-image:not(.has-media) {
+        padding: var(--spacing-md);
+    }
+
+    .project-content {
+        padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+    }
+
+    .project-title {
+        font-size: 1.125rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .project-modal-text {
+        padding: var(--spacing-md);
+    }
 }
