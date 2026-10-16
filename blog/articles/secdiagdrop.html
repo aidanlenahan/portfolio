@@ -45,9 +45,13 @@
             gap: 1.5rem;
             flex-wrap: wrap;
         }
+        .article-nav {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+        }
         .back-link {
             display: inline-block;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             color: var(--accent-primary);
             text-decoration: none;
             font-weight: 500;
@@ -138,6 +142,14 @@
         .article-body th {
             background: var(--bg-primary);
         }
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1rem;
+            }
+            .article-body ul, .article-body ol {
+                padding-left: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -186,7 +198,9 @@
 
     <section class="section">
         <div class="container">
-            <a href="../" class="back-link">← Back to Blog</a>
+            <div class="article-nav">
+                <a href="../" class="back-link">← Back</a>
+            </div>
 
             <article class="article-content">
                 <div class="article-header">
@@ -231,37 +245,39 @@
 
                     <h2>The three moving parts</h2>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Part</th>
-                                <th>What it is</th>
-                                <th>Where it lives</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>Invoke-PCMaintenance.ps1</code></td>
-                                <td>The main script that does everything</td>
-                                <td>Public GitHub repo</td>
-                            </tr>
-                            <tr>
-                                <td><code>sqlite3.exe</code></td>
-                                <td>A small tool, fetched only if you approve a deletion</td>
-                                <td>Same GitHub repo</td>
-                            </tr>
-                            <tr>
-                                <td><code>DiagnosticDrop.gs</code></td>
-                                <td>Google Apps Script: checks your predefined, script-specific password, emails you the approval, saves the file to Drive</td>
-                                <td>script.google.com</td>
-                            </tr>
-                            <tr>
-                                <td><code>RUN-MAINTENANCE.cmd</code></td>
-                                <td>Tiny launcher that starts the whole thing</td>
-                                <td>Your USB stick</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Part</th>
+                                    <th>What it is</th>
+                                    <th>Where it lives</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>Invoke-PCMaintenance.ps1</code></td>
+                                    <td>The main script that does everything</td>
+                                    <td>Public GitHub repo</td>
+                                </tr>
+                                <tr>
+                                    <td><code>sqlite3.exe</code></td>
+                                    <td>A small tool, fetched only if you approve a deletion</td>
+                                    <td>Same GitHub repo</td>
+                                </tr>
+                                <tr>
+                                    <td><code>DiagnosticDrop.gs</code></td>
+                                    <td>Google Apps Script: checks your predefined, script-specific password, emails you the approval, saves the file to Drive</td>
+                                    <td>script.google.com</td>
+                                </tr>
+                                <tr>
+                                    <td><code>RUN-MAINTENANCE.cmd</code></td>
+                                    <td>Tiny launcher that starts the whole thing</td>
+                                    <td>Your USB stick</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <p>The GitHub repo is <strong>public and contains no secrets</strong>. The only secret is your password, which you type at runtime and which is double-checked by the Google side, or an email that you must manually approve for the diagnostic file to be saved to your Drive. <strong>The reason that <code>Invoke-PCMaintenance.ps1</code> isn't on the thumb drive is because this workflow was designed with swift use in mind.</strong> Meaning, a technician could go from computer to computer very quickly by simply plugging in the thumb drive, running the <code>.cmd</code> file, which would open the <code>.ps1</code> file via the public repo link, and then the technician could unplug the drive safely and move on, with the PowerShell script starting automatically once a password was typed in. Multiple thumb drives are not needed for this workflow, only one thumb drive and one person.</p>
 

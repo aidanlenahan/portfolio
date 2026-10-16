@@ -48,9 +48,13 @@
             gap: 1.5rem;
             flex-wrap: wrap;
         }
+        .article-nav {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
         .back-link {
             display: inline-block;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             color: var(--accent-primary);
             text-decoration: none;
             font-weight: 500;
@@ -140,6 +144,14 @@
             font-size: 0.875rem;
             font-weight: 500;
         }
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1rem;
+            }
+            .article-body ul, .article-body ol {
+                padding-left: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -194,7 +206,9 @@
     <!-- Article Content -->
     <section class="section">
         <div class="container">
-            <a href="../" class="back-link">← Back to Blog</a>
+            <div class="article-nav">
+                <a href="../" class="back-link">← Back</a>
+            </div>
         
         <article class="article-content">
             <div class="article-header">
