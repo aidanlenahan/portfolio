@@ -1,8 +1,10 @@
 // Regenerates the project cards in projects.html from projectroot's projects.json.
-// Usage: node scripts/build-projects.mjs <path/to/projects.json> [projects.html]
+// Usage: node scripts/build-projects.mjs <path/to/projects.json> [projects.html] [index.html]
 //
 // Only projects with a "portfolio" block are rendered. Everything between the
 // <!-- projects:start --> and <!-- projects:end --> markers is replaced.
+// Projects with "portfolio": { "home": <n> } are also rendered between the same
+// markers in index.html, ordered by n, as the home page's Featured Projects.
 //
 // Descriptions longer than TRUNCATE_AT characters are cut short on the card
 // with a "Read more" button that opens a modal ("portfolio": { "modal": true |
@@ -19,9 +21,9 @@ import { posix } from 'node:path';
 
 const { dirname, join, normalize } = posix;
 
-const [jsonPath, htmlPath = 'projects.html'] = process.argv.slice(2);
+const [jsonPath, htmlPath = 'projects.html', homePath = 'index.html'] = process.argv.slice(2);
 if (!jsonPath) {
-    console.error('usage: build-projects.mjs <projects.json> [projects.html]');
+    console.error('usage: build-projects.mjs <projects.json> [projects.html] [index.html]');
     process.exit(1);
 }
 
@@ -97,6 +99,7 @@ function toPortfolio(p) {
         tags: pf.tags || p.tags || [],
         icon: pf.icon || 'fas fa-code',
         featured: !!pf.featured,
+        home: typeof pf.home === 'number' ? pf.home : null,
         // portfolio.modal: true/false forces the desktop modal on or off;
         // omitted, it's on when the description is longer than TRUNCATE_AT.
         modal: typeof pf.modal === 'boolean' ? pf.modal : String(description ?? '').trim().length > TRUNCATE_AT,
@@ -194,29 +197,43 @@ const cards = projects
     .sort((a, b) => b.featured - a.featured);
 
 // Every card needs data, since every card opens the modal on mobile.
-const modalData = Object.fromEntries(cards.map(c => [c.id, {
-    title: c.title,
-    description: c.description,
-    images: c.modalImages,
-    tags: c.tags,
-    links: c.links.map(({ href, label, icon }) => ({ href, label: label || 'Visit Site', icon })),
-}]));
-// Escaping "<" keeps a stray "</script>" in the data from closing the block.
-const modalJson = JSON.stringify(modalData, null, 2).replace(/</g, '\\u003c');
-
-const html = readFileSync(htmlPath, 'utf8');
-const start = html.indexOf(START);
-const end = html.indexOf(END);
-if (start === -1 || end === -1 || end < start) {
-    console.error(`${htmlPath} is missing the ${START} / ${END} markers`);
-    process.exit(1);
+function modalJson(list) {
+    const data = Object.fromEntries(list.map(c => [c.id, {
+        title: c.title,
+        description: c.description,
+        images: c.modalImages,
+        tags: c.tags,
+        links: c.links.map(({ href, label, icon }) => ({ href, label: label || 'Visit Site', icon })),
+    }]));
+    // Escaping "<" keeps a stray "</script>" in the data from closing the block.
+    return JSON.stringify(data, null, 2).replace(/</g, '\\u003c');
 }
 
-const generated = `${START}
-                <!-- Generated from aidanlenahan/projectroot projects.json — edit there, not here. -->${cards.map(renderCard).join('\n')}
+// Replaces the marked block in an HTML file with the cards and their modal data.
+function writeCards(path, list) {
+    const html = readFileSync(path, 'utf8');
+    const start = html.indexOf(START);
+    const end = html.indexOf(END);
+    if (start === -1 || end === -1 || end < start) {
+        console.error(`${path} is missing the ${START} / ${END} markers`);
+        process.exit(1);
+    }
+    const generated = `${START}
+                <!-- Generated from aidanlenahan/projectroot projects.json — edit there, not here. -->${list.map(renderCard).join('\n')}
                 <script type="application/json" id="project-modal-data">
-${modalJson}
+${modalJson(list)}
                 </script>
                 ${END}`;
-writeFileSync(htmlPath, html.slice(0, start) + generated + html.slice(end + END.length));
-console.log(`Rendered ${cards.length} project card(s) into ${htmlPath}`);
+    writeFileSync(path, html.slice(0, start) + generated + html.slice(end + END.length));
+    console.log(`Rendered ${list.length} project card(s) into ${path}`);
+}
+
+writeCards(htmlPath, cards);
+
+// The home page shows only the projects picked with portfolio.home, without
+// the projects page's featured highlight.
+const homeCards = cards
+    .filter(c => c.home !== null)
+    .sort((a, b) => a.home - b.home)
+    .map(c => ({ ...c, featured: false }));
+if (existsSync(homePath)) writeCards(homePath, homeCards);
