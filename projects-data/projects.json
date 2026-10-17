@@ -1,13 +1,6 @@
 {
   "projects": [
     {
-      "id": "portfolio",
-      "title": "personal site",
-      "summary": "my personal website",
-      "open": "link",
-      "link": "https://aidanlenahan.com"
-    },
-    {
       "id": "dogs",
       "title": "dog walking",
       "summary": "marketing site for dog walking business",
@@ -41,7 +34,6 @@
       },
       "portfolio": {
         "title": "Professional Dog Walking Services",
-        "featured": true,
         "descriptionFrom": "modal",
         "tags": [
           "HTML5",
@@ -117,7 +109,8 @@
             "href": "https://github.com/aidanlenahan/pharmreach",
             "label": "Source Code"
           }
-        ]
+        ],
+        "home": 2
       }
     },
     {
@@ -193,6 +186,7 @@
       },
       "portfolio": {
         "title": "GEM (Group Event Manager)",
+        "featured": true,
         "descriptionFrom": "modal",
         "tags": [
           "TypeScript",
@@ -213,7 +207,8 @@
             "href": "https://github.com/aidanlenahan/gem",
             "label": "Source Code"
           }
-        ]
+        ],
+        "home": 1
       }
     },
     {
@@ -236,6 +231,44 @@
         "descriptionFrom": "modal",
         "icon": "fas fa-ticket",
         "linkLabel": "Source Code"
+      }
+    },
+    {
+      "id": "secdiagdrop",
+      "title": "secdiagdrop",
+      "summary": "USB-launched Windows maintenance and diagnostics tool for nonprofits",
+      "tags": [
+        "PowerShell",
+        "Google Apps Script",
+        "Windows",
+        "Security"
+      ],
+      "open": "modal",
+      "link": "https://github.com/aidanlenahan/secdiagdrop",
+      "modal": {
+        "description": "Built while volunteering as IT support for a nonprofit whose computers are shared by special needs adults, to replace doing the same cleanup by hand on every machine. A technician runs one launcher from a USB stick, which pulls the PowerShell script from GitHub and runs it in memory, so the stick can be pulled right away. It scans the machine read-only (drive health, files, installed and startup software, browser extensions and history, saved-login domains, Defender, firewall, and updates), then offers each fix one confirmation at a time. The results become a single report that a password-gated Google Apps Script backend saves to a private Google Drive only after the technician taps Approve on an email, and every temporary file is wiped on exit.",
+        "images": [
+          {
+            "src": "img/secdiagdrop/approval-email.webp",
+            "alt": "secdiagdrop email asking the technician to approve a diagnostic report upload"
+          }
+        ]
+      },
+      "portfolio": {
+        "title": "secdiagdrop Workstation Diagnostics",
+        "descriptionFrom": "modal",
+        "icon": "fas fa-stethoscope",
+        "links": [
+          {
+            "href": "https://github.com/aidanlenahan/secdiagdrop",
+            "label": "Source Code"
+          },
+          {
+            "href": "https://aidanlenahan.com/blog/articles/secdiagdrop",
+            "label": "Read Article",
+            "icon": "fas fa-book-open"
+          }
+        ]
       }
     },
     {
