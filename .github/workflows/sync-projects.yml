@@ -1,8 +1,8 @@
-# Regenerates the project cards in projects.html from
-# aidanlenahan/projectroot's projects.json and commits the result, along with a
-# snapshot of projects.json and its images in projects-data/. If projectroot
-# can't be fetched the job fails before touching anything, so the last good
-# snapshot keeps being served.
+# Regenerates the project cards in projects.html and the home page's featured
+# cards in index.html from aidanlenahan/projectroot's projects.json and commits
+# the result, along with a snapshot of projects.json and its images in
+# projects-data/. If projectroot can't be fetched the job fails before touching
+# anything, so the last good snapshot keeps being served.
 name: Sync projects
 
 on:
@@ -41,11 +41,11 @@ jobs:
         with:
           node-version: 22
 
-      - run: node scripts/build-projects.mjs _projectroot/projects.json projects.html
+      - run: node scripts/build-projects.mjs _projectroot/projects.json projects.html index.html
 
       - name: Commit if changed
         run: |
-          git add -A projects.html projects-data
+          git add -A projects.html index.html projects-data
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
