@@ -722,6 +722,7 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 }
 
 .about-content p {
+    max-width: 68ch;
     font-size: 1.125rem;
     line-height: 1.8;
     margin-bottom: var(--spacing-md);
