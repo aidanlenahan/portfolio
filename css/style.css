@@ -33,8 +33,9 @@
     --font-mono: 'Courier New', Courier, monospace;
     
     /* Transitions */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --transition-fast: 0.15s ease;
-    --transition-normal: 0.3s ease;
+    --transition-normal: 0.2s var(--ease-out);
     --transition-slow: 0.5s ease;
     
     /* Borders */
@@ -279,15 +280,17 @@ img {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 2px;
     background-color: var(--accent-primary);
-    transition: width var(--transition-normal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
 .nav-link:hover,
@@ -338,12 +341,18 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color var(--transition-normal), color var(--transition-normal), transform var(--transition-normal);
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
-.theme-toggle:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-primary);
+.theme-toggle:active {
+    transform: scale(0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .theme-toggle:hover {
+        background-color: var(--text-primary);
+        color: var(--bg-primary);
+    }
 }
 
 /* BUTTONS */
@@ -368,20 +377,13 @@ img {
     transition: transform var(--transition-fast);
 }
 
-.btn:hover i {
-    transform: translateX(3px);
+.btn:active {
+    transform: scale(0.97);
 }
 
 .btn-primary {
     background-color: var(--accent-primary);
     color: var(--on-accent);
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-hover);
-    color: var(--on-accent);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
@@ -390,11 +392,21 @@ img {
     color: var(--accent-primary);
 }
 
-.btn-outline:hover {
-    background-color: var(--accent-primary);
-    color: var(--on-accent);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+/* Hover only where a real pointer hovers, so it doesn't stick after a tap */
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover i {
+        transform: translateX(3px);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--accent-hover);
+        color: var(--on-accent);
+    }
+
+    .btn-outline:hover {
+        background-color: var(--accent-primary);
+        color: var(--on-accent);
+    }
 }
 
 .btn-block {
@@ -612,10 +624,12 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     position: absolute;
     bottom: -2px;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 2px;
     background-color: var(--accent-primary);
-    transition: width var(--transition-normal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
 }
 
 .link i {
@@ -624,12 +638,11 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 
 @media (hover: hover) {
     .link:hover::after {
-        width: 100%;
+        transform: scaleX(1);
     }
 
     .link:hover {
         color: var(--accent-hover);
-        transform: translateX(3px);
     }
 
     .link:hover i {
