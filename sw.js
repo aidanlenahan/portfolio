@@ -4,7 +4,7 @@
  * is only a fallback. Bump CACHE_VERSION to drop old caches.
  */
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const PRECACHE_NAME = `portfolio-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `portfolio-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX_ENTRIES = 60;
@@ -14,6 +14,7 @@ const HOME_URL = new URL('./', self.location).href;
 const PRECACHE = [
     './',
     'css/style.css',
+    'css/icons.css',
     'js/main.js',
     'manifest.webmanifest',
     'files/favicon-192x192.png'

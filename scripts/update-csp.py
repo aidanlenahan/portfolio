@@ -27,8 +27,8 @@ HEAD_OPEN = re.compile(r'<head>\r?\n')
 POLICY = [
     "default-src 'self'",
     "script-src 'self' {hashes} https://www.googletagmanager.com",
-    "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com",
-    "font-src 'self' https://cdnjs.cloudflare.com",
+    "style-src 'self' 'unsafe-inline'",
+    "font-src 'self'",
     "img-src 'self' data: https:",
     "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
     "frame-src https://www.googletagmanager.com",
