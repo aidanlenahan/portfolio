@@ -208,8 +208,6 @@ img {
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: box-shadow var(--transition-normal);
-    box-shadow: var(--shadow-sm);
 }
 
 .nav-wrapper {
@@ -1068,6 +1066,47 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 .footer-bottom p {
     color: var(--text-tertiary);
     font-size: 0.875rem;
+}
+
+/* BACK TO TOP (created by js/main.js) */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    color: var(--on-accent);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.95);
+    transition: opacity var(--transition-normal), transform var(--transition-normal), visibility 0s linear 0.2s, background-color var(--transition-fast);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity var(--transition-normal), transform var(--transition-normal), visibility 0s, background-color var(--transition-fast);
+}
+
+.back-to-top.visible:active {
+    transform: scale(0.95);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .back-to-top:hover {
+        background-color: var(--accent-hover);
+    }
 }
 
 /* RESPONSIVE DESIGN */
