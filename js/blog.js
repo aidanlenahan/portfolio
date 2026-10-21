@@ -59,7 +59,7 @@ function highlightText(text, searchTerm) {
     // With a capturing group, split() puts the matches at the odd indexes.
     const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
     return value.split(regex)
-        .map((part, i) => i % 2 ? `<span class="highlight">${escapeHtml(part)}</span>` : escapeHtml(part))
+        .map((part, i) => i % 2 ? `<span class="search-highlight">${escapeHtml(part)}</span>` : escapeHtml(part))
         .join('');
 }
 
