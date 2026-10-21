@@ -1352,25 +1352,25 @@ a:focus-visible {
 }
 
 /* Reduced motion for users who prefer it */
+/* Reduced motion keeps fades and colour changes (they carry state) and drops movement */
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        animation: none !important;
     }
 
-    /* No hover movement */
-    .btn:hover,
     .btn:hover i,
-    .link:hover,
     .link:hover i,
     .back-link:hover,
     .social-link-large:hover,
     .footer-links li a:hover,
-    .theme-toggle:hover {
+    .nav-menu,
+    .back-to-top {
         transform: none !important;
     }
 }
