@@ -185,12 +185,19 @@
     // INTERSECTION OBSERVER FOR ANIMATIONS
     // ==========================================
 
-    // Fade elements in gently as they enter the viewport (skipped with reduced motion)
+    // Rise and fade cards in as they enter the viewport, staggering the ones
+    // that arrive together (skipped with reduced motion; styles in style.css)
     if (!prefersReducedMotion() && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver(function(entries) {
+            let order = 0;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
+                    entry.target.style.transitionDelay = Math.min(order++, 5) * 60 + 'ms';
+                    entry.target.classList.add('revealed');
+                    // Later hover transitions shouldn't inherit the stagger
+                    entry.target.addEventListener('transitionend', function() {
+                        this.style.transitionDelay = '';
+                    }, { once: true });
                     observer.unobserve(entry.target);
                 }
             });
@@ -200,8 +207,7 @@
         });
 
         document.querySelectorAll('.card, .project-card, .timeline-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transition = 'opacity 0.3s ease';
+            el.classList.add('reveal');
             observer.observe(el);
         });
     }
