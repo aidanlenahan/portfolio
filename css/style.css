@@ -18,7 +18,6 @@
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --card-bg: #ffffff;
-    --input-bg: #ffffff;
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -66,8 +65,7 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-    --card-bg: #1f2937;
-    --input-bg: #374151;
+    --card-bg: #212124;
 }
 
 /* RESET & BASE STYLES */
