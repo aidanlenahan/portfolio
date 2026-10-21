@@ -1068,6 +1068,18 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     font-size: 0.875rem;
 }
 
+/* SCROLL REVEAL (classes added by js/main.js, never without JS) */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), border-color var(--transition-normal);
+}
+
 /* BACK TO TOP (created by js/main.js) */
 .back-to-top {
     position: fixed;
