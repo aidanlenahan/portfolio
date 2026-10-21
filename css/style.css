@@ -648,6 +648,19 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     padding: var(--spacing-xl) 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
+    /* Same height on every page, with or without a subtitle */
+    min-height: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-header .container {
+    width: 100%;
+}
+
+.page-header .container > :last-child {
+    margin-bottom: 0;
 }
 
 [data-theme="dark"] .page-header {
@@ -738,6 +751,14 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 /* EXPERIENCE (resume-style list) */
 .resume {
     max-width: 860px;
+}
+
+.resume-download {
+    margin-bottom: var(--spacing-xl);
+}
+
+.resume-download + .resume-heading {
+    margin-top: 0;
 }
 
 .resume-heading {
