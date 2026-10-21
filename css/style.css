@@ -1490,7 +1490,7 @@ a:focus-visible {
     display: none;
 }
 
-.highlight {
+.search-highlight {
     background-color: rgba(245, 158, 11, 0.25);
     padding: 0.1rem 0.2rem;
     border-radius: 2px;
