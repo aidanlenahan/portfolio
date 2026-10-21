@@ -1156,16 +1156,20 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius-lg);
         box-shadow: var(--shadow-lg);
-        transform: translateX(calc(100% + var(--spacing-lg)));
+        /* Grows out of the menu button in the top-right corner */
+        transform-origin: top right;
+        transform: scale(0.96) translateY(-4px);
+        opacity: 0;
         visibility: hidden;
-        transition: transform var(--transition-normal), visibility 0s linear var(--transition-normal);
+        transition: transform 0.15s var(--ease-out), opacity 0.15s var(--ease-out), visibility 0s linear 0.15s;
         z-index: 1001;
     }
 
     .nav-menu.active {
-        transform: translateX(0);
+        transform: none;
+        opacity: 1;
         visibility: visible;
-        transition: transform var(--transition-normal);
+        transition: transform var(--transition-normal), opacity var(--transition-normal), visibility 0s;
     }
 
     .nav-link {
