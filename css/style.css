@@ -464,12 +464,6 @@ img {
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
-    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
-}
-
-.card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--text-tertiary);
 }
 
 .card-icon {
@@ -510,9 +504,10 @@ img {
     transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
-.project-card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--text-tertiary);
+@media (hover: hover) and (pointer: fine) {
+    .project-card[data-open]:hover {
+        border-color: var(--text-tertiary);
+    }
 }
 
 .project-image {
@@ -592,15 +587,6 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     border-radius: var(--border-radius-sm);
     font-size: 0.875rem;
     font-weight: 500;
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-    cursor: default;
-}
-
-@media (hover: hover) {
-    .tag:hover {
-        background-color: var(--accent-primary);
-        color: var(--on-accent);
-    }
 }
 
 .project-links {
