@@ -768,7 +768,7 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 }
 
 /* EXPERIENCE (resume-style list) */
-.resume {
+.container.resume {
     max-width: 860px;
 }
 
