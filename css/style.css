@@ -845,6 +845,11 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     margin-top: var(--spacing-xs);
 }
 
+/* Tech Help services: same rows, a little more room */
+.service-rows .skills-row + .skills-row {
+    margin-top: var(--spacing-sm);
+}
+
 .skills-row dt {
     font-weight: 600;
     color: var(--text-primary);
@@ -1461,6 +1466,7 @@ a:focus-visible {
 }
 
 .lead-text {
+    max-width: 68ch;
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--text-secondary);
