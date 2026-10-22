@@ -223,7 +223,9 @@ img {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
     font-weight: 700;
     color: var(--text-primary);
 }
@@ -1148,6 +1150,22 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
 }
 
 /* RESPONSIVE DESIGN */
+
+/* Narrow desktop: all seven links still show, so the logo drops to its mark */
+@media (min-width: 769px) and (max-width: 1023px) {
+    .logo span {
+        display: none;
+    }
+
+    .nav-menu,
+    .nav-actions {
+        gap: 1.25rem;
+    }
+}
+
+.nav-link {
+    white-space: nowrap;
+}
 
 /* Tablet */
 @media (max-width: 768px) {
