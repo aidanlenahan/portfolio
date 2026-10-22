@@ -1839,20 +1839,6 @@ a:focus-visible {
     transform: scale(1.2);
 }
 
-.project-gallery {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-}
-
-.project-gallery .project-shot {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-}
-
 /* "Read more" on cards whose description was truncated (see build-projects.mjs) */
 .project-more {
     display: inline;
