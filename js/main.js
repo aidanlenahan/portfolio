@@ -206,7 +206,7 @@
             rootMargin: '0px 0px -10% 0px'
         });
 
-        document.querySelectorAll('.card, .project-card, .timeline-item').forEach(el => {
+        document.querySelectorAll('.project-card').forEach(el => {
             el.classList.add('reveal');
             observer.observe(el);
         });

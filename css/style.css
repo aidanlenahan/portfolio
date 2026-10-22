@@ -479,43 +479,6 @@ img {
     flex-wrap: wrap;
 }
 
-/* CARDS */
-.card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-lg);
-}
-
-.card-icon {
-    font-size: 3rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
-}
-
-.card-title {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--text-primary);
-}
-
-.card-subtitle {
-    color: var(--text-secondary);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
-}
-
-.card-date {
-    color: var(--text-tertiary);
-    font-size: 0.875rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.card-text {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
 /* PROJECT CARDS */
 .project-card {
     background-color: var(--card-bg);
@@ -868,23 +831,6 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--spacing-xs);
-}
-
-/* CERTIFICATION LIST */
-.certification-list {
-    list-style: none;
-}
-
-.certification-list li {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm) 0;
-    color: var(--text-secondary);
-}
-
-.certification-list li i {
-    color: var(--text-secondary);
 }
 
 /* CONTACT PAGE */
@@ -1402,10 +1348,6 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
         white-space: normal;
     }
     
-    .card {
-        padding: var(--spacing-md);
-    }
-
     .resume-entry-header {
         flex-direction: column;
         gap: 0;
@@ -1459,37 +1401,11 @@ a:focus-visible {
 }
 
 /* TECH HELP PAGE SPECIFIC STYLES */
-.tech-help-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 .lead-text {
     max-width: 68ch;
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--text-secondary);
-}
-
-.service-list {
-    list-style: none;
-    padding: 0;
-    margin-top: var(--spacing-md);
-}
-
-.service-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-xs) 0;
-    color: var(--text-secondary);
-}
-
-.service-list li i {
-    color: var(--text-secondary);
-    margin-top: 0.25rem;
-    flex-shrink: 0;
 }
 
 .cta-buttons {
