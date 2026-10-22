@@ -4,7 +4,7 @@
  * is only a fallback. Bump CACHE_VERSION to drop old caches.
  */
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const PRECACHE_NAME = `portfolio-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `portfolio-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX_ENTRIES = 60;
@@ -15,6 +15,7 @@ const PRECACHE = [
     './',
     'css/style.css',
     'css/icons.css',
+    'files/fonts/ibm-plex-sans-latin-wght.woff2',
     'js/main.js',
     'manifest.webmanifest',
     'files/favicon-192x192.png'
