@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -40,7 +40,8 @@
         })();
     </script>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="preload" href="../files/fonts/ibm-plex-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -53,7 +54,7 @@
             <div class="nav-wrapper">
                 <a href="../" class="logo" aria-label="Aidan Lenahan, home">
                     <img src="../files/favicon-64x64.png" alt="" class="logo-icon" width="64" height="64">
-                    <span>AL</span>
+                    <span>Aidan Lenahan</span>
                 </a>
                 
                 <div class="nav-actions">
@@ -71,7 +72,7 @@
                         <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
 
-                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>

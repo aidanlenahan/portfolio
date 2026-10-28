@@ -156,13 +156,6 @@
 
     const navbar = document.getElementById('navbar');
 
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            // Add shadow when scrolled
-            navbar.style.boxShadow = window.pageYOffset > 10 ? 'var(--shadow-md)' : 'var(--shadow-sm)';
-        }, { passive: true });
-    }
-
     // ==========================================
     // SMOOTH SCROLL FOR ANCHOR LINKS
     // ==========================================
@@ -192,12 +185,19 @@
     // INTERSECTION OBSERVER FOR ANIMATIONS
     // ==========================================
 
-    // Fade elements in gently as they enter the viewport (skipped with reduced motion)
+    // Rise and fade cards in as they enter the viewport, staggering the ones
+    // that arrive together (skipped with reduced motion; styles in style.css)
     if (!prefersReducedMotion() && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver(function(entries) {
+            let order = 0;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
+                    entry.target.style.transitionDelay = Math.min(order++, 5) * 60 + 'ms';
+                    entry.target.classList.add('revealed');
+                    // Later hover transitions shouldn't inherit the stagger
+                    entry.target.addEventListener('transitionend', function() {
+                        this.style.transitionDelay = '';
+                    }, { once: true });
                     observer.unobserve(entry.target);
                 }
             });
@@ -206,9 +206,8 @@
             rootMargin: '0px 0px -10% 0px'
         });
 
-        document.querySelectorAll('.card, .project-card, .timeline-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transition = 'opacity 0.3s ease';
+        document.querySelectorAll('.project-card').forEach(el => {
+            el.classList.add('reveal');
             observer.observe(el);
         });
     }
@@ -224,26 +223,6 @@
         button.className = 'back-to-top';
         button.setAttribute('aria-label', 'Back to top');
 
-        Object.assign(button.style, {
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            backgroundColor: 'var(--accent-primary)',
-            color: 'var(--on-accent)',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'none',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1.25rem',
-            boxShadow: 'var(--shadow-lg)',
-            zIndex: '1000',
-            transition: prefersReducedMotion() ? 'none' : 'all 0.3s ease'
-        });
-
         button.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
@@ -251,26 +230,18 @@
             });
         });
 
-        // Lift on hover only where hover exists, so it doesn't stick after a tap,
-        // and not at all when the user prefers reduced motion
-        if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
-            button.addEventListener('mouseenter', function() {
-                if (!prefersReducedMotion()) {
-                    this.style.transform = 'translateY(-5px)';
-                }
-            });
-
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        }
-
         document.body.appendChild(button);
 
-        // Show/hide button based on scroll position
-        window.addEventListener('scroll', function() {
-            button.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
-        }, { passive: true });
+        // Show/hide button based on scroll position (styles in style.css)
+        let visible = false;
+        function update() {
+            const show = window.pageYOffset > 300;
+            if (show === visible) return;
+            visible = show;
+            button.classList.toggle('visible', show);
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
     }
 
     createBackToTopButton();
