@@ -1731,10 +1731,13 @@ a:focus-visible {
 .project-image.has-media {
     padding: 0;
     overflow: hidden;
+    /* Matches the 2:1 screenshots so they fill the frame at any card width */
+    height: auto;
+    aspect-ratio: 2 / 1;
 }
 
-/* Frame for one screenshot: the image always fills the height, and any
-   space beside it shows a blurred copy of the same image. */
+/* Frame for one screenshot: the whole image always shows, and any space
+   around it shows a blurred copy of the same image. */
 .project-shot {
     position: relative;
     width: 100%;
@@ -1746,9 +1749,9 @@ a:focus-visible {
 
 .project-shot img {
     position: relative;
+    width: 100%;
     height: 100%;
-    width: auto;
-    max-width: none;
+    object-fit: contain;
     display: block;
 }
 
