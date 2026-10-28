@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -40,7 +40,8 @@
         })();
     </script>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="preload" href="files/fonts/ibm-plex-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -53,7 +54,7 @@
             <div class="nav-wrapper">
                 <a href="./" class="logo" aria-label="Aidan Lenahan, home">
                     <img src="files/favicon-64x64.png" alt="" class="logo-icon" width="64" height="64">
-                    <span>AL</span>
+                    <span>Aidan Lenahan</span>
                 </a>
                 
                 <div class="nav-actions">
@@ -71,7 +72,7 @@
                         <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
 
-                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -100,66 +101,16 @@
                 <!-- Generated from aidanlenahan/projectroot projects.json — edit there, not here. -->
                 <div class="project-card featured-project" data-project="gem" data-open="modal">
                     <div class="project-image has-media">
-                        <div class="project-gallery">
                         <div class="project-shot">
                             <img class="project-shot-backdrop" src="projects-data/img/gem/landing-hero.webp" alt="" aria-hidden="true" loading="lazy">
                             <img src="projects-data/img/gem/landing-hero.webp" alt="GEM landing page" loading="lazy">
                         </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/landing-features.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/landing-features.webp" alt="GEM feature overview" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/groups-dashboard.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/groups-dashboard.webp" alt="GEM groups dashboard" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/group-events-view.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/group-events-view.webp" alt="GEM group events list" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/calendar-feed-modal.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/calendar-feed-modal.webp" alt="GEM calendar feed export" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/group-stats.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/group-stats.webp" alt="GEM group stats" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/channel-chat.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/channel-chat.webp" alt="GEM real-time channel chat" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/1.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/1.webp" alt="GEM event page with RSVPs" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/2.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/2.webp" alt="GEM group poll" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/3.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/3.webp" alt="GEM pinned channel messages" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/4.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/4.webp" alt="GEM group members list" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/5.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/5.webp" alt="GEM create event form" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gem/6.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gem/6.webp" alt="GEM demo sign-out screen" loading="lazy">
-                        </div>
-                    </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">GEM (Group Event Manager)</h3>
                         <p class="project-description">
                             GEM (Group Event Manager) is an installable progressive web app that gets friend group plans out of the group chat and into reality. Private groups get events with RSVPs, tags, and…
-                            <button type="button" class="project-more" data-project="gem" aria-haspopup="dialog">Read more<span class="sr-only"> about GEM (Group Event Manager)</span></button>
+                            <button type="button" class="project-more" data-project="gem" aria-haspopup="dialog">Details &amp; 13 screenshots<span class="sr-only"> for GEM (Group Event Manager)</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">TypeScript</span>
@@ -181,32 +132,18 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-project="dogs" data-open="link">
+                <div class="project-card" data-project="dogs" data-open="modal">
                     <div class="project-image has-media">
-                        <div class="project-gallery">
                         <div class="project-shot">
                             <img class="project-shot-backdrop" src="projects-data/img/dogs/hero-stats-about.webp" alt="" aria-hidden="true" loading="lazy">
                             <img src="projects-data/img/dogs/hero-stats-about.webp" alt="Dog walking site homepage" loading="lazy">
                         </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/dogs/happy-dogs-gallery.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/dogs/happy-dogs-gallery.webp" alt="Dog walking site photo gallery" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/dogs/client-reviews.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/dogs/client-reviews.webp" alt="Dog walking site client reviews" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/dogs/thumb.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/dogs/thumb.webp" alt="Aidan Lenahan Dog Services homepage" loading="lazy">
-                        </div>
-                    </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Professional Dog Walking Services</h3>
                         <p class="project-description">
                             A site for a professional dog walking service with online booking, service packages, testimonials, and service area info.
-                            <button type="button" class="project-more project-more-mobile" data-project="dogs" aria-haspopup="dialog">Details<span class="sr-only"> about Professional Dog Walking Services</span></button>
+                            <button type="button" class="project-more" data-project="dogs" aria-haspopup="dialog">See 4 screenshots<span class="sr-only"> for Professional Dog Walking Services</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
@@ -224,46 +161,16 @@
 
                 <div class="project-card" data-project="pharmreach" data-open="modal">
                     <div class="project-image has-media">
-                        <div class="project-gallery">
                         <div class="project-shot">
                             <img class="project-shot-backdrop" src="projects-data/img/pharmreach/hero.webp" alt="" aria-hidden="true" loading="lazy">
                             <img src="projects-data/img/pharmreach/hero.webp" alt="PharmReach landing page with nearby pharmacy prices" loading="lazy">
                         </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/travel-modes.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/travel-modes.webp" alt="PharmReach travel mode options" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/categories-faq.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/categories-faq.webp" alt="PharmReach product categories and FAQ" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/travel-setup-wizard.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/travel-setup-wizard.webp" alt="PharmReach travel preferences setup" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/find-medicine-search.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/find-medicine-search.webp" alt="PharmReach medicine search" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/results-table.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/results-table.webp" alt="PharmReach results comparing price and travel time" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/pharmacy-details-panel.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/pharmacy-details-panel.webp" alt="PharmReach pharmacy details panel" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/pharmreach/thumb.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/pharmreach/thumb.webp" alt="PharmReach homepage" loading="lazy">
-                        </div>
-                    </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">PharmReach</h3>
                         <p class="project-description">
                             Built in 24 hours at HackRU 2026. PharmReach helps people in pharmacy deserts find medicine: search for a product and see nearby pharmacies that stock it, with price, location, and…
-                            <button type="button" class="project-more" data-project="pharmreach" aria-haspopup="dialog">Read more<span class="sr-only"> about PharmReach</span></button>
+                            <button type="button" class="project-more" data-project="pharmreach" aria-haspopup="dialog">Details &amp; 8 screenshots<span class="sr-only"> for PharmReach</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">React</span>
@@ -292,7 +199,7 @@
                         <h3 class="project-title">BucIT Tech Support Platform</h3>
                         <p class="project-description">
                             Built and deployed a full-stack tech support platform for BucIT, the student Chromebook repair team at Red Bank Regional High School, replacing a paper ticket system where…
-                            <button type="button" class="project-more" data-project="bucit" aria-haspopup="dialog">Read more<span class="sr-only"> about BucIT Tech Support Platform</span></button>
+                            <button type="button" class="project-more" data-project="bucit" aria-haspopup="dialog">Full description<span class="sr-only"> for BucIT Tech Support Platform</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">PHP</span>
@@ -319,7 +226,7 @@
                         <h3 class="project-title">secdiagdrop Workstation Diagnostics</h3>
                         <p class="project-description">
                             Built while volunteering as IT support for a nonprofit whose computers are shared by special needs adults, to replace doing the same cleanup by hand on every machine. A technician…
-                            <button type="button" class="project-more" data-project="secdiagdrop" aria-haspopup="dialog">Read more<span class="sr-only"> about secdiagdrop Workstation Diagnostics</span></button>
+                            <button type="button" class="project-more" data-project="secdiagdrop" aria-haspopup="dialog">Full description<span class="sr-only"> for secdiagdrop Workstation Diagnostics</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">PowerShell</span>
@@ -340,26 +247,16 @@
 
                 <div class="project-card" data-project="emmy-strong" data-open="modal">
                     <div class="project-image has-media">
-                        <div class="project-gallery">
                         <div class="project-shot">
                             <img class="project-shot-backdrop" src="projects-data/img/emmy-strong/hero.webp" alt="" aria-hidden="true" loading="lazy">
                             <img src="projects-data/img/emmy-strong/hero.webp" alt="Emmy Strong Foundation homepage" loading="lazy">
                         </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/emmy-strong/donate.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/emmy-strong/donate.webp" alt="Emmy Strong Foundation donation page" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/emmy-strong/thumb.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/emmy-strong/thumb.webp" alt="EmmyStrong Foundation homepage" loading="lazy">
-                        </div>
-                    </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Emmy Strong Foundation Website</h3>
                         <p class="project-description">
                             Built emmy-strong.org to support the foundation&#39;s mission: ensuring that everyone in need of a bone marrow transplant can find a matching donor. The website serves to raise…
-                            <button type="button" class="project-more" data-project="emmy-strong" aria-haspopup="dialog">Read more<span class="sr-only"> about Emmy Strong Foundation Website</span></button>
+                            <button type="button" class="project-more" data-project="emmy-strong" aria-haspopup="dialog">Details &amp; 3 screenshots<span class="sr-only"> for Emmy Strong Foundation Website</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
@@ -379,30 +276,16 @@
 
                 <div class="project-card" data-project="gymnastics" data-open="modal">
                     <div class="project-image has-media">
-                        <div class="project-gallery">
                         <div class="project-shot">
                             <img class="project-shot-backdrop" src="projects-data/img/gymnastics/hero.webp" alt="" aria-hidden="true" loading="lazy">
                             <img src="projects-data/img/gymnastics/hero.webp" alt="Gymnastics Excellence Fund homepage" loading="lazy">
                         </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gymnastics/team-meet-the-coach.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gymnastics/team-meet-the-coach.webp" alt="Gymnastics Excellence Fund team page" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gymnastics/about.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gymnastics/about.webp" alt="Gymnastics Excellence Fund about page" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/gymnastics/thumb.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/gymnastics/thumb.webp" alt="Gymnastics Excellence Fund homepage" loading="lazy">
-                        </div>
-                    </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Gymnastics Excellence Fund Website</h3>
                         <p class="project-description">
-                            Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School&#39;s gymnastics team. Built to streamline…
-                            <button type="button" class="project-more" data-project="gymnastics" aria-haspopup="dialog">Read more<span class="sr-only"> about Gymnastics Excellence Fund Website</span></button>
+                            Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School&#39;s gymnastics team. Built to take…
+                            <button type="button" class="project-more" data-project="gymnastics" aria-haspopup="dialog">Details &amp; 4 screenshots<span class="sr-only"> for Gymnastics Excellence Fund Website</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
@@ -419,15 +302,15 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-project="homelab" data-open="link">
+                <div class="project-card" data-project="homelab" data-open="modal">
                     <div class="project-image">
                         <i class="fas fa-server fa-3x" aria-hidden="true"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Personal Homelab Infrastructure</h3>
                         <p class="project-description">
-                            VMs and LXC containers on Proxmox, a NAS, smart home controllers, security services, and monitoring. A sandbox for learning enterprise-grade tooling hands-on.
-                            <button type="button" class="project-more project-more-mobile" data-project="homelab" aria-haspopup="dialog">Details<span class="sr-only"> about Personal Homelab Infrastructure</span></button>
+                            VMs and LXC containers on Proxmox, a NAS, smart home controllers, security services, and monitoring. A sandbox for learning, hands-on, the same tools IT teams run in production.
+                            <button type="button" class="project-more" data-project="homelab" aria-haspopup="dialog">See 3 screenshots<span class="sr-only"> for Personal Homelab Infrastructure</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">Proxmox</span>
@@ -447,34 +330,16 @@
 
                 <div class="project-card" data-project="rbrctf" data-open="modal">
                     <div class="project-image has-media">
-                        <div class="project-gallery">
                         <div class="project-shot">
                             <img class="project-shot-backdrop" src="projects-data/img/rbrctf/hero.webp" alt="" aria-hidden="true" loading="lazy">
                             <img src="projects-data/img/rbrctf/hero.webp" alt="RBR CTF homepage" loading="lazy">
                         </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/rbrctf/challenges-board.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/rbrctf/challenges-board.webp" alt="RBR CTF challenge board" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/rbrctf/challenge-modal.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/rbrctf/challenge-modal.webp" alt="RBR CTF challenge details" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/rbrctf/scoreboard.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/rbrctf/scoreboard.webp" alt="RBR CTF scoreboard" loading="lazy">
-                        </div>
-                        <div class="project-shot">
-                            <img class="project-shot-backdrop" src="projects-data/img/rbrctf/thumb.webp" alt="" aria-hidden="true" loading="lazy">
-                            <img src="projects-data/img/rbrctf/thumb.webp" alt="RBR CTF homepage" loading="lazy">
-                        </div>
-                    </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">High School CTFd Platform</h3>
                         <p class="project-description">
                             Created and administered a CTFd instance at Red Bank Regional High School, developing dozens of capture-the-flag cybersecurity challenges for peer participation. Challenges cover…
-                            <button type="button" class="project-more" data-project="rbrctf" aria-haspopup="dialog">Read more<span class="sr-only"> about High School CTFd Platform</span></button>
+                            <button type="button" class="project-more" data-project="rbrctf" aria-haspopup="dialog">Details &amp; 5 screenshots<span class="sr-only"> for High School CTFd Platform</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">CTFd</span>
@@ -501,7 +366,7 @@
                         <h3 class="project-title">Automated Pantry Lighting System</h3>
                         <p class="project-description">
                             Designed and assembled a hardware-based automation system that powers LED strips when a pantry door opens. Used a 12V relay module triggered by a magnetic reed switch, implementing…
-                            <button type="button" class="project-more" data-project="pantry-lighting" aria-haspopup="dialog">Read more<span class="sr-only"> about Automated Pantry Lighting System</span></button>
+                            <button type="button" class="project-more" data-project="pantry-lighting" aria-haspopup="dialog">Full description<span class="sr-only"> for Automated Pantry Lighting System</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">Electrical Engineering</span>
@@ -771,7 +636,7 @@
   },
   "gymnastics": {
     "title": "Gymnastics Excellence Fund Website",
-    "description": "Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School's gymnastics team. Built to streamline donations and fundraisers, improve communication, and showcase team achievements.",
+    "description": "Designed and developed a responsive website for The Gymnastics Excellence Fund, a nonprofit that fully funds Red Bank Regional High School's gymnastics team. Built to take donations, promote fundraisers, keep families and supporters informed, and show off the team's achievements.",
     "images": [
       {
         "src": "projects-data/img/gymnastics/hero.webp",
@@ -807,7 +672,7 @@
   },
   "homelab": {
     "title": "Personal Homelab Infrastructure",
-    "description": "VMs and LXC containers on Proxmox, a NAS, smart home controllers, security services, and monitoring. A sandbox for learning enterprise-grade tooling hands-on.",
+    "description": "VMs and LXC containers on Proxmox, a NAS, smart home controllers, security services, and monitoring. A sandbox for learning, hands-on, the same tools IT teams run in production.",
     "images": [
       {
         "src": "projects-data/img/homelab/1.svg",
@@ -920,8 +785,8 @@
             <div class="cta-box">
                 <h2>Interested in Working Together?</h2>
                 <p>I'm always open to discussing new projects and creative ideas.</p>
-                <a href="contact" class="btn btn-primary">
-                    <i class="fas fa-envelope" aria-hidden="true"></i> Contact Me
+                <a href="mailto:aidan@aidanlenahan.com?subject=Project%20idea" class="btn btn-primary">
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Email me about a project
                 </a>
             </div>
         </div>

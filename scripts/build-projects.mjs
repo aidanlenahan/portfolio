@@ -7,7 +7,7 @@
 // markers in index.html, ordered by n, as the home page's Featured Projects.
 //
 // Descriptions longer than TRUNCATE_AT characters are cut short on the card
-// with a "Read more" button that opens a modal ("portfolio": { "modal": true |
+// with a button that opens a modal ("portfolio": { "modal": true |
 // false } overrides that). The full text, plus the same images, tags and links
 // projectroot's modal uses, goes into a JSON block that js/projects.js reads
 // to fill the modal.
@@ -89,20 +89,24 @@ function toPortfolio(p) {
         from === 'modal' ? p.modal?.description :
         pf.description;
     const title = pf.title || p.title;
+    // The modal shows projectroot's modal images, falling back to the card's.
+    const modalImages = normalizeImages(p.modal?.images || pf.images, title);
     return {
         id: p.id,
         title,
         description,
         images: normalizeImages(pf.images || p.modal?.images, title),
-        // The modal shows projectroot's modal images, falling back to the card's.
-        modalImages: normalizeImages(p.modal?.images || pf.images, title),
+        modalImages,
         tags: pf.tags || p.tags || [],
         icon: pf.icon || 'fas fa-code',
         featured: !!pf.featured,
         home: typeof pf.home === 'number' ? pf.home : null,
         // portfolio.modal: true/false forces the desktop modal on or off;
-        // omitted, it's on when the description is longer than TRUNCATE_AT.
-        modal: typeof pf.modal === 'boolean' ? pf.modal : String(description ?? '').trim().length > TRUNCATE_AT,
+        // omitted, it's on when the description is longer than TRUNCATE_AT or
+        // there are screenshots beyond the one the card shows.
+        modal: typeof pf.modal === 'boolean' ? pf.modal
+            : String(description ?? '').trim().length > TRUNCATE_AT
+              || modalImages.length > 1,
         // portfolio.links ([{ href, label, icon }]) replaces the single p.link button.
         links: (pf.links || (p.link ? [{ href: p.link, label: pf.linkLabel, icon: pf.linkIcon }] : []))
             .map(l => ({ ...l, href: safeHref(l.href, title), icon: linkIcon(l) })),
@@ -113,18 +117,23 @@ function renderMedia(c) {
     if (c.images.length === 0) {
         return `<i class="${esc(c.icon)} fa-3x" aria-hidden="true"></i>`;
     }
-    // Each image sits in a frame over a blurred copy of itself, so any space
-    // left beside it takes on the image's own edge colors (see .project-shot).
-    const imgs = c.images
-        .map(img => `<div class="project-shot">
+    // The card shows the first image; the rest are in the modal's carousel.
+    // It sits in a frame over a blurred copy of itself, so any space left
+    // beside it takes on the image's own edge colors (see .project-shot).
+    const img = c.images[0];
+    return `<div class="project-shot">
                             <img class="project-shot-backdrop" src="${esc(img.src)}" alt="" aria-hidden="true" loading="lazy">
                             <img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy">
-                        </div>`)
-        .join('\n                        ');
-    // Multiple images become a swipeable strip (see .project-gallery in style.css).
-    return c.images.length === 1
-        ? imgs
-        : `<div class="project-gallery">\n                        ${imgs}\n                    </div>`;
+                        </div>`;
+}
+
+// Names what the modal adds: the rest of the description, more screenshots, or both.
+function moreLabel(c) {
+    const shots = c.modalImages.length;
+    const screenshots = `${shots} screenshot${shots === 1 ? '' : 's'}`;
+    if (c.short && shots > 1) return `Details &amp; ${screenshots}`;
+    if (shots > 1) return `See ${screenshots}`;
+    return 'Full description';
 }
 
 function linkIcon(l) {
@@ -158,7 +167,7 @@ function renderCard(c) {
     // mobile-only "Details" button as the keyboard/screen reader target.
     const open = c.modal ? 'modal' : c.links.length ? 'link' : '';
     const more = c.modal
-        ? `<button type="button" class="project-more" data-project="${esc(c.id)}" aria-haspopup="dialog">Read more<span class="sr-only"> about ${esc(c.title)}</span></button>`
+        ? `<button type="button" class="project-more" data-project="${esc(c.id)}" aria-haspopup="dialog">${moreLabel(c)}<span class="sr-only"> for ${esc(c.title)}</span></button>`
         : `<button type="button" class="project-more project-more-mobile" data-project="${esc(c.id)}" aria-haspopup="dialog">Details<span class="sr-only"> about ${esc(c.title)}</span></button>`;
     return `
                 <div class="project-card${c.featured ? ' featured-project' : ''}" data-project="${esc(c.id)}"${open ? ` data-open="${open}"` : ''}>
