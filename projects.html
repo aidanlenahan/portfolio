@@ -192,14 +192,17 @@
                 </div>
 
                 <div class="project-card" data-project="bucit" data-open="modal">
-                    <div class="project-image">
-                        <i class="fas fa-ticket fa-3x" aria-hidden="true"></i>
+                    <div class="project-image has-media">
+                        <div class="project-shot">
+                            <img class="project-shot-backdrop" src="projects-data/img/bucit/ticket-dashboard.webp" alt="" aria-hidden="true" loading="lazy">
+                            <img src="projects-data/img/bucit/ticket-dashboard.webp" alt="BucIT technician ticket management dashboard" loading="lazy">
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">BucIT Tech Support Platform</h3>
                         <p class="project-description">
                             Built and deployed a full-stack tech support platform for BucIT, the student Chromebook repair team at Red Bank Regional High School, replacing a paper ticket system where…
-                            <button type="button" class="project-more" data-project="bucit" aria-haspopup="dialog">Full description<span class="sr-only"> for BucIT Tech Support Platform</span></button>
+                            <button type="button" class="project-more" data-project="bucit" aria-haspopup="dialog">Details &amp; 5 screenshots<span class="sr-only"> for BucIT Tech Support Platform</span></button>
                         </p>
                         <div class="project-tags">
                             <span class="tag">PHP</span>
@@ -558,7 +561,28 @@
   "bucit": {
     "title": "BucIT Tech Support Platform",
     "description": "Built and deployed a full-stack tech support platform for BucIT, the student Chromebook repair team at Red Bank Regional High School, replacing a paper ticket system where handwritten forms were wedged inside laptop lids. Students submit and track tickets through self-service pages and a kiosk, with a help article knowledge base for common fixes. Technicians get a dashboard to assign, update, and close tickets, plus parts inventory tracking, and students are emailed automatically when their device is ready.",
-    "images": [],
+    "images": [
+      {
+        "src": "projects-data/img/bucit/ticket-dashboard.webp",
+        "alt": "BucIT technician ticket management dashboard"
+      },
+      {
+        "src": "projects-data/img/bucit/home.webp",
+        "alt": "BucIT student support homepage"
+      },
+      {
+        "src": "projects-data/img/bucit/kiosk.webp",
+        "alt": "BucIT kiosk student ID scan screen"
+      },
+      {
+        "src": "projects-data/img/bucit/inventory.webp",
+        "alt": "BucIT parts inventory management"
+      },
+      {
+        "src": "projects-data/img/bucit/help-articles.webp",
+        "alt": "BucIT help articles knowledge base"
+      }
+    ],
     "tags": [
       "PHP",
       "MySQL",
