@@ -889,49 +889,6 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
     color: var(--text-secondary);
 }
 
-/* Contact Social */
-.contact-social {
-    margin-top: var(--spacing-xl);
-}
-
-.contact-social h3 {
-    margin-bottom: var(--spacing-md);
-}
-
-.social-links-large {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-}
-
-.social-link-large {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    flex: 0 0 auto;
-    white-space: nowrap;
-    padding: var(--spacing-md);
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    color: var(--text-primary);
-    font-weight: 500;
-    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-}
-
-@media (hover: hover) {
-    .social-link-large:hover {
-        background-color: var(--text-primary);
-        color: var(--bg-primary);
-        border-color: var(--text-primary);
-        transform: translateY(-2px);
-    }
-}
-
-.social-link-large i {
-    font-size: 1.25rem;
-}
-
 /* CTA BOX */
 .cta-box {
     background-color: var(--card-bg);
@@ -1261,12 +1218,6 @@ html[data-theme='dark'] .themed-preview-image .preview-light {
         height: 200px;
     }
     
-    /* Contact */
-    .social-link-large {
-        flex: 1 1 100%;
-        white-space: normal;
-    }
-    
     /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
@@ -1392,7 +1343,6 @@ a:focus-visible {
     .btn:hover i,
     .link:hover i,
     .back-link:hover,
-    .social-link-large:hover,
     .footer-links li a:hover,
     .nav-menu,
     .back-to-top {
