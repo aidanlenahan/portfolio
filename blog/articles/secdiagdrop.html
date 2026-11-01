@@ -135,11 +135,19 @@
 
                     <h2>Inspiration</h2>
 
-                    <p>I decided to make secdiagdrop after I had been volunteering as an IT technician that would come in periodically for this one nonprofit. Since they have special needs adults consistently interacting with their computers, I would often have to delete malicious files or blocklist websites that they shouldn't be on. This tool made it insanely easier to go from computer to computer, as before I was doing the exact same thing on all of them: file and program deletion, Windows Defender scans, sensitive password scanning, check for updates, etc. secdiagdrop made it really easy, as I could do everything I needed to do in the script, and then that would generate a report file that would automatically go to my Drive, which I could share with the program coordinator. This allowed them to see anything I was doing, and I could also outline anything of concern (i.e. finding someone's banking password).</p>
+                    <p>For around 2 years, I volunteered as a network/computer maintenance person for this local nonprofit organization that helps educate and provide physical and occupational therapy to special-needs young adults and adults. In this organization, they have two locations, both with a few computer labs ranging from 15-25 computers in each lab. These computers were used for lots of things, such as during class time as an educational tool, or simply available for entertainment purposes. At the beginning of my time there, students could browse the whole internet, more or less, which exposed the computers and the network to viruses and other vulnerabilities, as students often visited illegitimate or inappropriate websites.</p>
+
+                    <p>My primary job was to visit between 1-4 times per month to perform regular maintenance on the computers, including running virus checks, updating software, cleaning up files, uninstalling unauthorized software, blocklisting websites they shouldn't be on, deleting sensitive saved passwords, and many other things. Since there was often a lot fixed on a computer, I started writing reports for each computer for what I had fixed, what was wrong with it, and if any further action needed to be taken. As I would work on upwards of 25 computers in a day, between writing reports and going from computer to computer, it was extremely time-consuming. As a volunteer, I'd be spending sometimes 4 hours there, while still having impending homework and studying to do for AP and honors classes.</p>
+
+                    <p>So I built secdiagdrop, combining security and diagnostics easily. I wanted a way to streamline this process. Mostly everything I was doing from computer to computer was the same, making it easily repeatable with a script. The script I wanted to make would check software, unsafe downloads, inappropriate websites, viruses, and lots more, and not only suggest remediation or resolving of those issues, but also including those issues in a report. That was the second piece of the puzzle: I wanted the script to be easily and securely deployable, and once finished with execution, wouldn't stay on the computer, so only existing in memory. I also wanted the diagnostics collected to be easily uploadable to a sharable platform, like Google Drive. I accomplished this with a Google Apps Script. The report would go to my Drive, which I could share with the program coordinator. This allowed them to see anything I was doing, and I could also outline anything of concern (i.e. finding someone's banking password).</p>
 
                     <hr>
 
-                    <h2>How it works, abbreviated</h2>
+                    <h2>How it works</h2>
+
+                    <p>Essentially, what runs the PowerShell script is a simple <code>.cmd</code> file, which I have on a thumbdrive. Once I plug in the thumbdrive and click the <code>.cmd</code> file, I can immediately unplug the thumbdrive and move onto the next computer, as that <code>.cmd</code> file loads the PowerShell script (on the GitHub repo) into memory. Once that PowerShell script is loaded into memory, it prompts the user for a password. That password is set and hashed on the Google Apps Script, and isn't checked until the end of the PowerShell script, which deters brute-force. If the password is correct, once the script has completed with the suggested actions and documenting diagnostic changes, a 2FA email is sent to my address, prompting me to accept or deny the upload of the diagnostic report to a specific folder on my Google Drive. If the password is incorrect, it offers to save the diagnostics to a local <code>.txt</code> file.</p>
+
+                    <h3>Abbreviated</h3>
 
                     <ol>
                         <li>You run one launcher file from a USB stick.</li>
@@ -157,6 +165,12 @@
                     </p>
 
                     <p><a href="https://github.com/aidanlenahan/secdiagdrop/blob/main/src/examplediag.md" target="_blank" rel="noopener noreferrer">View an example diagnostic report<span class="sr-only"> (opens in new tab)</span></a>.</p>
+
+                    <hr>
+
+                    <h2>Results</h2>
+
+                    <p>This workflow checked all of my boxes&mdash;no script lives locally on the computer, script is easily deployable between computers, increases efficiency, and uploads very easily and securely. And it helped a lot! This reduced my time spent from upwards of 4 hours per day to about 1. Before I made secdiagdrop, I did some research to see if any software like this existed, that is, open-source, free, easy to use, customizable, and secure. To my surprise, nothing like this really exists. Hopefully this will be of use to someone, someday, but if not, it definitely made my life easier.</p>
 
                     <hr>
 
