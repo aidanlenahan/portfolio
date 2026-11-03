@@ -44,6 +44,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://aidanlenahan.com/blog/articles/cyberpatriot</loc>
+        <lastmod>2026-11-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://aidanlenahan.com/techhelp</loc>
         <lastmod>2026-10-16</lastmod>
         <changefreq>monthly</changefreq>
