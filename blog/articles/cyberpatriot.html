@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-5Vc6a694kKHFe/Mm/4sZKgek8i5M7y+AVm4S7XNtHmM=' 'sha256-NVYFfkEV43yBRTEaxOaji1RpbcV3jURaigvzw8Rqw/A=' 'sha256-XzCApAjrZzlIFVq8EnKFMaD5JIFeDXww2tpYwdCEUj4=' 'sha256-Y6bL0lSLIwlSwXyfu4AsA+cbpuxM/z1p9K6Oz2TpnTQ=' 'sha256-hY45TDAhaMge51k+kbK34DJOKEBUK9VGMN1VTH21boo=' 'sha256-n0EGgWJ/KZEHNEqhYdimivdl9jmSu7B4KVS4uZcHDwY=' 'sha256-rSIOfwkJ3cURj4Uhdj+/sVkMQu9tlPHLHxMKPudIe2U=' 'sha256-zNR5IjY2IotTx7qLetTbjUOWg53fyJyxIZsMomMHFTM=' 'sha256-zirU2LT3A/ZXnIjBg7bWAARCxaWO6d+cYG92x7pHbLY=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-K4JBFNH3'+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K4JBFNH3');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My take on CyberPatriot - what I learned competing since sixth grade, the resources I gathered, and the ones I made myself.">
+    <title>My take on Cyberpatriot | Aidan Lenahan</title>
+    <link rel="canonical" href="https://aidanlenahan.com/blog/articles/cyberpatriot">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Aidan Lenahan">
+    <meta property="og:title" content="My take on Cyberpatriot | Aidan Lenahan">
+    <meta property="og:description" content="My take on CyberPatriot - what I learned competing since sixth grade, the resources I gathered, and the ones I made myself.">
+    <meta property="og:url" content="https://aidanlenahan.com/blog/articles/cyberpatriot">
+    <meta property="og:image" content="https://aidanlenahan.com/files/headshot-300.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta property="article:published_time" content="2024-10-23">
+    <link rel="icon" href="../../favicon.ico" sizes="any">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../../favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="manifest" href="../../manifest.webmanifest">
+    <meta name="theme-color" content="#18181b">
+    <script>
+        (function () {
+            var t;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', t === 'dark' ? '#18181b' : '#ffffff');
+        })();
+    </script>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/icons.css">
+    <link rel="preload" href="../../files/fonts/ibm-plex-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        /* Page-specific styles only; shared article styles live in css/style.css */
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4JBFNH3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../../" class="logo" aria-label="Aidan Lenahan, home">
+                    <img src="../../files/favicon-64x64.png" alt="" class="logo-icon" width="64" height="64">
+                    <span>Aidan Lenahan</span>
+                </a>
+                
+                <div class="nav-actions">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../" class="nav-link">Home</a></li>
+                    <li><a href="../../about" class="nav-link">About</a></li>
+                    <li><a href="../../experience" class="nav-link">Experience</a></li>
+                    <li><a href="../../projects" class="nav-link">Projects</a></li>
+                    <li><a href="../" class="nav-link active" aria-current="page">Blog</a></li>
+                    <li><a href="../../techhelp" class="nav-link">Tech Help</a></li>
+                    <li><a href="../../contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <p class="page-title">Blog</p>
+            <p class="page-subtitle">Technical guides and insights</p>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-nav">
+                <a href="../" class="back-link">← Back</a>
+            </div>
+        
+        <article class="article-content">
+            <div class="article-header">
+                <h1>My take on Cyberpatriot</h1>
+                <div class="article-meta">
+                    <span>October 23, 2024</span>
+                    <span>Aidan Lenahan</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>My intrest for technology mostly sparked from one thing--Cyberpatiot. I have been doing Cyberpatriot since sixth grade. I am now a junior at Red Bank Regional and a member of the IT adacemy. Throughout the years, I have learned an abundance of information from peers, mentors, coaches, online videos, blogs like this one, and so on.</p>
+                <p>In this blog post, I will outline what I have learned, the recources I have gathered, and the recources I myself have made.</p>
+
+                <h2>Middle School</h2>
+                <p>Starting in sixth grade, I have participated in Cyberpatriot. Of course, when first starting, I was completely clueless. Thankfully, I was apart of a team of two others: let's call them Jack and Al. Jack specialized in Windows. He was very good at the Forensics Questions and getting rid of backdoors. Al specialized in Linux, which I didn't understand one bit. The prevalence of the command line was intimidating, but Al was good at it.</p>
+                <p>I was assigned the only image left: Windows Server. It wasn't too bad. If I had any questions, I could ask Jack and he would do a pretty good job with answering since Windows and Server are relatively similar.</p>
+                <p>I did average on Windows Server. I understood most of the concepts thrown at me, but only earned around 40-50 points in round 1 my first year. Although our team was relatively knowledgeable, we weren't very focused. We watched Youtube videos and Rickrolled each other during practices and even competitions. In hindsight, middle school students have a very small attention span.</p>
+            </div>
+        </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">
+                        <i class="fas fa-code" aria-hidden="true"></i> Aidan Lenahan
+                    </h3>
+                    <p class="footer-text">
+                        Aspiring computer science professional.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="../../">Home</a></li>
+                        <li><a href="../../about">About</a></li>
+                        <li><a href="../../experience">Experience</a></li>
+                        <li><a href="../../projects">Projects</a></li>
+                        <li><a href="../">Blog</a></li>
+                        <li><a href="../../techhelp">Tech Help</a></li>
+                        <li><a href="../../contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)" class="social-link">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aidanlenahan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)" class="social-link">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:aidan@aidanlenahan.com" aria-label="Email" class="social-link">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aidan Lenahan. All rights reserved. · <a href="../../sitemap.xml" style="color: var(--text-tertiary); text-decoration: none;">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

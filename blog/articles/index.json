@@ -13,6 +13,13 @@
             "author": "Aidan Lenahan",
             "excerpt": "A walkthrough of building a door-activated lighting system for a dimly lit pantry using a reed switch and a relay module.",
             "file": "pantry-lighting.html"
+        },
+        {
+            "title": "My take on Cyberpatriot",
+            "date": "2024-10-23",
+            "author": "Aidan Lenahan",
+            "excerpt": "What I've learned from competing in CyberPatriot since sixth grade, starting with my middle school years on Windows Server.",
+            "file": "cyberpatriot.html"
         }
     ]
 }
