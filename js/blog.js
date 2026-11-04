@@ -86,7 +86,14 @@ function createArticleCard(article, searchTerm = '') {
                     <img src="assets/secdiagdrop-emailnotify.png" width="946" height="543" alt="Email notification asking for approval to upload a diagnostic report" class="preview-dark" loading="lazy">
                 </div>
             `
-            : '<i class="fas fa-file-alt fa-3x" aria-hidden="true"></i>';
+            : article.file === 'cyberpatriot.html'
+                ? `
+                    <div class="themed-preview-image">
+                        <img src="assets/cyberpatriot-logo.webp" width="960" height="480" alt="CP-17 CyberPatriot logo" class="preview-light" loading="lazy">
+                        <img src="assets/cyberpatriot-logo.webp" width="960" height="480" alt="CP-17 CyberPatriot logo" class="preview-dark" loading="lazy">
+                    </div>
+                `
+                : '<i class="fas fa-file-alt fa-3x" aria-hidden="true"></i>';
     
     card.innerHTML = `
         <div class="project-image">
