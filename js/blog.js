@@ -63,6 +63,26 @@ function highlightText(text, searchTerm) {
         .join('');
 }
 
+// Preview image for a card, from the article's "image" entry in index.json.
+// Keep this markup in sync with scripts/build-blog.py.
+function previewMediaHtml(image) {
+    if (!image || !image.src) {
+        return '<i class="fas fa-file-alt fa-3x" aria-hidden="true"></i>';
+    }
+    const size = image.width && image.height
+        ? ` width="${escapeHtml(image.width)}" height="${escapeHtml(image.height)}"`
+        : '';
+    const alt = escapeHtml(image.alt);
+    const light = escapeHtml(image.src);
+    const dark = escapeHtml(image.srcDark || image.src);
+    return `
+            <div class="themed-preview-image">
+                <img src="assets/${light}"${size} alt="${alt}" class="preview-light" loading="lazy">
+                <img src="assets/${dark}"${size} alt="${alt}" class="preview-dark" loading="lazy">
+            </div>
+        `;
+}
+
 // Create article card HTML using site theme
 function createArticleCard(article, searchTerm = '') {
     const card = document.createElement('div');
@@ -72,28 +92,7 @@ function createArticleCard(article, searchTerm = '') {
     const excerpt = highlightText(article.excerpt, searchTerm);
     const author = highlightText(article.author, searchTerm);
     const slug = escapeHtml(String(article.file ?? '').replace(/\.html$/, ''));
-    const previewMedia = article.file === 'pantry-lighting.html'
-        ? `
-            <div class="themed-preview-image">
-                <img src="assets/pantry-schematic-light.webp" alt="Pantry lighting circuit schematic" class="preview-light" loading="lazy">
-                <img src="assets/pantry-schematic-dark.webp" alt="Pantry lighting circuit schematic" class="preview-dark" loading="lazy">
-            </div>
-        `
-        : article.file === 'secdiagdrop.html'
-            ? `
-                <div class="themed-preview-image">
-                    <img src="assets/secdiagdrop-emailnotify.png" width="946" height="543" alt="Email notification asking for approval to upload a diagnostic report" class="preview-light" loading="lazy">
-                    <img src="assets/secdiagdrop-emailnotify.png" width="946" height="543" alt="Email notification asking for approval to upload a diagnostic report" class="preview-dark" loading="lazy">
-                </div>
-            `
-            : article.file === 'cyberpatriot.html'
-                ? `
-                    <div class="themed-preview-image">
-                        <img src="assets/cyberpatriot-logo.webp" width="960" height="480" alt="CP-17 CyberPatriot logo" class="preview-light" loading="lazy">
-                        <img src="assets/cyberpatriot-logo.webp" width="960" height="480" alt="CP-17 CyberPatriot logo" class="preview-dark" loading="lazy">
-                    </div>
-                `
-                : '<i class="fas fa-file-alt fa-3x" aria-hidden="true"></i>';
+    const previewMedia = previewMediaHtml(article.image);
     
     card.innerHTML = `
         <div class="project-image">
