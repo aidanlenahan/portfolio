@@ -20,8 +20,8 @@
     { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
   ],
   "shortcuts": [
-    { "name": "Projects", "url": "projects.html", "icons": [{ "src": "files/favicon-192x192.png", "sizes": "192x192" }] },
+    { "name": "Projects", "url": "projects", "icons": [{ "src": "files/favicon-192x192.png", "sizes": "192x192" }] },
     { "name": "Blog", "url": "blog/", "icons": [{ "src": "files/favicon-192x192.png", "sizes": "192x192" }] },
-    { "name": "Contact", "url": "contact.html", "icons": [{ "src": "files/favicon-192x192.png", "sizes": "192x192" }] }
+    { "name": "Contact", "url": "contact", "icons": [{ "src": "files/favicon-192x192.png", "sizes": "192x192" }] }
   ]
 }
