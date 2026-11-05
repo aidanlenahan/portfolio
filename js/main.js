@@ -246,4 +246,28 @@
 
     createBackToTopButton();
 
+    // ==========================================
+    // EMAIL LINKS
+    // ==========================================
+
+    // Email addresses aren't in the HTML, so scrapers that read the raw page
+    // don't pick them up. Each link carries data-email (base64 of the address
+    // reversed) and falls back to the contact page without JavaScript.
+    // data-email-text also swaps the link text for the address.
+    function revealEmailLinks() {
+        document.querySelectorAll('a[data-email]').forEach(function(link) {
+            let address;
+            try {
+                address = atob(link.dataset.email).split('').reverse().join('');
+            } catch (e) {
+                return;
+            }
+            const subject = link.dataset.emailSubject;
+            link.href = 'mailto:' + address + (subject ? '?subject=' + encodeURIComponent(subject) : '');
+            if (link.hasAttribute('data-email-text')) link.textContent = address;
+        });
+    }
+
+    revealEmailLinks();
+
 })();
