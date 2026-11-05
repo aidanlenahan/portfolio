@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /blog/assets/
-Disallow: /files/
-Allow: /files/headshot-300.jpg
+Disallow: /files/Aidan_Lenahan_Resume.pdf
 
 Sitemap: https://aidanlenahan.com/sitemap.xml
