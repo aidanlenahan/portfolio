@@ -180,7 +180,7 @@ To provide a ready-to-use, professional portfolio website template that can be e
   - Code syntax highlighting
   - Metadata (date, author)
   - Back to blog link
-- Article management via articles/index.json
+- Article management via articles/index.json (run `python scripts/build-blog.py` after editing it so the cards are written into blog/index.html)
 
 ### 5.5 Tech Help Page (techhelp.html)
 **Purpose**: Provide IT services information
